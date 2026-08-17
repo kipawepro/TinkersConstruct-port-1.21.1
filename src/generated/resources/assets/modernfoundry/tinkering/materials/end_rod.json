@@ -2,7 +2,9 @@
   "color": "FFFFF6F6",
   "generator": {
     "supported_stats": [
-      "modernfoundry:arrow_shaft"
+      "modernfoundry:arrow_shaft",
+      "modernfoundry:ribcage",
+      "modernfoundry:repair_kit"
     ],
     "transformer": {
       "type": "modernfoundry:recolor_sprite",
