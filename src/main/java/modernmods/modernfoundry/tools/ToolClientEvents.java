@@ -160,15 +160,6 @@ public class ToolClientEvents extends ClientEventBase {
   }
 
   @SubscribeEvent
-  static void registerClientExtensions(net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent event) {
-    for (net.minecraft.world.item.Item item : net.minecraft.core.registries.BuiltInRegistries.ITEM) {
-      if (item instanceof modernmods.modernfoundry.library.tools.item.ranged.ModifiableLauncherItem launcher) {
-        launcher.initializeClient(extension -> event.registerItem(extension, item));
-      }
-    }
-  }
-
-  @SubscribeEvent
   static void registerKeyBinding(RegisterKeyMappingsEvent event) {
     event.register(HELMET_INTERACT);
     event.register(LEGGINGS_INTERACT);
