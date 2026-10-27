@@ -46,7 +46,6 @@
     * Added explicit provider-aware `saveAdditional` hooks because the inventory block-entity save path bypasses Hilt's synchronized-data hook.
 * Fixed Modern Foundry Anvils losing their material texture after a client/world restart.
     * Migrated retextured table and anvil material block-entity persistence to NeoForge 1.21.1's provider-aware save/load hooks.
-* Documented Modern Foundry directory ownership and allowed edit boundaries in `AGENTS.md`.
 * Added GitHub Actions release automation for Modern Foundry.
     * Builds Modern Foundry on every push and publishes only new `mod_version` releases.
 * Limited release creation to new `mod_version` values.
