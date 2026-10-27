@@ -13,9 +13,8 @@
     {
       "type": "modernfoundry:protection",
       "damage_source": "hilt:can_protect",
-      "each_level": 2.5,
+      "each_level": 2.0,
       "wearing_entity": "modernfoundry:airborne"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

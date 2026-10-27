@@ -1,0 +1,10 @@
+{
+  "type": "modernfoundry:material",
+  "id": "modernfoundry:tools/materials/venom_fermented",
+  "ingredient": {
+    "item": "minecraft:fermented_spider_eye"
+  },
+  "material": "modernfoundry:venom",
+  "needed": 1,
+  "value": 2
+}

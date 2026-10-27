@@ -5,6 +5,12 @@
         "level": 1,
         "name": "modernfoundry:soft"
       }
+    ],
+    "modernfoundry:armor": [
+      {
+        "level": 1,
+        "name": "modernfoundry:knockback_resistance"
+      }
     ]
   }
 }

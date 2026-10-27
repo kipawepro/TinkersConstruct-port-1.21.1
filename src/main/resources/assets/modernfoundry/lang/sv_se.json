@@ -7,27 +7,19 @@
   "block.modernfoundry.ichor_slime.tooltip": "Kletar fast sig på alla kletiga block förutom ichor",
   "block.modernfoundry.ender_slime": "Enderslemsblock",
   "block.modernfoundry.ender_slime.tooltip": "Kletar fast sig när den knuffas, men inte när den ligger intill ett kletigt block",
-  "block.modernfoundry.blood_slime": "Blodblock",
-  "block.modernfoundry.blood_slime.tooltip": "Studsigt, men inte kletigt",
-  
+
   "block.modernfoundry.earth_congealed_slime": "Stelnat slemblock",
   "block.modernfoundry.earth_congealed_slime.tooltip": "Låter dig hoppa riktigt högt",
   "block.modernfoundry.sky_congealed_slime": "Stelnat himmelslemsblock",
   "block.modernfoundry.sky_congealed_slime.tooltip": "Låter dig hoppa riktigt högt",
   "block.modernfoundry.ender_congealed_slime": "Stelnat enderslemsblock",
   "block.modernfoundry.ender_congealed_slime.tooltip": "Låter dig hoppa riktigt högt",
-  "block.modernfoundry.blood_congealed_slime": "Koagulerat blod",
-  "block.modernfoundry.blood_congealed_slime.tooltip": "Låter dig hoppa riktigt högt",
   "block.modernfoundry.ichor_congealed_slime": "Stelnad ichor",
   "block.modernfoundry.ichor_congealed_slime.tooltip": "Låter dig hoppa riktigt högt",
   
   "block.modernfoundry.mud_bricks": "Gyttjetegel",
   "block.modernfoundry.mud_bricks_slab": "Gyttjetegelplatta",
   "block.modernfoundry.mud_bricks_stairs": "Gyttjetegeltrappa",
-  
-  "block.modernfoundry.lavawood": "Lavaträ",
-  "block.modernfoundry.lavawood_slab": "Lavaträplatta",
-  "block.modernfoundry.lavawood_stairs": "Lavaträtrappa",
   
   "block.modernfoundry.blazewood": "Brännarträ",
   "block.modernfoundry.blazewood_slab": "Brännarträplatta",
@@ -99,8 +91,7 @@
   "block.modernfoundry.soul_glass_pane": "Själglasruta",
   
   "block.modernfoundry.glow": "Glöd",
-  "block.modernfoundry.silky_jewel_block": "Silkesjuvelblock",
-  
+
   
   "__comment": "Ore Metals",
   
@@ -166,7 +157,6 @@
   
   "block.modernfoundry.knightslime_block": "Riddarslemsblock",
   "item.modernfoundry.knightslime_ingot": "Riddarslemstacka",
-  "item.modernfoundry.knightslime_ingot.tooltip": "Slemmigt fast metalliskt men även sten? Fascinerande!",
   "item.modernfoundry.knightslime_nugget": "Riddarslemsklimp",
   
   "item.modernfoundry.materials_and_you": "Materialen och dig",
@@ -187,7 +177,6 @@
   
   "item.modernfoundry.sky_slime_ball": "Himmelslemsboll",
   "item.modernfoundry.ender_slime_ball": "Enderslemsboll",
-  "item.modernfoundry.blood_slime_ball": "Koagulerat blod",
   "item.modernfoundry.ichor_slime_ball": "Ichorboll",
   
   "item.modernfoundry.bacon": "Bacon",
@@ -225,28 +214,24 @@
   "block.modernfoundry.budding_ender_slime_crystal": "Knoppande enderslemskristall",
   
   "item.modernfoundry.iron_reinforcement": "Järnförstärkning",
-  "item.modernfoundry.iron_reinforcement.tooltip": "Reducerar chansen att ett verktyg tar skada",
+  "item.modernfoundry.iron_reinforcement.tooltip": "Ökar rustningsresistans mot projektiler",
   "item.modernfoundry.slimesteel_reinforcement": "Slemstålsförstärkning",
   "item.modernfoundry.slimesteel_reinforcement.tooltip": "Ökar slemstålets kapacitet",
   "item.modernfoundry.seared_reinforcement": "Bränd förstärkning",
   "item.modernfoundry.seared_reinforcement.tooltip": "Ökar rustningsresistans mot eld",
-  "item.modernfoundry.bronze_reinforcement": "Ametistbronsförstärkning",
-  "item.modernfoundry.bronze_reinforcement.tooltip": "Ökar rustningsresistans mot projektiler",
   "item.modernfoundry.gold_reinforcement": "Guldförstärkning",
   "item.modernfoundry.gold_reinforcement.tooltip": "Ökar rustningsresistans mot magi",
   "item.modernfoundry.emerald_reinforcement": "Smaragdförstärkning",
-  "item.modernfoundry.emerald_reinforcement.tooltip": "Ökar rustningsresistans mot explosioner",
+  "item.modernfoundry.emerald_reinforcement.tooltip": "Reducerar chansen att ett verktyg tar skada",
+  "item.modernfoundry.obsidian_reinforcement.tooltip": "Ökar rustningsresistans mot explosioner",
   "item.modernfoundry.cobalt_reinforcement": "Koboltförstärkning",
   "item.modernfoundry.cobalt_reinforcement.tooltip": "Ökar rustningsresistans mot attacker i allmänhet",
   "item.modernfoundry.jeweled_apple": "Juveläpple",
   "item.modernfoundry.silky_cloth": "Silkestyg",
   "item.modernfoundry.silky_cloth.tooltip": "Förhindrar ett verktyg från att skada block som avges",
-  "item.modernfoundry.silky_jewel": "Silkesjuvel",
-  "item.modernfoundry.silky_jewel.tooltip": "Förhindrar ett verktyg från att skada block som avges",
   "item.modernfoundry.necrotic_bone": "Nekrotiskt ben",
   "item.modernfoundry.necrotic_bone.tooltip": "Kommer från Witherskelett",
   "item.modernfoundry.necronium_bone": "Nekroniumben",
-  "item.modernfoundry.bloodbone": "Blodsben",
   "item.modernfoundry.blazing_bone": "Brännben",
   "item.modernfoundry.dragon_scale": "Drakfjäll",
   "item.modernfoundry.dragon_scale.tooltip": "Har sprängts bort från en enderdrake",
@@ -273,7 +258,6 @@
   "pattern.modernfoundry.pick_head": "Hackhuvud",
   "pattern.modernfoundry.small_axe_head": "Litet yxhuvud",
   "pattern.modernfoundry.small_blade": "Liten klinga",
-  "pattern.modernfoundry.sign_head": "Skylthuvud",
   "pattern.modernfoundry.bow_limb": "Pilbågsstock",
   
   "_comment": "Large Head Gold Casts",
@@ -285,7 +269,6 @@
   "_comment": "Binding Gold Casts",
   
   "pattern.modernfoundry.tool_binding": "Verktygsbindning",
-  "pattern.modernfoundry.round_plate": "Rund plåt",
   "pattern.modernfoundry.large_plate": "Stor plåt",
   
   "_comment": "Tool Handle Gold Casts",
@@ -314,7 +297,6 @@
   "item.modernfoundry.pick_head_cast": "Guldavgjutning för hackhuvud",
   "item.modernfoundry.small_axe_head_cast": "Guldavgjutning för litet yxhuvud",
   "item.modernfoundry.small_blade_cast": "Guldavgjutning för liten klinga",
-  "item.modernfoundry.sign_head_cast": "Guldavgjutning för skylthuvud",
   "item.modernfoundry.bow_limb_cast": "Guldavgjutning för pilbågsstock",
   
   "_comment": "Large Head Gold Casts",
@@ -326,7 +308,6 @@
   "_comment": "Binding Gold Casts",
   
   "item.modernfoundry.tool_binding_cast": "Guldavgjutning för verktygsbindning",
-  "item.modernfoundry.round_plate_cast": "Guldavgjutning för rund plåt",
   "item.modernfoundry.large_plate_cast": "Guldavgjutning för stor plåt",
   
   "_comment": "Tool Handle Gold Casts",
@@ -355,7 +336,6 @@
   "item.modernfoundry.pick_head_sand_cast": "Sandavgjutning för hackhuvud",
   "item.modernfoundry.small_axe_head_sand_cast": "Sandavgjutning för litet yxhuvud",
   "item.modernfoundry.small_blade_sand_cast": "Sandavgjutning för liten klinga",
-  "item.modernfoundry.sign_head_sand_cast": "Sandavgjutning för skylthuvud",
   "item.modernfoundry.bow_limb_sand_cast": "Sandavgjutning för pilbågsstock",
   
   "_comment": "Large Head Sand Casts",
@@ -367,7 +347,6 @@
   "_comment": "Binding Sand Casts",
   
   "item.modernfoundry.tool_binding_sand_cast": "Sandavgjutning för bindning",
-  "item.modernfoundry.round_plate_sand_cast": "Sandavgjutning för rund plåt",
   "item.modernfoundry.large_plate_sand_cast": "Sandavgjutning för stor plåt",
   
   "_comment": "Tool Handle Sand Casts",
@@ -396,7 +375,6 @@
   "item.modernfoundry.pick_head_red_sand_cast": "Rödsandsavgjutning för hackhuvud",
   "item.modernfoundry.small_axe_head_red_sand_cast": "Rödsandsavgjutning för litet yxhuvud",
   "item.modernfoundry.small_blade_red_sand_cast": "Rödsandsavgjutning för liten klinga",
-  "item.modernfoundry.sign_head_red_sand_cast": "Rödsandsavgjutning för skylthuvud",
   "item.modernfoundry.bow_limb_red_sand_cast": "Rödsandsavgjutning för pilbågsstock",
   
   "_comment": "Large Head Red Sand Casts",
@@ -408,7 +386,6 @@
   "_comment": "Binding Red Sand Casts",
   
   "item.modernfoundry.tool_binding_red_sand_cast": "Rödsandsavgjutning för verktygsbindning",
-  "item.modernfoundry.round_plate_red_sand_cast": "Rödsandsavgjutning för rund plåt",
   "item.modernfoundry.large_plate_red_sand_cast": "Rödsandsavgjutning för stor plåt",
   
   "_comment": "Tool Handle Red Sand Casts",
@@ -425,11 +402,6 @@
   "item.modernfoundry.blazing_blood_bucket": "Hink med brännarblod",
   
   "_comment": "Slime",
-  
-  "block.modernfoundry.blood_fluid": "Blod",
-  "fluid.modernfoundry.blood": "Blod",
-  "fluid.modernfoundry.flowing_blood": "Flödande blod",
-  "item.modernfoundry.blood_bucket": "Blodhink",
   
   "block.modernfoundry.earth_slime_fluid": "Slem",
   "fluid.modernfoundry.earth_slime": "Slem",
@@ -747,15 +719,6 @@
   "block.modernfoundry.blood_cake": "Blodstårta",
   "block.modernfoundry.magma_cake": "Magmatårta",
   
-  "item.modernfoundry.earth_slime_sling": "Slangbella av slem",
-  "item.modernfoundry.earth_slime_sling.tooltip": "Dra tillbaka, sikta lågt, börja slunga!\nAnvänd slemstövlar om du värderar ditt liv!",
-  "item.modernfoundry.sky_slime_sling": "Slangbella av himmelslem",
-  "item.modernfoundry.sky_slime_sling.tooltip": "Dra tillbaka, avfyra, flyg upp i luften!\nAnvänd slemstövlar om du värderar ditt liv!",
-  "item.modernfoundry.ender_slime_sling": "Slangbella av enderslem",
-  "item.modernfoundry.ender_slime_sling.tooltip": "Dra tillbaka, sikta på en vägg och dyk upp på andra sidan!",
-  "item.modernfoundry.ichor_slime_sling": "Slangbella av ichor",
-  "item.modernfoundry.ichor_slime_sling.tooltip": "Dra tillbaka, sikta på en varelse och få den att flyga iväg!",
-  
   "item.modernfoundry.piggy_backpack": "Bärsele",
   "item.modernfoundry.piggy_backpack.tooltip": "Använd på en varelse för att plocka upp den",
   "effect.modernfoundry.carry": "Bärsele",
@@ -767,7 +730,6 @@
   "block.modernfoundry.drowned_head": "Drunkad zombie-huvud",
   "block.modernfoundry.spider_head": "Spindelhuvud",
   "block.modernfoundry.cave_spider_head": "Grottspindelhuvud",
-  "block.modernfoundry.piglin_head": "Piglinhuvud",
   "block.modernfoundry.piglin_brute_head": "Piglinbarbarshuvud",
   "block.modernfoundry.zombified_piglin_head": "Zombifierad piglin-huvud",
   
@@ -793,7 +755,10 @@
   
   "item.modernfoundry.pattern": "Mönster",
   
-  "_comment": "Modern Foundry Tools",
+  "_comment": "Tinkers Tools",
+
+  "item.modernfoundry.tool.format": "%2$s av %1$s",
+  "item.modernfoundry.tool.material_separator": "-",
   
   "item.modernfoundry.pickaxe": "Hacka",
   "item.modernfoundry.sledge_hammer": "Slägga",
@@ -826,23 +791,10 @@
   "item.modernfoundry.plate_boots": "Plåtstövlar",
   
   "item.modernfoundry.slime_helmet": "Slemskalle",
-  "item.modernfoundry.slime_chestplate": "Slemelytra",
   "item.modernfoundry.slime_leggings": "Slemskal",
   "item.modernfoundry.slime_boots": "Slemstövlar",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.gunpowder": "Slemskalle av creeper",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.ender_pearl": "Slemskalle av enderman",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.bone": "Slemskalle av skelett",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.bloodbone": "Slemskalle av strövare",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.necrotic_bone": "Slemskalle av witherskelett",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.venom": "Slemskalle av grottspindel",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.rotten_flesh": "Slemskalle av zombie",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.iron": "Slemskalle av uttorkad zombie",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.copper": "Slemskalle av drunknad zombie",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.blazing_bone": "Slemskalle av brännare",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.gold": "Slemskalle av piglin",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.rose_gold": "Slemskalle av piglinbarbar",
-  "item.modernfoundry.slime_helmet.material.modernfoundry.pig_iron": "Slemskalle av zombifierad piglin",
-  
+  "item.modernfoundry.slime_wings": "Slemelytra",
+
   
   "_comment": "Modern Foundry Tool Parts",
   
@@ -860,7 +812,6 @@
   "item.modernfoundry.tool_handle": "Verktygshandtag",
   "item.modernfoundry.tough_handle": "Robust handtag",
   "item.modernfoundry.tool_binding": "Verktygsbindning",
-  "item.modernfoundry.round_plate": "Rundplåt",
   "item.modernfoundry.large_plate": "Stor plåt",
   
   
@@ -886,11 +837,6 @@
   
   
   "_comment": "Smeltery shared",
-  
-  "block.modernfoundry.tank.fluid": "%s (flytande)",
-  "block.modernfoundry.tank.mb": "%d mB",
-  "block.modernfoundry.tank.ingots": "%d tackor",
-  "block.modernfoundry.tank.mixed": "%d tackor, %d mb",
   
   "block.modernfoundry.tank.drained": "Tömde %s mb %s",
   "block.modernfoundry.tank.filled": "Fyllde %s mb %s",
@@ -1284,16 +1230,10 @@
   "material.modernfoundry.unknown": "Okänd",
   
   "__comment": "Tier 1 Materials",
+
   "material.modernfoundry.wood": "Trä",
-  "material.modernfoundry.wood.oak":      "Ekträ",
-  "material.modernfoundry.wood.spruce":   "Granträ",
-  "material.modernfoundry.wood.birch":    "Björkträ",
-  "material.modernfoundry.wood.jungle":   "Djungelträ",
-  "material.modernfoundry.wood.acacia":   "Akaciaträ",
-  "material.modernfoundry.wood.dark_oak": "Mörkt ekträ",
   "material.modernfoundry.wood.crimson":  "Karmosinhyfer",
   "material.modernfoundry.wood.warped":   "Förvrängda hyfer",
-  "material.modernfoundry.wood.bamboo":   "Bambu",
   "material.modernfoundry.wood.format": "%s av trä",
   "material.modernfoundry.wood.flavor": "Trä mot trä gör ingen skada",
   "material.modernfoundry.wood.encyclopedia": "Gör reparationer 50 % effektivare per del",
@@ -1304,214 +1244,165 @@
   "material.modernfoundry.rock.diorite":    "Diorit",
   "material.modernfoundry.rock.granite":    "Granit",
   "material.modernfoundry.rock.blackstone": "Svartsten",
-  "material.modernfoundry.rock.deepslate":  "Djupskiffer",
-  "material.modernfoundry.rock.format": "%s av sten",
   "material.modernfoundry.rock.flavor": "Stentufft",
-  "material.modernfoundry.rock.encyclopedia": "Får verktyget att gräva snabbare med hälften av roten ur den förlorade hållbarheten",
+  "material.modernfoundry.rock.encyclopedia.melee_harvest": "Får verktyget att gräva snabbare med hälften av roten ur den förlorade hållbarheten",
   
   "material.modernfoundry.flint": "Flinta",
   "material.modernfoundry.flint.basalt": "Basalt",
-  "material.modernfoundry.flint.format": "%s av flinta",
-  "material.modernfoundry.flint.flavor": "Detta tänder gnistan hos varje Modern Foundry-spelare!",
-  "material.modernfoundry.flint.encyclopedia": "Ökar skada med en fjärdedel av roten ur den förlorade hållbarheten",
+  "material.modernfoundry.flint.deepslate":  "Djupskiffer",
+  "material.modernfoundry.flint.flavor": "Detta tänder gnistan hos varje Tinkers-spelare!",
+  "material.modernfoundry.flint.encyclopedia.melee_harvest": "Ökar skada med en fjärdedel av roten ur den förlorade hållbarheten",
   
   "material.modernfoundry.bone": "Ben",
-  "material.modernfoundry.bone.format": "%s av ben",
   "material.modernfoundry.bone.flavor": "Benhårt",
   "material.modernfoundry.bone.encyclopedia": "Omvandlar 0,5 skada till 1 genomträngande skada",
-  "material.modernfoundry.bone.skull_flavor": "Har du mjölk?",
-  "material.modernfoundry.bone.skull_encyclopedia": "Ger resistans i 1 minut när man dricker mjölk",
+  "material.modernfoundry.bone.flavor.skull": "Har du mjölk?",
+  "material.modernfoundry.bone.encyclopedia.skull": "Ger resistans i 1 minut när man dricker mjölk",
   
   "material.modernfoundry.necrotic_bone": "Nekrotiskt ben",
-  "material.modernfoundry.necrotic_bone.format": "%s av nekrotiskt ben",
   "material.modernfoundry.necrotic_bone.flavor": "Gjord för beniga situationer",
   "material.modernfoundry.necrotic_bone.encyclopedia": "Läker upp till 5 % utdelad skada per nivå",
-  "material.modernfoundry.necrotic_bone.skull_flavor": "Skrämmande läskigt skelett!",
-  "material.modernfoundry.necrotic_bone.skull_encyclopedia": "Närstridsattacker orsakar effekten \"Vissnande\", som blir snabbare efter man dricker mjölk",
+  "material.modernfoundry.necrotic_bone.flavor.skull": "Skrämmande läskigt skelett!",
+  "material.modernfoundry.necrotic_bone.encyclopedia.skull": "Närstridsattacker orsakar effekten \"Vissnande\", som blir snabbare efter man dricker mjölk",
   
   "material.modernfoundry.string": "Tråd",
-  "material.modernfoundry.string.format": "%s av tråd",
   "material.modernfoundry.string.flavor": "Teoretiskt sett det bästa materialet.",
-  "material.modernfoundry.string.encyclopedia": "Låter verktyget att repareras med tråd i Modern Foundry eller arbetsbänken",
-  
+  "material.modernfoundry.string.encyclopedia": "Låter verktyget att repareras med tråd i tinkerstationen eller arbetsbänken",
+  "material.modernfoundry.string.skull": "Spindel",
+  "material.modernfoundry.string.flavor.skull": "Spindlar är mästare på brygder och deras hemlighet kanske kan hjälpa mig att förtrolla brygder...",
+  "material.modernfoundry.string.encyclopedia.skull": "Förlänger positiva brygdeffekter med 50 %",
+
   "material.modernfoundry.leather": "Läder",
-  "material.modernfoundry.leather.format": "%s av läder",
   "material.modernfoundry.leather.flavor": "Dödade en ko och garvade dess läder.",
   "material.modernfoundry.leather.encyclopedia": "Förhindrar verktyget från att ta mer än 1 skada när det används",
-  
+  "material.modernfoundry.leather.flavor.skull": "Allt är väl",
+  "material.modernfoundry.leather.encyclopedia.skull": "Närstridsattacker ökar brinntiden för mål baserat på bärarens brinntid",
+
   "material.modernfoundry.vine": "Klätterväxt",
-  "material.modernfoundry.vine.format": "%s av klätterväxt",
   "material.modernfoundry.vine.flavor": "Fortsätter att leva, till skillnad från det sociala nätverket.",
   "material.modernfoundry.vine.encyclopedia": "Verktyget har upp till 75 % chans att motstå skada i fullt dagsljus",
   
   
   "__comment": "Tier 2 Materials",
   "material.modernfoundry.iron": "Järn",
-  "material.modernfoundry.iron.format": "%s av järn",
   "material.modernfoundry.iron.flavor": "Ge järnet!",
   "material.modernfoundry.iron.encyclopedia": "Ger extra 10 % hållbarhet per del",
-  "material.modernfoundry.iron.skull_flavor": "Karantänsbrott",
-  "material.modernfoundry.iron.skull_encyclopedia": "Närstridsattacker kopierar alla negativa statuseffekter från bäraren till målet",
+  "material.modernfoundry.iron.flavor.skull": "Karantänsbrott",
+  "material.modernfoundry.iron.encyclopedia.skull": "Närstridsattacker kopierar alla negativa statuseffekter från bäraren till målet",
   
   "material.modernfoundry.seared_stone": "Bränd sten",
-  "material.modernfoundry.seared_stone.format": "%s av bränd sten",
   "material.modernfoundry.seared_stone.flavor": "Varmare Grout.",
   "material.modernfoundry.seared_stone.encyclopedia": "Ger +6 grävhastighet på block som kan smältas i en nedsmältare",
   
   "material.modernfoundry.scorched_stone": "Eldad sten",
-  "material.modernfoundry.scorched_stone.format": "%s av eldad sten",
   "material.modernfoundry.scorched_stone.flavor": "Bonus från grundarutgåvan.",
   "material.modernfoundry.scorched_stone.encyclopedia": "Utdelar +2 skada per nivå mot brinnande mål",
   
   "material.modernfoundry.copper": "Koppar",
-  "material.modernfoundry.copper.format": "%s av koppar",
   "material.modernfoundry.copper.flavor": "Ädelmetall med flera användningsområden.",
-  "material.modernfoundry.copper.encyclopedia": "Ger grävhastighet vid lägre djup, +8 per 64 block under havsnivån",
-  "material.modernfoundry.copper.skull_flavor": "Slår luften ur dem",
-  "material.modernfoundry.copper.skull_encyclopedia": "Närstridsattacker stjäl 3 sekunders luft från målet",
+  "material.modernfoundry.copper.encyclopedia.melee_harvest": "Ger grävhastighet vid lägre djup, +8 per 64 block under havsnivån",
+  "material.modernfoundry.copper.flavor.skull": "Slår luften ur dem",
+  "material.modernfoundry.copper.encyclopedia.skull": "Närstridsattacker stjäl 3 sekunders luft från målet",
   
   "material.modernfoundry.slimewood": "Slemträ",
   "material.modernfoundry.slimewood.greenheart":  "Grönhjärta",
   "material.modernfoundry.slimewood.skyroot":     "Himmelrot",
   "material.modernfoundry.slimewood.bloodshroom": "Blodsvamp",
-  "material.modernfoundry.slimewood.format": "%s av slemträ",
   "material.modernfoundry.slimewood.flavor": "Är detta trä från slem eller slem som har infuserats med trä?",
   "material.modernfoundry.slimewood.encyclopedia": "Ger 5 % chans per nivå att återgenerera slemhölje varje sekund",
   
-  "material.modernfoundry.bloodbone": "Blodsben",
-  "material.modernfoundry.bloodbone.format": "%s av blodsben",
-  "material.modernfoundry.bloodbone.flavor": "Ska inte blodet vara inuti benet?",
-  "material.modernfoundry.bloodbone.encyclopedia": "Ökar utdelad skada vid låg hälsa, upp till +4 skada per nivå vid 1 hjärta",
-  "material.modernfoundry.bloodbone.skull_flavor": "Kylan gör att det går kalla kårar längs ryggraden",
-  "material.modernfoundry.bloodbone.skull_encyclopedia": "Projektiler kan orsaka långsamhet för målet. Efter du dricker mjölk kommer närstridsattacker orsaka långsamhet och nivån är starkare.",
+  "material.modernfoundry.pewter.encyclopedia": "Ökar utdelad skada vid låg hälsa, upp till +4 skada per nivå vid 1 hjärta",
+
+  "material.modernfoundry.ice.flavor.skull": "Kylan gör att det går kalla kårar längs ryggraden",
+  "material.modernfoundry.ice.encyclopedia.skull": "Projektiler kan orsaka långsamhet för målet. Efter du dricker mjölk kommer närstridsattacker orsaka långsamhet och nivån är starkare.",
   
   "material.modernfoundry.rose_gold": "Rosguld",
-  "material.modernfoundry.rose_gold.format": "%s av rosguld",
   "material.modernfoundry.rose_gold.flavor": "Ansvarsfriskrivning: Inte gjord av riktiga rosor.",
   "material.modernfoundry.rose_gold.encyclopedia": "Ger 1 extra uppgraderingsplats per del",
-  "material.modernfoundry.rose_gold.skull_flavor": "Ser till att armskölden används",
-  "material.modernfoundry.rose_gold.skull_encyclopedia": "Ökar hälsa med 1 hjärta, plus ett ytterligare hjärta per rustningsdel av guld.",
-  
-  "material.modernfoundry.chain": "Kedja",
-  "material.modernfoundry.chain.format": "%s av kedja",
-  "material.modernfoundry.chain.flavor": "En riktig kedjereaktion",
-  "material.modernfoundry.chain.encyclopedia": "Verktyget tar 25 % mindre skada",
+  "material.modernfoundry.rose_gold.flavor.skull": "Ser till att armskölden används",
+  "material.modernfoundry.rose_gold.encyclopedia.skull": "Ökar hälsa med 1 hjärta, plus ett ytterligare hjärta per rustningsdel av guld.",
   
   "material.modernfoundry.skyslime_vine": "Slemmig klätterväxt",
-  "material.modernfoundry.skyslime_vine.format": "%s av slemmig klätterväxt",
   "material.modernfoundry.skyslime_vine.flavor": "Flyg som en fjäril, stick som ett bi.",
-  "material.modernfoundry.skyslime_vine.encyclopedia": "Motverkar den reducerade grävhastigheten när man inte står på marken",
+  "material.modernfoundry.skyslime_vine.encyclopedia.melee_harvest": "Motverkar den reducerade grävhastigheten när man inte står på marken",
   
   
   "__comment": "Tier 3 Materials",
   "material.modernfoundry.slimesteel": "Slemstål",
-  "material.modernfoundry.slimesteel.format": "%s av slemstål",
   "material.modernfoundry.slimesteel.flavor": "Det slemmigaste stålet som finns!",
   "material.modernfoundry.slimesteel.encyclopedia": "Ger 25 extra slemhölje, +50 % av det totala per nivå",
   
   "material.modernfoundry.nahuatl": "Nahuatl",
-  "material.modernfoundry.nahuatl.format": "%s av nahuatl",
   "material.modernfoundry.nahuatl.flavor": "Detta är inte en obsidiandel, för om det vore det skulle det stå \"Obsidian.\"",
   "material.modernfoundry.nahuatl.encyclopedia": "Har 50 % chans att utdela upp till 5 skada med tiden, där högre nivåer innebär mer skada",
 
   "material.modernfoundry.amethyst_bronze": "Ametistbrons",
-  "material.modernfoundry.amethyst_bronze.format": "%s av ametistbrons",
   "material.modernfoundry.amethyst_bronze.flavor": "Inte att förväxlas med brons.",
-  "material.modernfoundry.amethyst_bronze.encyclopedia": "Ger +0,25 grävhastighet per nivå på block som inte kräver verktyg, även där verktyget inte är effektivt",
+  "material.modernfoundry.amethyst_bronze.encyclopedia.melee_harvest": "Ger +0,25 grävhastighet per nivå på block som inte kräver verktyg, även där verktyget inte är effektivt",
   
   "material.modernfoundry.pig_iron": "Grisjärn",
-  "material.modernfoundry.pig_iron.format": "%s av grisjärn",
   "material.modernfoundry.pig_iron.flavor": "Absolut det bästa materialet, utan tvekan.",
   "material.modernfoundry.pig_iron.encyclopedia": "Kan ätas för att återställa 1 hunger och 0,1 mättnad per nivå",
-  "material.modernfoundry.pig_iron.skull_flavor": "Du kommer inte gilla mig när jag är arg!",
-  "material.modernfoundry.pig_iron.skull_encyclopedia": "Ger extra styrka i 15 sekunder när man tar skada från en annan varelse",
+  "material.modernfoundry.pig_iron.flavor.skull": "Du kommer inte gilla mig när jag är arg!",
+  "material.modernfoundry.pig_iron.encyclopedia.skull": "Ger extra styrka i 15 sekunder när man tar skada från en annan varelse",
   
   "material.modernfoundry.darkthread": "Mörkertråd",
-  "material.modernfoundry.darkthread.format": "%s av mörkertråd",
   "material.modernfoundry.darkthread.flavor": "Kom till den mörka sidan, vi kan olda",
   "material.modernfoundry.darkthread.encyclopedia": "Ökar chansen att få föremål från varelser, kan kombineras med \"Tur\"",
+  "material.modernfoundry.darkthread.flavor.skull": "Perfekt för strider där man måste tänka till lite extra, när du behöver göra ett val och dricka för att ta reda på vilken som är den rätta.",
+  "material.modernfoundry.darkthread.encyclopedia.skull": "Gör bäraren immun mot gift, men tar inte bort befintlig förgiftning",
 
 
-  
   "__comment": "Tier Nether Materials",
   "material.modernfoundry.cobalt": "Kobolt",
-  "material.modernfoundry.cobalt.format": "%s av kobolt",
   "material.modernfoundry.cobalt.flavor": "Kobolt. Den röda arméns material.",
-  "material.modernfoundry.cobalt.encyclopedia": "Ökar gräv- och attackhastigheten med 7 % per nivå",
+  "material.modernfoundry.cobalt.encyclopedia.melee_harvest": "Ökar gräv- och attackhastigheten med 7 % per nivå",
   
   "material.modernfoundry.manyullyn": "Manyullyn",
-  "material.modernfoundry.manyullyn.format": "%s av manyullyn",
-  "material.modernfoundry.manyullyn.flavor": "Metallen som de flesta Modern Foundry-spelarna aldrig kommer uttala rätt. Även känt som ett utmärkt material för att skära saker och ting.",
+  "material.modernfoundry.manyullyn.flavor": "Metallen som de flesta Tinkers-spelarna aldrig kommer uttala rätt. Även känt som ett utmärkt material för att skära saker och ting.",
   "material.modernfoundry.manyullyn.encyclopedia": "Ger +2 skada per nivå efter 8 kontinuerliga träffar",
   
   "material.modernfoundry.hepatizon": "Hepatizon",
-  "material.modernfoundry.hepatizon.format": "%s av hepatizon",
   "material.modernfoundry.hepatizon.flavor": "He-pa-ti-zon - koka, mosa och stoppa ned den i en stuvning.",
-  "material.modernfoundry.hepatizon.encyclopedia": "Ökar grävhastigheten med 25 % per nivå när 32 block har brutits kontinuerligt",
+  "material.modernfoundry.hepatizon.encyclopedia.melee_harvest": "Ökar grävhastigheten med 25 % per nivå när 32 block har brutits kontinuerligt",
   
   "material.modernfoundry.queens_slime": "Drottningsslem",
-  "material.modernfoundry.queens_slime.format": "%s av drottningsslem",
   "material.modernfoundry.queens_slime.flavor": "Prinsessor är ondskefulla, skaffa dig en drottning.",
   "material.modernfoundry.queens_slime.encyclopedia": "Reducerar hållbarheten med 15 % per nivå, 66 % av detta går till slemhölje",
   
   "material.modernfoundry.blazing_bone": "Brännben",
-  "material.modernfoundry.blazing_bone.format": "%s av brännben",
   "material.modernfoundry.blazing_bone.flavor": "Utnyttja den fullständiga kraften hos Netherfästningen - ben och brännare",
   "material.modernfoundry.blazing_bone.encyclopedia": "Ger +1 % skada för varje sekund som du brinner, upp till +15 % från lavans 15 sekunder. Bonusen reduceras av eldresistans.",
-  "material.modernfoundry.blazing_bone.skull_flavor": "Jag sade åt dem att detta tekniskt sätt är eldspottande, inte eldsprutande, men tydligen får jag inte namnge mina egna uppfinningar",
-  "material.modernfoundry.blazing_bone.skull_encyclopedia": "Låter dig spotta eldladdningar från förrådet som om det vore eldklot. Har en väntetid på 5 sekunder och fungerar inte under vatten",
+  "material.modernfoundry.blaze.flavor.skull": "Jag sade åt dem att detta tekniskt sätt är eldspottande, inte eldsprutande, men tydligen får jag inte namnge mina egna uppfinningar",
+  "material.modernfoundry.blaze.encyclopedia.skull": "Låter dig spotta eldladdningar från förrådet som om det vore eldklot. Har en väntetid på 5 sekunder och fungerar inte under vatten",
   
-  "material.modernfoundry.soulsteel": "Själstål",
-
   "material.modernfoundry.ancient_hide": "Forntida skinn",
-  "material.modernfoundry.ancient_hide.format": "%s av forntida skinn",
   "material.modernfoundry.ancient_hide.flavor": "Läder som har garvats av uråldrig sten",
-  "material.modernfoundry.ancient_hide.encyclopedia": "Ökar chansen att få föremål från block, kan kombineras med \"Tur\"",
+  "material.modernfoundry.ancient_hide.encyclopedia.melee_harvest": "Ökar chansen att få föremål från block, kan kombineras med \"Tur\"",
   
   
   "__comment": "Tier End Materials",
-  "material.modernfoundry.endstone": "Endsten",
   "material.modernfoundry.knightslime": "Riddarslem",
+  "material.modernfoundry.knightslime.flavor": "Slemmigt fast metalliskt men även sten? Fascinerande!",
   
   "material.modernfoundry.enderslime_vine": "Slemmig klätterväxt",
-  "material.modernfoundry.enderslime_vine.format": "%s av slemmig klätterväxt",
   "material.modernfoundry.enderslime_vine.flavor": "Slutet?",
-  "material.modernfoundry.enderslime_vine.encyclopedia": "Teleporterar bäraren dit block bryts eller monster dödas",
+  "material.modernfoundry.enderslime_vine.encyclopedia.melee_harvest": "Teleporterar bäraren dit block bryts eller monster dödas",
   
   "__comment": "Slimesuit materials",
   "material.modernfoundry.gunpowder": "Krut",
-  "material.modernfoundry.gunpowder.format": "%s av krut",
-  "material.modernfoundry.gunpowder.skull_flavor": "Vems fina saker kommer att förstöras den här gången, creeper?",
-  "material.modernfoundry.gunpowder.skull_encyclopedia": "När interaktionstangenten för hjälmen hålls ned exploderar den",
+  "material.modernfoundry.gunpowder.flavor.skull": "Vems fina saker kommer att förstöras den här gången, creeper?",
+  "material.modernfoundry.gunpowder.encyclopedia.skull": "När interaktionstangenten för hjälmen hålls ned exploderar den",
   
   "material.modernfoundry.ender_pearl": "Enderpärla",
-  "material.modernfoundry.ender_pearl.format": "%s av enderpärla",
-  "material.modernfoundry.ender_pearl.skull_flavor": "Endermän vet hur man gör för att undvika fara och vetenskapsmän. De har ignorerat mig varje gång jag ber om en intervju i flera veckor!",
-  "material.modernfoundry.ender_pearl.skull_encyclopedia": "Teleporterar automatiskt när man blir attackerad av en projektil och slumpartat vid närstrid. Har en väntetid på 30 sekunder",
-  
-  "material.modernfoundry.spider": "Spindel",
-  "material.modernfoundry.spider.format": "%s av spindel",
-  "material.modernfoundry.spider.skull_flavor": "Spindlar är mästare på brygder och deras hemlighet kanske kan hjälpa mig att förtrolla brygder...",
-  "material.modernfoundry.spider.skull_encyclopedia": "Förlänger positiva brygdeffekter med 50 %",
-  
-  "material.modernfoundry.venom": "Gift",
-  "material.modernfoundry.venom.format": "%s av gift",
-  "material.modernfoundry.venom.skull_flavor": "Perfekt för strider där man måste tänka till lite extra, när du behöver göra ett val och dricka för att ta reda på vilken som är den rätta.",
-  "material.modernfoundry.venom.skull_encyclopedia": "Gör bäraren immun mot gift, men tar inte bort befintlig förgiftning",
-  
-  "material.modernfoundry.rotten_flesh": "Ruttet kött",
-  "material.modernfoundry.rotten_flesh.format": "%s av ruttet kött",
-  "material.modernfoundry.rotten_flesh.skull_flavor": "Allt är väl",
-  "material.modernfoundry.rotten_flesh.skull_encyclopedia": "Närstridsattacker ökar brinntiden för mål baserat på bärarens brinntid",
+  "material.modernfoundry.ender_pearl.flavor.skull": "Endermän vet hur man gör för att undvika fara och vetenskapsmän. De har ignorerat mig varje gång jag ber om en intervju i flera veckor!",
+  "material.modernfoundry.ender_pearl.encyclopedia.skull": "Teleporterar automatiskt när man blir attackerad av en projektil och slumpartat vid närstrid. Har en väntetid på 30 sekunder",
   
   "material.modernfoundry.gold": "Guld",
-  "material.modernfoundry.gold.format": "% av guld",
-  "material.modernfoundry.gold.skull_flavor": "Så glänsande",
-  "material.modernfoundry.gold.skull_encyclopedia": "Får en del guldmalm att avge några extra guldklimpar och ökar chansen att få guldrustning med 4 %. Chansen att få klimpar och rustningar ökas ytterligare för varje rustningsdel av guld som bärs.",
+  "material.modernfoundry.gold.flavor.skull": "Så glänsande",
+  "material.modernfoundry.gold.encyclopedia.skull": "Får en del guldmalm att avge några extra guldklimpar och ökar chansen att få guldrustning med 4 %. Chansen att få klimpar och rustningar ökas ytterligare för varje rustningsdel av guld som bärs.",
   
   "material.modernfoundry.obsidian":   "Obsidian",
-  "material.modernfoundry.debris":     "Spillror",
-  "material.modernfoundry.netherite":  "Netherit",
   "material.modernfoundry.earthslime": "Jordslem",
   "material.modernfoundry.skyslime":   "Himmelslem",
   "material.modernfoundry.blood":      "Blod",
@@ -1519,87 +1410,60 @@
   "material.modernfoundry.enderslime": "Enderslem",
   "material.modernfoundry.clay":       "Lera",
   "material.modernfoundry.honey":      "Honung",
-  "material.modernfoundry.enderslime.format": "%s av enderslem",
   "material.modernfoundry.phantom": "Fantommembran",
-  "material.modernfoundry.phantom.format": "%s av fantommembran",
   "material.modernfoundry.chorus": "Kör",
-  "material.modernfoundry.chorus.format": "%s av kör",
-  "material.modernfoundry.rabbit": "Kaninskinn",
-  "material.modernfoundry.rabbit.format": "%s av kaninskinn",
 
   "material.modernfoundry.aluminum": "Aluminium",
-  "material.modernfoundry.nickel":   "Nickel",
-  "material.modernfoundry.tin":      "Tenn",
-  "material.modernfoundry.zinc":     "Zink",
-  "material.modernfoundry.brass":    "Mässing",
-  "material.modernfoundry.uranium":  "Uran",
-  
+
   
   "__comment": "Tier 2 Integration Materials",
   "material.modernfoundry.osmium": "Osmium",
-  "material.modernfoundry.osmium.format": "%s av osmium",
   "material.modernfoundry.osmium.flavor": "Trögare än trögast",
   "material.modernfoundry.osmium.encyclopedia": "Förhindrar 33 % skada på bekostnad av 25 % extra reparationskostnad vid nivå 1",
   
-  "material.modernfoundry.tungsten": "Volfram",
-  "material.modernfoundry.tungsten.format": "%s av volfram",
-  "material.modernfoundry.tungsten.flavor": "Har du övervägt att starta ett heavy metal-band?",
-  "material.modernfoundry.tungsten.encyclopedia": "Ger +10 % grävhastighet och -10 % rörelsehastighet per nivå",
-  
-  "material.modernfoundry.platinum": "Platina",
-  "material.modernfoundry.platinum.format": "%s av platina",
-  "material.modernfoundry.platinum.flavor": "Det som vinnarna använder!",
-  "material.modernfoundry.platinum.encyclopedia": "Ger +8 grävhastighet på malm",
-  
   "material.modernfoundry.lead": "Bly",
-  "material.modernfoundry.lead.format": "%s av bly",
   "material.modernfoundry.lead.flavor": "Skulle kunna försöka att göra en smörgås utav detta.",
-  "material.modernfoundry.lead.encyclopedia": "Ger +10 % attack och -10 % rörelsehastighet per nivå",
+  "material.modernfoundry.lead.encyclopedia.melee_harvest": "Ger +10 % grävhastighet och -10 % rörelsehastighet per nivå",
   
   "material.modernfoundry.silver": "Silver",
-  "material.modernfoundry.silver.format": "%s av silver",
   "material.modernfoundry.silver.flavor": "Det här verktyget kommer inte att glänsa så mycket om några dagar.",
   "material.modernfoundry.silver.encyclopedia": "Ger +2,5 skada mot odöda per nivå",
-  
-  "material.modernfoundry.whitestone": "Vitsten",
-  "material.modernfoundry.whitestone.format": "%s av vitsten",
+
+  "material.modernfoundry.whitestone": "Endsten",
+  "material.modernfoundry.whitestone.composite": "Vitsten",
+  "material.modernfoundry.whitestone.aluminum": "Vitsten",
+  "material.modernfoundry.whitestone.tin": "Vitsten",
+  "material.modernfoundry.whitestone.zinc": "Vitsten",
   "material.modernfoundry.whitestone.flavor": "Ta dina värdelösa vita metaller och gör ett användbart verktyg",
-  "material.modernfoundry.whitestone.encyclopedia": "Har en chans på 20 % per nivå att ge +3 stensköld när sten grävs",
+  "material.modernfoundry.whitestone.encyclopedia.melee_harvest": "Har en chans på 20 % per nivå att ge +3 stensköld när sten grävs",
   
   
   "__comment": "Tier 3 Integration Materials",
   "material.modernfoundry.steel": "Stål",
-  "material.modernfoundry.steel.format": "%s av stål",
   "material.modernfoundry.steel.flavor": "I princip 90 % materialvetenskap",
   "material.modernfoundry.steel.encyclopedia": "Ger +4 % hållbarhet, skada och hastighet per nivå",
 
   "material.modernfoundry.bronze": "Brons",
-  "material.modernfoundry.bronze.format": "%s av Modern Foundry",
   "material.modernfoundry.bronze.flavor": "Inte att förväxlas med brons.",
-  "material.modernfoundry.bronze.encyclopedia": "Ger +6 grävhastighet per nivå vid full hållbarhet, där under 50 % hållbarhet ger ingenting",
+  "material.modernfoundry.bronze.encyclopedia.melee_harvest": "Ger +6 grävhastighet per nivå vid full hållbarhet, där under 50 % hållbarhet ger ingenting",
 
   "material.modernfoundry.constantan": "Konstantan",
-  "material.modernfoundry.constantan.format": "%s av konstantan",
   "material.modernfoundry.constantan.flavor": "Konstantantantantantantan... Förlåt, men det är så roligt att lägga till flera \"tan\".",
-  "material.modernfoundry.constantan.encyclopedia": "Ger +7,5 grävhastighet vid extrem hetta eller kyla",
+  "material.modernfoundry.constantan.encyclopedia.melee_harvest": "Ger +7,5 grävhastighet vid extrem hetta eller kyla",
   
   "material.modernfoundry.invar": "Invar",
-  "material.modernfoundry.invar.format": "%s av invar",
   "material.modernfoundry.invar.flavor": "Resistans mot temperaturer.",
-  "material.modernfoundry.invar.encyclopedia": "Ger +2,5 skada i biomer med neutrala temperaturer",
-  
+  "material.modernfoundry.invar.encyclopedia": "Ger +10 % attack och -10 % rörelsehastighet per nivå",
+
   "material.modernfoundry.electrum": "Elektrum",
-  "material.modernfoundry.electrum.format": "%s av elektrum",
   "material.modernfoundry.electrum.flavor": "Bra för elektroniska komponenter.",
   "material.modernfoundry.electrum.encyclopedia": "Ger +50 % erfarenhet per nivå från block och monster",
   
   "material.modernfoundry.necronium": "Nekronium",
-  "material.modernfoundry.necronium.format": "%s av nekronium",
   "material.modernfoundry.necronium.flavor": "Med så mycket vissnande kommer den bara en fjärdedels liv kvar",
   "material.modernfoundry.necronium.encyclopedia": "Orsakar minst 5 sekunders vissnandeeffekt till ditt mål och med 25 % chans på dig",
   
   "material.modernfoundry.plated_slimewood": "Pläterat slemträ",
-  "material.modernfoundry.plated_slimewood.format": "%s av pläterat slemträ",
   "material.modernfoundry.plated_slimewood.flavor": "Glansen från mässingen med klafset från slemmet",
   "material.modernfoundry.plated_slimewood.encyclopedia": "Ger +100 % till alla metoder för att återställa slemhölje",
   
@@ -1628,8 +1492,7 @@
   "modifier.modernfoundry.offhanded.flavor": "Fundera inte på detta alltför mycket",
   "modifier.modernfoundry.offhanded.description": "Inaktiverar verktygets förmåga att interagera när den sekundära handen inte är tom",
   "modifier.modernfoundry.offhanded.description.2": "Inaktiverar verktygets förmåga att interagera helt och hållet",
-  "recipe.modernfoundry.modifier.offhanded.level_2": "\"Ingen hand\" kräver \"Sekundär hand\" för att kunna tillämpas",
-  
+
   
   "_comment": "Durability",
   "modifier.modernfoundry.reinforced": "Förstärkt",
@@ -1653,8 +1516,7 @@
   "modifier.modernfoundry.netherite": "Netherit",
   "modifier.modernfoundry.netherite.flavor": "Raffinerat!",
   "modifier.modernfoundry.netherite.description": "Utnyttja kraften hos uråldrig metall vilket gör verktyget starkare och immun mot extern skada, t.ex. eld",
-  "recipe.modernfoundry.modifier.netherite_requirements": "Netherit kräver antingen diamant eller smaragd för att tillämpas",
-  
+
   "modifier.modernfoundry.overslime": "Slemhölje",
   "modifier.modernfoundry.overslime.flavor": "Slemmigt!",
   "modifier.modernfoundry.overslime.description": "Verktyget konsumerar slemhölje istället för hållbarhet, tills det tar slut! Inte så vänligt för verktyg som saknar slem",
@@ -1668,7 +1530,6 @@
   "modifier.modernfoundry.magnetic.description": "Slå på saker för att dra till sig föremål?!",
   
   "modifier.modernfoundry.haste": "Skyndsamhet",
-  "modifier.modernfoundry.haste.1": "Skyndsamhet",
   "modifier.modernfoundry.haste.2": "Skyndsammare",
   "modifier.modernfoundry.haste.3": "Mer skyndsammare",
   "modifier.modernfoundry.haste.4": "ÄNNU mer skyndsammare",
@@ -1687,6 +1548,7 @@
   "modifier.modernfoundry.lightspeed": "Ljushastighet",
   "modifier.modernfoundry.lightspeed.flavor": "Ljusare är snabbare!",
   "modifier.modernfoundry.lightspeed.description": "Verktyget gräver snabbare i välupplysta miljöer!",
+  "modifier.modernfoundry.lightspeed_armor.description": "Ökar gåhastigheten i välupplysta områden",
   "modifier.modernfoundry.lightspeed.mining_speed": "ljusgrävande",
   
   "_comment": "Weapon",
@@ -1745,7 +1607,6 @@
   "modifier.modernfoundry.sharpness.flavor": "Hur vass?",
   "modifier.modernfoundry.sharpness.description": "Verktyget blir mycket vassare och utdelar mer skada!",
   "modifier.modernfoundry.swiftstrike": "Snabbslag",
-  "modifier.modernfoundry.swiftstrike.1": "Snabbslag",
   "modifier.modernfoundry.swiftstrike.2": "Fler snabbslag",
   "modifier.modernfoundry.swiftstrike.3": "Ännu fler snabbslag",
   "modifier.modernfoundry.swiftstrike.4": "Näst flest snabbslag",
@@ -1840,19 +1701,12 @@
   "modifier.modernfoundry.item_frame.description": "Lägger till förrådplatser på hjälmen för att kunna visa upp föremål. Perfekt för klockor och kompasser",
   
   "_comment": "Armor - chestplate",
-  "modifier.modernfoundry.knockback_armor": "Knuff",
-  "modifier.modernfoundry.knockback_armor.flavor": "Wolololo!",
-  "modifier.modernfoundry.knockback_armor.description": "Saker flyger iväg längre när du slår dem med ett vapen!",
   "modifier.modernfoundry.armor_power": "Kraft",
   "modifier.modernfoundry.armor_power.flavor": "Kan du känna kraften flöda genom dig?",
   "modifier.modernfoundry.armor_power.description": "Får dina vapen att bli starkare",
   "modifier.modernfoundry.strength": "Styrka",
   "modifier.modernfoundry.strength.flavor": "Kan du känna styrkan flöda igenom dig?",
   "modifier.modernfoundry.strength.description": "Får dina vapen att bli starkare",
-  "modifier.modernfoundry.unarmed": "Obeväpnad",
-  "modifier.modernfoundry.unarmed.flavor": "För de som gillar att använda sina händer",
-  "modifier.modernfoundry.unarmed.description": "Får modifierare i ett harnesk att öka skada från obeväpnade attacker",
-  "recipe.modernfoundry.modifier.unarmed": "Kräver att modifieraren \"Obeväpnad\" läggs till först",
   "modifier.modernfoundry.wings": "Vingar",
   "modifier.modernfoundry.wings.flavor": "Himlen är din",
   "modifier.modernfoundry.wings.description": "Låter dig sväva genom luften genom att hoppa när du är i luften",
@@ -1873,11 +1727,7 @@
   "modifier.modernfoundry.tool_belt": "Verktygsbälte",
   "modifier.modernfoundry.tool_belt.flavor": "Har du någonsin önskat du hade fler händer?",
   "modifier.modernfoundry.tool_belt.description": "Interagera med byxorna för att byta föremålsmeny",
-  "modifier.modernfoundry.pocket_chain": "Fickkedja",
-  "modifier.modernfoundry.pocket_chain.flavor": "En kedja för att binda alla",
-  "modifier.modernfoundry.pocket_chain.description": "Ger åtkomst till alla platser i ett verktygsbälte eller en sköldrem genom att smyga och interagera, samt lägger till +1 plats",
-  "recipe.modernfoundry.modifier.pocket_chain": "Fickkedja kräver \"Verktygsbälte\" eller \"Sköldrem\"",
-  
+
   "modifier.modernfoundry.inventory_cannot_remove": "Denna ändring kan orsaka att föremål som lagras i detta verktyg raderas",
 
   "_comment": "Armor - boots",
@@ -1888,12 +1738,9 @@
   "modifier.modernfoundry.soulspeed": "Själhastighet",
   "modifier.modernfoundry.soulspeed.flavor": "Läskigt",
   "modifier.modernfoundry.soulspeed.description": "Ökar gåhastigheten på själsand",
-  "modifier.modernfoundry.lightspeed_armor": "Ljushastighet",
-  "modifier.modernfoundry.lightspeed_armor.flavor": "Ljusare är snabbare!",
-  "modifier.modernfoundry.lightspeed_armor.description": "Ökar gåhastigheten i välupplysta områden",
   "modifier.modernfoundry.double_jump": "Dubbelhopp",
-  "modifier.modernfoundry.double_jump.double": "Dubbelhopp",
-  "modifier.modernfoundry.double_jump.triple": "Trippelhopp",
+  "modifier.modernfoundry.double_jump.2": "Dubbelhopp",
+  "modifier.modernfoundry.double_jump.3": "Trippelhopp",
   "modifier.modernfoundry.double_jump.flavor": "Upp, upp och iväg!",
   "modifier.modernfoundry.double_jump.description": "Låter dig hoppa igen i luften. Högre nivåer lägger till fler hopp!",
   "modifier.modernfoundry.bouncy": "Studsigt",
@@ -1903,12 +1750,6 @@
   "modifier.modernfoundry.frost_walker": "Frostgående",
   "modifier.modernfoundry.frost_walker.flavor": "Var är min superdräkt?",
   "modifier.modernfoundry.frost_walker.description": "Får vattenblock att tillfälligt frysas",
-  "modifier.modernfoundry.path_maker": "Stigläggare",
-  "modifier.modernfoundry.path_maker.flavor": "Led vägen",
-  "modifier.modernfoundry.path_maker.description": "Skapar stigar där du går",
-  "modifier.modernfoundry.plowing": "Plöjare",
-  "modifier.modernfoundry.plowing.flavor": "Traktorn uppfanns 1892",
-  "modifier.modernfoundry.plowing.description": "Plöjer block framför dig",
   "modifier.modernfoundry.snowdrift": "Snödrivande",
   "modifier.modernfoundry.snowdrift.flavor": "Golem golem",
   "modifier.modernfoundry.snowdrift.description": "Lämna ett spår av snö efter dig som en snögolem",
@@ -1921,12 +1762,11 @@
   "modifier.modernfoundry.unbreakable": "Oförstörbar",
   "modifier.modernfoundry.unbreakable.flavor": "Fruset tillstånd!",
   "modifier.modernfoundry.unbreakable.description": "Verktyget tar inte längre skada när det används på rätt sätt",
-  "recipe.modernfoundry.modifier.unbreakable_requirements": "\"Oförstörbar\" kräver netherit och \"Förstärkt V\" för att kunna tillämpas",
+  "modifier.modernfoundry.unbreakable.requirements": "\"Oförstörbar\" kräver netherit och \"Förstärkt V\" för att kunna tillämpas",
   "modifier.modernfoundry.dual_wielding": "Tvåhänthet",
   "modifier.modernfoundry.dual_wielding.flavor": "Dubbelt så mycket action!",
   "modifier.modernfoundry.dual_wielding.description": "Låter dig attackera med den sekundära handen förutsett att den primära handen också kan hålla i ett vapen. Verktyg med \"Tvåhänthet\" har reducerade värden",
-  "recipe.modernfoundry.modifier.two_handed_dual_wielding": "Verktyg för två händer kräver \"Sekundär hand\" för att kunna få \"Tvåhänthet\".",
-  
+
   "_comment": "Loot",
   "modifier.modernfoundry.silky": "Silkeslent",
   "modifier.modernfoundry.silky.flavor": "Lent som silke!",
@@ -1935,22 +1775,17 @@
   "modifier.modernfoundry.autosmelt.flavor": "Nethers eldar i ditt verktyg!",
   "modifier.modernfoundry.autosmelt.description": "Verktyget smälter automatiskt föremål",
   "modifier.modernfoundry.luck": "Tur",
-  "modifier.modernfoundry.luck.1": "Tur",
   "modifier.modernfoundry.luck.2": "Mer tur",
   "modifier.modernfoundry.luck.3": "Maximal tur",
   "modifier.modernfoundry.luck.flavor": "Tjusigt!",
   "modifier.modernfoundry.luck.description": "Ger dig fler fina saker när du gräver eller dödar varelser!",
-  "recipe.modernfoundry.modifier.luck.level_2": "\"Mer tur\" kräver ett annat recept för den första nivån",
-  "recipe.modernfoundry.modifier.luck.level_3": "\"Maximal tur\" kräver ett annat recept för de två första nivåerna",
   "modifier.modernfoundry.fortune": "Rikedom",
   "modifier.modernfoundry.fortune.flavor": "Tur i malmbrytning!",
   "modifier.modernfoundry.fortune.description": "Ger dig fler fina saker när du gräver!",
   "modifier.modernfoundry.looting": "Plundring",
   "modifier.modernfoundry.looting.flavor": "Tur i strid!",
   "modifier.modernfoundry.looting.description": "Ger dig fler fina saker när du dödar varelser!",
-  "recipe.modernfoundry.modifier.looting.level_2": "\"Plundring II\" kräver ett annat recept för den första nivån",
-  "recipe.modernfoundry.modifier.looting.level_3": "\"Plundring III\" kräver ett annat recept för de två första nivåerna",
-  
+
   "_comment": "Expanders",
   "modifier.modernfoundry.expanded": "Expanderad",
   "modifier.modernfoundry.expanded.flavor": "Vet verkligen hur man breder ut sig!",
@@ -1985,8 +1820,7 @@
   "modifier.modernfoundry.melting.flavor": "Kraften hos en nedsmältare på en pinne!",
   "modifier.modernfoundry.melting.description": "Smälter ned attackerade entiteter och föremål som avges!",
   "modifier.modernfoundry.tank": "Tank",
-  "modifier.modernfoundry.tank.filled": "Tank: %s mb %s",
-  "modifier.modernfoundry.tank.capacity": "Tankkapacitet: %s mb",
+  "tool_stat.modernfoundry.tank_capacity": "Tankkapacitet: ",
   "modifier.modernfoundry.tank.flavor": "Större är alltid bättre!",
   "modifier.modernfoundry.tank.description": "Verktyget får en vätsketank som låter den att lagra vätska",
   "modifier.modernfoundry.bucketing": "Hinkförmåga",
@@ -2026,23 +1860,9 @@
   "modifier.modernfoundry.draconic.flavor": "End har erövrats!",
   "modifier.modernfoundry.draconic.description": "Huvudet från den stora besten ger ditt verktyg en till plats för en förmåga!",
   
-  "__comment": "Three more +1 upgrade modifiers for modpacks",
-  "modifier.modernfoundry.red_extra_upgrade": "Röd extrauppgradering",
-  "modifier.modernfoundry.red_extra_upgrade.flavor": "For modpaket!",
-  "modifier.modernfoundry.red_extra_upgrade.description": "Be skaparen av ditt modpaket att skapa ett resurspaket med mer informationstext",
-  "modifier.modernfoundry.green_extra_upgrade": "Grön extrauppgradering",
-  "modifier.modernfoundry.green_extra_upgrade.flavor": "För modpaket!",
-  "modifier.modernfoundry.green_extra_upgrade.description": "Be skaparen av ditt modpaket att skapa ett resurspaket med mer informationstext",
-  "modifier.modernfoundry.blue_extra_upgrade": "Blå extrauppgradering",
-  "modifier.modernfoundry.blue_extra_upgrade.flavor": "För modpaket!",
-  "modifier.modernfoundry.blue_extra_upgrade.description": "Be skaparen av ditt modpaket att skapa ett resurspaket med mer informationstext",
-  "modifier.modernfoundry.extra_ability": "Extraförmåga",
-  "modifier.modernfoundry.extra_ability.flavor": "För modpaket!",
-  "modifier.modernfoundry.extra_ability.description": "Be skaparen av ditt modpaket att skapa ett resurspaket med mer informationstext",
-  
-  
+
   "__comment": "Tier 1 Traits",
-  "modifier.modernfoundry.fake_attribute.mining_speed": "grävhastighet",
+  "armor_stat.modernfoundry.mining_speed": "grävhastighet",
   
   "modifier.modernfoundry.cultivated": "Kultiverad",
   "modifier.modernfoundry.cultivated.flavor": "Ekonomiskt!",
@@ -2121,7 +1941,7 @@
   "modifier.modernfoundry.momentum": "Tempo",
   "modifier.modernfoundry.momentum.flavor": "Inte tillräckligt snabbt, det måste gå snabbare!",
   "modifier.modernfoundry.momentum.description": "Din hastighet ökar när du bryter block så länge du fortsätter gräva",
-  "modifier.modernfoundry.momentum.mining_speed": "sekventiell grävhastighet",
+  "modifier.modernfoundry.momentum.speed": "sekventiell grävhastighet",
   "modifier.modernfoundry.insatiable": "Omättlig",
   "modifier.modernfoundry.insatiable.flavor": "Blodsmak!",
   "modifier.modernfoundry.insatiable.description": "Under strid utdelar du mer och mer skada varje gång du träffar en fiende",
@@ -2129,7 +1949,7 @@
   "modifier.modernfoundry.conducting": "Värmeledande",
   "modifier.modernfoundry.conducting.flavor": "Termodynamiskt!",
   "modifier.modernfoundry.conducting.description": "Verktyget utdelar multiplicerad skada när du brinner",
-  "modifier.modernfoundry.conducting.attack_damage": "maxskada när man brinner",
+  "modifier.modernfoundry.conducting.boost": "maxskada när man brinner",
   
   "__comment": "Tier 5 Traits",
   "modifier.modernfoundry.enderporting": "Enderportering",
@@ -2141,16 +1961,13 @@
   "modifier.modernfoundry.dense": "Kompakt",
   "modifier.modernfoundry.dense.flavor": "Förlorar knappt sin form",
   "modifier.modernfoundry.dense.description": "Verktyget varar längre men blir svårare att repareras",
-  "modifier.modernfoundry.sharpweight": "Vassviktad",
-  "modifier.modernfoundry.sharpweight.flavor": "Till skillnad från \"slöviktad\"",
-  "modifier.modernfoundry.sharpweight.description": "Gräver snabbare, men det är extremt svårt att röra sig",
   "modifier.modernfoundry.lustrous": "Glänsande",
   "modifier.modernfoundry.lustrous.flavor": "Den mest glänsande malmen av dem alla!",
   "modifier.modernfoundry.lustrous.description": "Gräver malm snabbare",
-  "modifier.modernfoundry.lustrous.mining_speed": "malmgrävande",
   "modifier.modernfoundry.heavy": "Tung",
   "modifier.modernfoundry.heavy.flavor": "Trög!",
-  "modifier.modernfoundry.heavy.description": "Det är svårt att röra sig när man bär detta, men man slår hårt",
+  "modifier.modernfoundry.heavy.description": "Gräver snabbare, men det är extremt svårt att röra sig",
+  "modifier.modernfoundry.solid.description": "Det är svårt att röra sig när man bär detta, men man slår hårt",
   "modifier.modernfoundry.stoneshield": "Stensköld",
   "modifier.modernfoundry.stoneshield.flavor": "Mästerlig stenformning",
   "modifier.modernfoundry.stoneshield.description": "Bruten sten skyddar verktyget från att ta skada i framtiden",
@@ -2192,9 +2009,9 @@
   "modifier.modernfoundry.strong_bones": "Starka ben",
   "modifier.modernfoundry.strong_bones.flavor": "Har du mjölk?",
   "modifier.modernfoundry.strong_bones.description": "Drick mjölk för att tillfälligt få högre resistans",
-  "modifier.modernfoundry.frosttouch": "Frostvante",
-  "modifier.modernfoundry.frosttouch.flavor": "En kyla som håller fiender borta",
-  "modifier.modernfoundry.frosttouch.description": "Får pilar att orsaka långsamhet, som även tillämpas på närstridsattacker efter man dricker mjölk",
+  "modifier.modernfoundry.slow_bones": "Frostvante",
+  "modifier.modernfoundry.slow_bones.flavor": "En kyla som håller fiender borta",
+  "modifier.modernfoundry.slow_bones.description": "Får pilar att orsaka långsamhet, som även tillämpas på närstridsattacker efter man dricker mjölk",
   "modifier.modernfoundry.withered": "Vissnad",
   "modifier.modernfoundry.withered.flavor": "Hemligheten hos vissnandet",
   "modifier.modernfoundry.withered.description": "Mål som attackeras får vissnandeeffekten, som ökar i hastighet efter man dricker mjölk",
@@ -2222,7 +2039,6 @@
   "modifier.modernfoundry.gold_guard": "Guldvakt",
   "modifier.modernfoundry.gold_guard.flavor": "Innebär att man älskar guld",
   "modifier.modernfoundry.gold_guard.description": "Ökar hälsan baserat på hur mycket guld du har på dig",
-  "modifier.modernfoundry.gold_guard.health": "guldhälsa",
   "modifier.modernfoundry.revenge": "Hämnd",
   "modifier.modernfoundry.revenge.flavor": "Perfekt för kontringsattacker",
   "modifier.modernfoundry.revenge.description": "Gör dig starkare efter du har blivit attackerad",
@@ -2278,8 +2094,10 @@
   "_comment": "Internal effects",
   "effect.modernfoundry.bleeding": "Blödande",
   "effect.modernfoundry.magnetic": "Magnetisk",
-  "effect.modernfoundry.momentum": "Tempo",
-  "effect.modernfoundry.insatiable": "Omättlig",
+  "effect.modernfoundry.momentum_harvest": "Tempo",
+  "effect.modernfoundry.momentum_ranged": "Tempo",
+  "effect.modernfoundry.insatiable_melee": "Omättlig",
+  "effect.modernfoundry.insatiable_ranged": "Omättlig",
   "effect.modernfoundry.teleport_cooldown": "Väntetid för teleportering",
   "effect.modernfoundry.fireball_cooldown": "Väntetid för eldklot",
   "effect.modernfoundry.calcified": "Förkalkning",
@@ -2334,7 +2152,6 @@
   "tool_stat.modernfoundry.handle.attack_speed.description": "Verktygets totala attackhastighet multipliceras med detta.",
   "tool_stat.modernfoundry.handle.mining_speed.description": "Verktygets totala grävhastighet multipliceras med detta.",
   
-  "stat.modernfoundry.extra": "Extra",
   "tool_stat.modernfoundry.extra.no_stats": "Inga värden",
   
   "stat.modernfoundry.repair_kit": "Reparationssats",
@@ -2378,13 +2195,12 @@
   
   "_comment": "GUIs",
   
-  "itemGroup.modernfoundry.general": "Modern Foundry allmänna föremål",
-  "itemGroup.modernfoundry.tools": "Modern Foundry verktyg",
-  "itemGroup.modernfoundry.tool_parts": "Modern Foundry verktygsdelar",
-  "itemGroup.modernfoundry.smeltery": "Modern Foundry smältning",
-  "itemGroup.modernfoundry.world": "Modern Foundry värld",
-  "itemGroup.modernfoundry.gadgets": "Modern Foundry manicker",
-  
+  "itemGroup.modernfoundry.general": "Tinkers allmänna föremål",
+  "itemGroup.modernfoundry.tools": "Tinkers verktyg",
+  "itemGroup.modernfoundry.tool_parts": "Tinkers verktygsdelar",
+  "itemGroup.modernfoundry.smeltery": "Tinkers smältning",
+  "itemGroup.modernfoundry.world": "Tinkers värld",
+
   "gui.modernfoundry.crafting_station": "Tillverkningsstation",
   "gui.modernfoundry.crafting_station.uncraftable": "Detta föremål kan för tillfället inte tillverkas av spelaren",
   
@@ -2425,8 +2241,7 @@
   "recipe.modernfoundry.modifier.not_enough_slots": "Behöver minst %s %splatser för att lägga till denna modifierare",
   "recipe.modernfoundry.modifier.validate_slots": "Denna förändring lämnar verktyget med för få %splatser",
   "recipe.modernfoundry.modifier.max_level": "Nivån för %s kan inte vara över %s",
-  "recipe.modernfoundry.modifier.requirements_error": "Verktygets tillstånd är ogiltigt för en av modifierarna. Kontakta skaparen för ditt modpaket och be om mer beskrivande information om felet.",
-  
+
   
   "_comment": "GUIs Messages",
   
@@ -2562,8 +2377,7 @@
   "jei.modernfoundry.modifiers.slots": "Modifieraren kräver %s %splatser för att kunna tillämpa detta",
   "jei.modernfoundry.modifiers.free": "Inga modifierarplatser krävs för att kunna tillämpa detta",
   "jei.modernfoundry.modifiers.incremental": "Receptet är inkrementellt, vilket betyder att du kan tillämpa lite grann av inmatningen för att få en delvis effekt",
-  "jei.modernfoundry.modifiers.max": "Max: ",
-  
+
   "jei.modernfoundry.severing.title": "Avhuggning",
   
   "jei.modernfoundry.part_builder.title": "Delbyggare",
@@ -2651,11 +2465,6 @@
   "advancements.modernfoundry.world.clay_island.description": "Hitta en ö av lera i himlen",
   "advancements.modernfoundry.world.slime_collector.title": "Slemsamlare",
   "advancements.modernfoundry.world.slime_collector.description": "Få alla 6 slemtyper",
-  "advancements.modernfoundry.world.slime_sling.title": "Slangbellsexpert",
-  "advancements.modernfoundry.world.slime_sling.description": "Använd alla 4 typer av slemslangbellor tillräckligt mycket",
   "advancements.modernfoundry.world.piggybackpack.title": "Liftare med knorr",
   "advancements.modernfoundry.world.piggybackpack.description": "Plocka upp en gris med en bärsele"
-  
-  }
-  
- 
+}

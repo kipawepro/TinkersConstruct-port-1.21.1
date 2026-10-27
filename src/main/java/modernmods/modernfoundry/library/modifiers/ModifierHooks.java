@@ -29,6 +29,7 @@ import modernmods.modernfoundry.library.modifiers.hook.behavior.ProcessLootModif
 import modernmods.modernfoundry.library.modifiers.hook.behavior.RepairFactorModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.behavior.ToolActionModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.behavior.ToolDamageModifierHook;
+import modernmods.modernfoundry.library.modifiers.hook.behavior.ToolDurabilityChangedHook;
 import modernmods.modernfoundry.library.modifiers.hook.build.ConditionalStatModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.build.CraftCountModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.build.ModifierRemovalHook;
@@ -49,6 +50,7 @@ import modernmods.modernfoundry.library.modifiers.hook.display.RequirementsModif
 import modernmods.modernfoundry.library.modifiers.hook.display.TooltipModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.interaction.AreaOfEffectHighlightModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.interaction.BlockInteractionModifierHook;
+import modernmods.modernfoundry.library.modifiers.hook.interaction.EdibleEffectHook;
 import modernmods.modernfoundry.library.modifiers.hook.interaction.EntityInteractionModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.interaction.InventoryTickModifierHook;
@@ -75,6 +77,7 @@ import modernmods.modernfoundry.library.modifiers.hook.special.ShearsModifierHoo
 import modernmods.modernfoundry.library.modifiers.hook.special.sling.SlingAngleModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.special.sling.SlingForceModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.special.sling.SlingLaunchModifierHook;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleModule;
 import modernmods.modernfoundry.library.module.ModuleHook;
 import modernmods.modernfoundry.library.tools.capability.BlockItemProviderModifierHook;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
@@ -122,9 +125,10 @@ public class ModifierHooks {
       return 0;
     }
   });
-
   /** Hook for modifying the damage amount for tools */
   public static final ModuleHook<ToolDamageModifierHook> TOOL_DAMAGE = register("tool_damage", ToolDamageModifierHook.class, ToolDamageModifierHook.Merger::new, (tool, modifier, amount, holder) -> amount);
+  /** Hook for observing durability changed (damage or repair) without altering the amount. */
+  public static final ModuleHook<ToolDurabilityChangedHook> DURABILITY_CHANGED = register("durability_changed", ToolDurabilityChangedHook.class, ToolDurabilityChangedHook.Merger::new, new ToolDurabilityChangedHook() {});
 
   /** Hook running while the tool is in the inventory */
   public static final ModuleHook<InventoryTickModifierHook> INVENTORY_TICK = register("inventory_tick", InventoryTickModifierHook.class, InventoryTickModifierHook.AllMerger::new, (tool, modifier, world, holder, itemSlot, isSelected, isCorrectSlot, stack) -> {});
@@ -305,6 +309,7 @@ public class ModifierHooks {
 
   /** Hook for conditionally modifying the break speed of a block */
   public static final ModuleHook<BreakSpeedModifierHook> BREAK_SPEED = register("break_speed", BreakSpeedModifierHook.class, BreakSpeedModifierHook.AllMerger::new, new BreakSpeedModifierHook() {
+    @Deprecated
     @Override
     public void onBreakSpeed(IToolStackView tool, ModifierEntry modifier, BreakSpeed event, Direction sideHit, boolean isEffective, float miningSpeedModifier) {}
 
@@ -417,6 +422,9 @@ public class ModifierHooks {
 
   /** Hook called on all tool modifiers after transforming a block */
   public static final ModuleHook<BlockTransformModifierHook> BLOCK_TRANSFORM = register("block_transform", BlockTransformModifierHook.class, BlockTransformModifierHook.AllMerger::new, (tool, modifier, context, state, pos, action) -> {});
+
+  /** Hook called when an edible tool is eaten to perform effects other than restoring hunger and saturation. See {@link EdibleModule} */
+  public static final ModuleHook<EdibleEffectHook> EDIBLE_EFFECT = register("edible_effect", EdibleEffectHook.class, EdibleEffectHook.AllMerger::new, ((tool, modifier, player, eatenSlot, hunger, saturation, representativeItems) -> {}));
 
 
   /* Registration */

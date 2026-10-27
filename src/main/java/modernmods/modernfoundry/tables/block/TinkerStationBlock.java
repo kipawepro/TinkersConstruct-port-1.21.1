@@ -16,6 +16,7 @@ import net.minecraft.world.phys.HitResult;
 import modernmods.hilt.util.RetexturedHelper;
 import modernmods.modernfoundry.library.utils.TagUtil;
 import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.tools.part.IMaterialItem;
 import modernmods.modernfoundry.tables.block.entity.table.TinkerStationBlockEntity;
@@ -51,7 +52,7 @@ public class TinkerStationBlock extends RetexturedTableBlock {
       } else {
         // if no block, try material
         MaterialVariantId material = IMaterialItem.getMaterialFromStack(stack);
-        if (material != IMaterial.UNKNOWN_ID) {
+        if (material != MaterialId.UNKNOWN) {
           be.setMaterial(material);
         }
       }

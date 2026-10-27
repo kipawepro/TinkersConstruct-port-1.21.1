@@ -1,0 +1,35 @@
+{
+  "type": "modernfoundry:multilevel_incremental_modifier",
+  "id": "modernfoundry:tools/modifiers/upgrade/feather_fall",
+  "allow_crystal": true,
+  "amount_per_item": 1,
+  "check_trait_level": true,
+  "input": {
+    "item": "minecraft:feather"
+  },
+  "levels": [
+    {
+      "level": 1,
+      "slots": {
+        "upgrades": 1
+      }
+    },
+    {
+      "level": 2
+    },
+    {
+      "level": 3,
+      "slots": {
+        "upgrades": 1
+      }
+    },
+    {
+      "level": 4
+    }
+  ],
+  "needed_per_level": 12,
+  "result": "modernfoundry:feather_fall",
+  "tools": {
+    "tag": "modernfoundry:modifiable/armor/boots"
+  }
+}

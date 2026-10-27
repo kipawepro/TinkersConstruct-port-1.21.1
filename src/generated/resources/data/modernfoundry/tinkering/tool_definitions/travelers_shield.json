@@ -9,17 +9,15 @@
       ]
     },
     {
-      "type": "modernfoundry:tool_parts",
-      "parts": [
-        "modernfoundry:shield_core"
-      ]
-    },
-    {
       "type": "modernfoundry:default_materials",
       "materials": [
         {
           "type": "modernfoundry:fixed",
           "material": "modernfoundry:wood"
+        },
+        {
+          "type": "modernfoundry:fixed",
+          "material": "modernfoundry:leather"
         }
       ]
     },

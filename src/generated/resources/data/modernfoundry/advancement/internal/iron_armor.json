@@ -1,0 +1,36 @@
+{
+  "criteria": {
+    "has_armor": {
+      "conditions": {
+        "items": [
+          {
+            "type": "modernfoundry:tool_stack",
+            "predicate": {
+              "type": "hilt:and",
+              "predicates": [
+                {
+                  "type": "hilt:tag",
+                  "tag": "modernfoundry:modifiable/armor/worn"
+                },
+                {
+                  "type": "modernfoundry:has_volatile_key",
+                  "key": "modernfoundry:iron_armor"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_armor"
+    ]
+  ],
+  "rewards": {
+    "function": "modernfoundry:grant_advancement/story_obtain_armor"
+  },
+  "sends_telemetry_event": false
+}

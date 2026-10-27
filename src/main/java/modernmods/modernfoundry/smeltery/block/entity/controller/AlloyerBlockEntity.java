@@ -1,4 +1,5 @@
 package modernmods.modernfoundry.smeltery.block.entity.controller;
+import net.minecraft.core.HolderLookup;
 import modernmods.modernfoundry.smeltery.block.entity.ILegacyCapabilityBlockEntity;
 
 import lombok.Getter;
@@ -178,20 +179,20 @@ public class AlloyerBlockEntity extends NameableBlockEntity implements ITankBloc
   }
 
   @Override
-  public void saveSynced(CompoundTag tag) {
-    super.saveSynced(tag);
+  public void saveSynced(CompoundTag tag, HolderLookup.Provider registries) {
+    super.saveSynced(tag, registries);
     tag.put(NBTTags.TANK, tank.writeToNBT(TagUtil.BUILTIN_LOOKUP, new CompoundTag()));
   }
 
   @Override
-  public void saveAdditional(CompoundTag tag) {
-    super.saveAdditional(tag);
+  public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+    super.saveAdditional(tag, registries);
     fuelModule.writeToTag(tag);
   }
 
   @Override
-  public void load(CompoundTag nbt) {
-    super.load(nbt);
+  public void loadAdditional(CompoundTag nbt, HolderLookup.Provider registries) {
+    super.loadAdditional(nbt, registries);
     tank.readFromNBT(TagUtil.BUILTIN_LOOKUP, nbt.getCompound(NBTTags.TANK));
     fuelModule.readFromTag(nbt);
   }

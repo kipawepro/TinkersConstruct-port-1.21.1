@@ -4,7 +4,10 @@
     {
       "type": "modernfoundry:mob_disguise",
       "entity": "minecraft:husk"
+    },
+    {
+      "type": "modernfoundry:rarity",
+      "rarity": "uncommon"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

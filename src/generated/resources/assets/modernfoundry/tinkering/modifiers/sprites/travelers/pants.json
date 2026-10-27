@@ -1,0 +1,24 @@
+{
+  "constant": {
+    "__dyed": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:material_has_fallback",
+        "fallback": "wool",
+        "if_false": {
+          "type": "modernfoundry:dyed",
+          "texture": "modernfoundry:item/tool/armor/travelers/pants/dyed"
+        },
+        "if_true": {
+          "type": "modernfoundry:dyed",
+          "texture": "modernfoundry:item/tool/armor/travelers/pants/dyed_wool"
+        },
+        "index": 1
+      },
+      "modifier": "modernfoundry:dyed"
+    }
+  },
+  "modifiers": {
+    "modernfoundry:swift_sneak": "modernfoundry:item/tool/armor/travelers/pants/modifiers/modernfoundry_swift_sneak"
+  }
+}

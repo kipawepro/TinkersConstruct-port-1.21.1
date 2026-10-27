@@ -1,5 +1,12 @@
 {
-  "title": "Песочная литейная заготовка",
-  "recipe": "modernfoundry:smeltery/sand_cast",
+  "title": "Создание песочных литейных форм",
+  "grid": [[[
+    { "item": "minecraft:sand" },
+    { "item": "minecraft:red_sand" }
+  ]]],
+  "result": [
+    { "item": "modernfoundry:blank_sand_cast", "amount_needed": 4 },
+    { "item": "modernfoundry:blank_red_sand_cast", "amount_needed": 4 }
+  ],
   "grid_size": "small"
 }

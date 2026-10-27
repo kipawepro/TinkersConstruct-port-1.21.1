@@ -6,15 +6,18 @@ import net.minecraft.world.item.ArmorItem;
 import modernmods.hilt.data.loadable.primitive.IntLoadable;
 import modernmods.hilt.data.loadable.record.RecordLoadable;
 import modernmods.modernfoundry.library.materials.definition.MaterialId;
+import modernmods.modernfoundry.library.materials.definition.MaterialVariant;
 import modernmods.modernfoundry.library.module.HookProvider;
 import modernmods.modernfoundry.library.module.ModuleHook;
 import modernmods.modernfoundry.library.tools.definition.ModifiableArmorMaterial;
 import modernmods.modernfoundry.library.tools.definition.module.ToolHooks;
 import modernmods.modernfoundry.library.tools.definition.module.ToolModule;
+import modernmods.modernfoundry.library.tools.helper.ToolBuildHandler;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
 import modernmods.modernfoundry.tools.modules.ArmorModuleBuilder;
 
 import java.util.List;
+import java.util.Set;
 
 /** Module to repair a tool using materials which are not conventionally repair materials */
 public record StatlessPartRepairModule(int partIndex, int repairAmount) implements MaterialRepairToolHook, ToolModule {
@@ -42,6 +45,14 @@ public record StatlessPartRepairModule(int partIndex, int repairAmount) implemen
   @Override
   public boolean isRepairMaterial(IToolStackView tool, MaterialId material) {
     return material.equals(tool.getMaterial(partIndex).getId());
+  }
+
+  @Override
+  public void addRepairMaterials(IToolStackView tool, Set<MaterialId> materials) {
+    MaterialVariant material = tool.getMaterial(partIndex);
+    if (!material.isUnknown() && !material.matches(ToolBuildHandler.RENDER_MATERIAL)) {
+      materials.add(material.getId());
+    }
   }
 
   @Override

@@ -1,0 +1,11 @@
+{
+  "constant": {
+    "__tipped": []
+  },
+  "modifiers": {
+    "modernfoundry:emerald": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_emerald_broken",
+    "modernfoundry:netherite": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_netherite_broken",
+    "modernfoundry:overforced": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_overforced_broken",
+    "modernfoundry:reinforced": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_reinforced_broken"
+  }
+}

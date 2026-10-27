@@ -95,11 +95,17 @@
     }
   },
   {
-    "name": "materials_skull",
+    "name": "materials_slime",
     "data": "no-load",
-    "extraData": { "modernfoundry:material_tier": { "type": "modernfoundry:skull", "detailed": true } },
+    "extraData": { "modernfoundry:material_tier": [
+      { "type": "modernfoundry:slime",   "detailed": true  },
+      { "type": "modernfoundry:skull",   "detailed": true, "suffix": "item.modernfoundry.skull" },
+      { "type": "modernfoundry:ribcage", "detailed": true, "suffix": "item.modernfoundry.ribcage" },
+      { "type": "modernfoundry:shell",   "detailed": true, "suffix": "item.modernfoundry.shell" },
+      { "type": "modernfoundry:laces",   "detailed": true, "suffix": "item.modernfoundry.laces" }
+    ]},
     "icon": {
-      "item": "minecraft:skeleton_skull"
+      "item": "minecraft:creeper_head"
     }
   },
   {

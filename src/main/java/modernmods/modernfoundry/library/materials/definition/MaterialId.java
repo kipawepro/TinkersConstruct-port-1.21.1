@@ -2,6 +2,7 @@ package modernmods.modernfoundry.library.materials.definition;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.library.tools.part.IMaterialItem;
 import modernmods.modernfoundry.library.utils.IdParser;
 import modernmods.modernfoundry.library.utils.ResourceId;
@@ -13,6 +14,8 @@ import javax.annotation.Nullable;
  */
 public final class MaterialId extends ResourceId implements MaterialVariantId {
   public static final IdParser<MaterialId> PARSER = new IdParser<>(MaterialId::new, "Material");
+  /** ID of fallback material */
+  public static final MaterialId UNKNOWN = new MaterialId(TConstruct.MOD_ID, "unknown");
 
   public MaterialId(String resourceName) {
     super(resourceName);
@@ -48,6 +51,11 @@ public final class MaterialId extends ResourceId implements MaterialVariantId {
 
   @Override
   public boolean hasVariant() {
+    return false;
+  }
+
+  @Override
+  public boolean isDefaultVariant() {
     return false;
   }
 

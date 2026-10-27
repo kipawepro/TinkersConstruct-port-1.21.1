@@ -24,6 +24,10 @@
         {
           "type": "modernfoundry:random",
           "tier": 1
+        },
+        {
+          "type": "modernfoundry:random",
+          "tier": 1
         }
       ]
     },

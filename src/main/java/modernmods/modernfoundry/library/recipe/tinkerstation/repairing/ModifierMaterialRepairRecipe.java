@@ -1,6 +1,7 @@
 package modernmods.modernfoundry.library.recipe.tinkerstation.repairing;
 
 import lombok.Getter;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -12,12 +13,15 @@ import modernmods.modernfoundry.library.materials.definition.LazyMaterial;
 import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.stats.MaterialStatsId;
 import modernmods.modernfoundry.library.modifiers.ModifierId;
+import modernmods.modernfoundry.library.recipe.tinkerstation.IDisplayCraftingTinkering;
 import modernmods.modernfoundry.library.recipe.tinkerstation.ITinkerStationContainer;
 import modernmods.modernfoundry.library.tools.definition.module.material.MaterialRepairModule;
 import modernmods.modernfoundry.library.tools.helper.ModifierUtil;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
 import modernmods.modernfoundry.tables.recipe.TinkerStationRepairRecipe;
 import modernmods.modernfoundry.tools.TinkerModifiers;
+
+import java.util.List;
 
 /** @deprecated use {@link modernmods.modernfoundry.library.modifiers.modules.behavior.MaterialRepairModule} */
 @Deprecated(forRemoval = true)
@@ -68,6 +72,10 @@ public class ModifierMaterialRepairRecipe extends TinkerStationRepairRecipe impl
     return TinkerModifiers.modifierMaterialRepair.get();
   }
 
+  @Override
+  public List<IDisplayCraftingTinkering> getRecipes(RegistryAccess access) {
+    return List.of();
+  }
 
   /** Find the repair item in the inventory */
   private static boolean findMaterialItem(ITinkerStationContainer inv, MaterialId repairMaterial) {

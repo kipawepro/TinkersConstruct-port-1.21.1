@@ -1,0 +1,29 @@
+{
+  "level_display": "modernfoundry:single_level",
+  "modules": [
+    {
+      "type": "modernfoundry:protection",
+      "damage_source": "hilt:can_protect",
+      "formula": [
+        10.0,
+        "$light",
+        "-",
+        "non-negative",
+        0.125,
+        "*",
+        "$level",
+        "*",
+        "$protection",
+        "+"
+      ],
+      "variables": {
+        "light": {
+          "type": "modernfoundry:entity",
+          "entity_type": "modernfoundry:light",
+          "fallback": 0.0,
+          "which": "target"
+        }
+      }
+    }
+  ]
+}

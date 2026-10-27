@@ -57,9 +57,11 @@ import modernmods.modernfoundry.library.json.variable.protection.ProtectionVaria
 import modernmods.modernfoundry.library.json.variable.stat.ConditionalStatVariable;
 import modernmods.modernfoundry.library.json.variable.stat.EntityConditionalStatVariable;
 import modernmods.modernfoundry.library.json.variable.tool.ConditionalToolVariable;
+import modernmods.modernfoundry.library.json.variable.tool.FluidAmountVariable;
 import modernmods.modernfoundry.library.json.variable.tool.ModDataVariable;
 import modernmods.modernfoundry.library.json.variable.tool.ModifierLevelVariable;
 import modernmods.modernfoundry.library.json.variable.tool.StatMultiplierVariable;
+import modernmods.modernfoundry.library.json.variable.tool.TankCapacityVariable;
 import modernmods.modernfoundry.library.json.variable.tool.ToolStatVariable;
 import modernmods.modernfoundry.library.json.variable.tool.ToolVariable;
 import modernmods.modernfoundry.library.modifiers.FakeModifier;
@@ -110,7 +112,6 @@ import modernmods.modernfoundry.library.modifiers.modules.armor.ToolActionWalker
 import modernmods.modernfoundry.library.modifiers.modules.behavior.AttributeModule;
 import modernmods.modernfoundry.library.modifiers.modules.behavior.BlockItemProviderModule;
 import modernmods.modernfoundry.library.modifiers.modules.behavior.ConditionalStatModule;
-import modernmods.modernfoundry.library.modifiers.modules.behavior.EdibleModule;
 import modernmods.modernfoundry.library.modifiers.modules.behavior.InfinityModule;
 import modernmods.modernfoundry.library.modifiers.modules.behavior.MaterialRepairModule;
 import modernmods.modernfoundry.library.modifiers.modules.behavior.ReduceToolDamageModule;
@@ -135,6 +136,8 @@ import modernmods.modernfoundry.library.modifiers.modules.capacity.CapacityBarMo
 import modernmods.modernfoundry.library.modifiers.modules.capacity.DamageToCapacityModule;
 import modernmods.modernfoundry.library.modifiers.modules.capacity.DurabilityShieldModule;
 import modernmods.modernfoundry.library.modifiers.modules.capacity.EnergyAsCapacityModule;
+import modernmods.modernfoundry.library.modifiers.modules.capacity.FluidAsCapacityModule;
+import modernmods.modernfoundry.library.modifiers.modules.capacity.FluidPredicateAsCapacityModule;
 import modernmods.modernfoundry.library.modifiers.modules.capacity.LaunchCapacityModule;
 import modernmods.modernfoundry.library.modifiers.modules.capacity.LootToCapacityModule;
 import modernmods.modernfoundry.library.modifiers.modules.capacity.MeleeCapacityModule;
@@ -150,9 +153,17 @@ import modernmods.modernfoundry.library.modifiers.modules.combat.ProjectileExplo
 import modernmods.modernfoundry.library.modifiers.modules.combat.SlingForceModule;
 import modernmods.modernfoundry.library.modifiers.modules.display.DurabilityBarColorModule;
 import modernmods.modernfoundry.library.modifiers.modules.display.MaterialVariantColorModule;
+import modernmods.modernfoundry.library.modifiers.modules.display.MeleeInstrumentModule;
 import modernmods.modernfoundry.library.modifiers.modules.display.ModifierVariantColorModule;
 import modernmods.modernfoundry.library.modifiers.modules.display.ModifierVariantNameModule;
 import modernmods.modernfoundry.library.modifiers.modules.display.ShowInteractionSourceModule;
+import modernmods.modernfoundry.library.modifiers.modules.display.StatTooltipModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleConsumeDurabilityModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleCureEffectsModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleCureRandomEffectModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleRemoveEffectModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleRepresentativeItemModule;
 import modernmods.modernfoundry.library.modifiers.modules.mining.ConditionalMiningSpeedModule;
 import modernmods.modernfoundry.library.modifiers.modules.technical.ArmorLevelModule;
 import modernmods.modernfoundry.library.modifiers.modules.technical.ArmorStatModule;
@@ -223,14 +234,11 @@ import modernmods.modernfoundry.tools.modifiers.traits.melee.InsatiableModifier;
 import modernmods.modernfoundry.tools.modifiers.traits.melee.LaceratingModifier;
 import modernmods.modernfoundry.tools.modifiers.traits.ranged.OlympicModifier;
 import modernmods.modernfoundry.tools.modifiers.traits.skull.BreathtakingModifier;
-import modernmods.modernfoundry.tools.modifiers.traits.skull.ChrysophiliteModifier;
 import modernmods.modernfoundry.tools.modifiers.traits.skull.FirebreathModifier;
-import modernmods.modernfoundry.tools.modifiers.traits.skull.GoldGuardModifier;
 import modernmods.modernfoundry.tools.modifiers.traits.skull.PlagueModifier;
 import modernmods.modernfoundry.tools.modifiers.traits.skull.SelfDestructiveModifier;
 import modernmods.modernfoundry.tools.modifiers.traits.skull.StrongBonesModifier;
 import modernmods.modernfoundry.tools.modifiers.traits.skull.WildfireModifier;
-import modernmods.modernfoundry.tools.modifiers.traits.skull.WitheredModifier;
 import modernmods.modernfoundry.tools.modifiers.upgrades.melee.PiercingModifier;
 import modernmods.modernfoundry.tools.modifiers.upgrades.melee.SweepingEdgeModifier;
 import modernmods.modernfoundry.tools.modifiers.upgrades.ranged.SinistralModifier;
@@ -254,6 +262,7 @@ import modernmods.modernfoundry.tools.modules.armor.FireWalkerModule;
 import modernmods.modernfoundry.tools.modules.armor.FlameBarrierModule;
 import modernmods.modernfoundry.tools.modules.armor.FreezingCounterModule;
 import modernmods.modernfoundry.tools.modules.armor.GlowWalkerModule;
+import modernmods.modernfoundry.tools.modules.armor.GoldenAttributeModule;
 import modernmods.modernfoundry.tools.modules.armor.KineticModule;
 import modernmods.modernfoundry.tools.modules.armor.KnockbackCounterModule;
 import modernmods.modernfoundry.tools.modules.armor.LightspeedAttributeModule;
@@ -404,8 +413,6 @@ public final class TinkerModifiers extends TinkerModule {
   public static final StaticModifier<SelfDestructiveModifier> selfDestructive = MODIFIERS.register("self_destructive", SelfDestructiveModifier::new);
   public static final StaticModifier<StrongBonesModifier> strongBones = MODIFIERS.register("strong_bones", StrongBonesModifier::new);
   public static final StaticModifier<PlagueModifier> plague = MODIFIERS.register("plague", PlagueModifier::new);
-  public static final StaticModifier<ChrysophiliteModifier> chrysophilite = MODIFIERS.register("chrysophilite", ChrysophiliteModifier::new);
-  public static final StaticModifier<GoldGuardModifier> goldGuard = MODIFIERS.register("gold_guard", GoldGuardModifier::new);
 
   // slotless - cosmetic - used as defaults for rendering modules and recipes
   public static final StaticModifier<?> embellishment = MODIFIERS.registerDynamic("embellishment");
@@ -418,10 +425,8 @@ public final class TinkerModifiers extends TinkerModule {
   public static final DynamicModifier sleeves = MODIFIERS.registerDynamic("sleeves");
   public static final DynamicModifier shieldStrap = MODIFIERS.registerDynamic("shield_strap");
 
-  // used in JEI
-  /** Used in JEI to add tools to the severing tab */
+  // TODO 1.21: relocate to ModifierIds, no longer directly referenced in JEI thanks to the tags
   public static final StaticModifier<?> severing = MODIFIERS.registerDynamic("severing");
-  /** Used in JEI to add tools to the melting tabs */
   public static final DynamicModifier melting = MODIFIERS.registerDynamic("melting");
 
   // logic handlers - used as modifier traits
@@ -429,6 +434,8 @@ public final class TinkerModifiers extends TinkerModule {
   public static final StaticModifier<Modifier> tankHandler = MODIFIERS.register("tank_handler", () -> ModuleHookMap.builder().addModule(new TankModule(ToolTankHelper.TANK_HELPER)).modifier().levelDisplay(ModifierLevelDisplay.NO_LEVELS).priority(300).build());
   /** Handles the energy bar for Forge Energy using modifiers. */
   public static final StaticModifier<Modifier> energyHandler = MODIFIERS.register("energy_handler", EnergyHandlerModifier::new);
+  /** Handles the logic for eating tools. */
+  public static final DynamicModifier edible = MODIFIERS.registerDynamic("edible");
 
   // creative
   /** Handles adding extra modifier slots to a tool in creative */
@@ -469,12 +476,12 @@ public final class TinkerModifiers extends TinkerModule {
   /** @deprecated drowned's trait was switched to {@link modernmods.modernfoundry.tools.data.ModifierIds#respiration}. Reimplement if you need its behavior. */
   @Deprecated(forRemoval = true)
   public static final StaticModifier<BreathtakingModifier> breathtaking = MODIFIERS.register("breathtaking", BreathtakingModifier::new);
-  /** @deprecated wither skeleton's trait was switched to {@link modernmods.modernfoundry.tools.data.ModifierIds#restore}. Reimplement if you need its behavior. */
-  @Deprecated(forRemoval = true)
-  public static final StaticModifier<WitheredModifier> withered = MODIFIERS.register("withered", WitheredModifier::new);
   /** @deprecated blazes trait was switched to {@link modernmods.modernfoundry.tools.data.ModifierIds#fireborn} and helmet projectile was switched to {@link modernmods.modernfoundry.tools.data.ModifierIds#spitting} */
   @Deprecated(forRemoval = true)
   public static final StaticModifier<FirebreathModifier> firebreath = MODIFIERS.register("firebreath", FirebreathModifier::new);
+  /** @deprecated zombified piglin's trait was switched to {@link modernmods.modernfoundry.tools.data.ModifierIds#vitalProtectionSkull} */
+  @Deprecated(forRemoval = true)
+  public static final StaticModifier<?> revenge = MODIFIERS.registerDynamic("revenge");
 
   // fields that have been relocated to ModifierIds
   // slotless
@@ -665,12 +672,18 @@ public final class TinkerModifiers extends TinkerModule {
   /** @deprecated use {@link modernmods.modernfoundry.tools.data.ModifierIds#slowBones} */
   @Deprecated(forRemoval = true)
   public static final StaticModifier<?> frosttouch = MODIFIERS.registerDynamic("frosttouch");
-  /** @deprecated use {@link modernmods.modernfoundry.tools.data.ModifierIds#revenge} */
+  /** @deprecated use {@link modernmods.modernfoundry.tools.data.ModifierIds#witheredBones} */
   @Deprecated(forRemoval = true)
-  public static final StaticModifier<?> revenge = MODIFIERS.registerDynamic("revenge");
-  /** @deprecated use {@link modernmods.modernfoundry.tools.data.ModifierIds#revenge} */
+  public static final StaticModifier<?> withered = MODIFIERS.registerDynamic("withered");
+  /** @deprecated use {@link modernmods.modernfoundry.tools.data.ModifierIds#enderdodging} */
   @Deprecated(forRemoval = true)
   public static final StaticModifier<?> enderdodging = MODIFIERS.registerDynamic("enderdodging");
+  /** @deprecated use {@link modernmods.modernfoundry.tools.data.ModifierIds#chrysophilite} */
+  @Deprecated(forRemoval = true)
+  public static final StaticModifier<?> chrysophilite = MODIFIERS.registerDynamic("chrysophilite");
+  /** @deprecated use {@link modernmods.modernfoundry.tools.data.ModifierIds#goldGuard} */
+  @Deprecated(forRemoval = true)
+  public static final StaticModifier<?> goldGuard = MODIFIERS.registerDynamic("gold_guard");
 
 
   /*
@@ -726,7 +739,7 @@ public final class TinkerModifiers extends TinkerModule {
   public static final DeferredHolder<? super RecipeSerializer<OverslimeCraftingTableRecipe>, RecipeSerializer<OverslimeCraftingTableRecipe>> craftingOverslimeSerializer = RECIPE_SERIALIZERS.register("crafting_overslime_modifier", () -> LoadableRecipeSerializer.of(OverslimeCraftingTableRecipe.LOADER));
   public static final DeferredHolder<? super RecipeSerializer<ModifierSalvage>, RecipeSerializer<ModifierSalvage>> modifierSalvageSerializer = RECIPE_SERIALIZERS.register("modifier_salvage", () -> LoadableRecipeSerializer.of(ModifierSalvage.LOADER));
   public static final DeferredHolder<? super RecipeSerializer<ArmorDyeingRecipe>, RecipeSerializer<ArmorDyeingRecipe>> armorDyeingSerializer = RECIPE_SERIALIZERS.register("armor_dyeing_modifier", () -> new SimpleRecipeSerializer<>(ArmorDyeingRecipe::new));
-  public static final DeferredHolder<? super RecipeSerializer<BannerModifierRecipe>, RecipeSerializer<BannerModifierRecipe>> bannerModifierSerializer = RECIPE_SERIALIZERS.register("banner_modifier", () -> new SimpleRecipeSerializer<>(BannerModifierRecipe::new));
+  public static final DeferredHolder<? super RecipeSerializer<BannerModifierRecipe>, RecipeSerializer<BannerModifierRecipe>> bannerModifierSerializer = RECIPE_SERIALIZERS.register("banner_modifier", () -> LoadableRecipeSerializer.of(BannerModifierRecipe.LOADER));
   public static final DeferredHolder<? super RecipeSerializer<ArmorTrimRecipe>, RecipeSerializer<ArmorTrimRecipe>> armorTrimSerializer = RECIPE_SERIALIZERS.register("armor_trim_modifier", () -> new SimpleRecipeSerializer<>(ArmorTrimRecipe::new));
   public static final DeferredHolder<? super RecipeSerializer<TippedToolTransformRecipe>, RecipeSerializer<TippedToolTransformRecipe>> tippedToolTransformRecipeSerializer = RECIPE_SERIALIZERS.register("tipped_tool_transform", () -> LoadableRecipeSerializer.of(TippedToolTransformRecipe.LOADER));
   // modifiers
@@ -825,6 +838,7 @@ public final class TinkerModifiers extends TinkerModule {
       ModifierLevelDisplay.LOADER.register(getResource("pluses"), ModifierLevelDisplay.PLUSES.getLoader());
       ModifierLevelDisplay.LOADER.register(getResource("unique"), ModifierLevelDisplay.UniqueForLevels.LOADER);
       ModifierLevelDisplay.LOADER.register(getResource("cap_level"), ModifierLevelDisplay.LevelCap.LOADER);
+      ModifierLevelDisplay.LOADER.register(getResource("map_level"), ModifierLevelDisplay.MapLevel.LOADER);
 
       // modifier modules //
       ModifierModule.LOADER.register(getResource("empty"), ModifierModule.EMPTY.getLoader());
@@ -847,7 +861,13 @@ public final class TinkerModifiers extends TinkerModule {
       ModifierModule.LOADER.register(getResource("show_offhand"), ShowOffhandModule.LOADER);
       ModifierModule.LOADER.register(getResource("tool_actions"), ToolActionsModule.LOADER);
       ModifierModule.LOADER.register(getResource("tool_action_transform"), ToolActionTransformModule.LOADER);
+      // edible
       ModifierModule.LOADER.register(getResource("edible"), EdibleModule.LOADER);
+      ModifierModule.LOADER.register(getResource("edible_consume_durability"), EdibleConsumeDurabilityModule.LOADER);
+      ModifierModule.LOADER.register(getResource("edible_representative_item"), EdibleRepresentativeItemModule.LOADER);
+      ModifierModule.LOADER.register(getResource("edible_cure_effects"), EdibleCureEffectsModule.LOADER);
+      ModifierModule.LOADER.register(getResource("edible_cure_random_effect"), EdibleCureRandomEffectModule.LOADER);
+      ModifierModule.LOADER.register(getResource("edible_remove_effect"), EdibleRemoveEffectModule.LOADER);
       // build
       ModifierModule.LOADER.register(getResource("conditional_stat"), ConditionalStatModule.LOADER);
       ModifierModule.LOADER.register(getResource("modifier_slot"), ModifierSlotModule.LOADER);
@@ -876,12 +896,15 @@ public final class TinkerModifiers extends TinkerModule {
       ModifierModule.LOADER.register(getResource("counter_mob_effect"), MobEffectModule.ArmorCounter.LOADER);
       ModifierModule.LOADER.register(getResource("tool_usage_mob_effect"), MobEffectModule.ToolUsage.LOADER);
       ModifierModule.LOADER.register(getResource("armor_attack_mob_effect"), MobEffectModule.ArmorAttack.LOADER);
+      ModifierModule.LOADER.register(getResource("edible_mob_effect"), MobEffectModule.Edible.LOADER);
       // display
       ModifierModule.LOADER.register(getResource("durability_color"), DurabilityBarColorModule.LOADER);
       ModifierModule.LOADER.register(getResource("variant_name"), ModifierVariantNameModule.LOADER);
       ModifierModule.LOADER.register(getResource("variant_color"), ModifierVariantColorModule.LOADER);
       ModifierModule.LOADER.register(getResource("material_variant_color"), MaterialVariantColorModule.LOADER);
       ModifierModule.LOADER.register(getResource("show_interaction_source"), ShowInteractionSourceModule.LOADER);
+      ModifierModule.LOADER.register(getResource("melee_instrument"), MeleeInstrumentModule.LOADER);
+      ModifierModule.LOADER.register(getResource("stat_tooltip"), StatTooltipModule.LOADER);
       // enchantment
       ModifierModule.LOADER.register(getResource("constant_enchantment"), EnchantmentModule.Constant.LOADER);
       ModifierModule.LOADER.register(getResource("main_hand_harvest_enchantment"), EnchantmentModule.MainHandHarvest.LOADER);
@@ -895,6 +918,8 @@ public final class TinkerModifiers extends TinkerModule {
       ModifierModule.LOADER.register(getResource("capacity_bar"), CapacityBarModule.LOADER);
       ModifierModule.LOADER.register(getResource("durability_as_capacity"), DurabilityAsCapacityModule.LOADER);
       ModifierModule.LOADER.register(getResource("energy_as_capacity"), EnergyAsCapacityModule.LOADER);
+      ModifierModule.LOADER.register(getResource("fluid_as_capacity"), FluidAsCapacityModule.LOADER);
+      ModifierModule.LOADER.register(getResource("fluid_predicate_as_capacity"), FluidPredicateAsCapacityModule.LOADER);
       ModifierModule.LOADER.register(getResource("durability_shield"), DurabilityShieldModule.LOADER);
       ModifierModule.LOADER.register(getResource("loot_to_capacity"), LootToCapacityModule.LOADER);
       ModifierModule.LOADER.register(getResource("damage_to_capacity"), DamageToCapacityModule.LOADER);
@@ -929,6 +954,7 @@ public final class TinkerModifiers extends TinkerModule {
       ModifierModule.LOADER.register(getResource("projectile_bounce"), ProjectileBounceModule.LOADER);
       ModifierModule.LOADER.register(getResource("block_item_provider"), BlockItemProviderModule.LOADER);
       ModifierModule.LOADER.register(getResource("tool_damage_range"), ToolDamageRangeModule.LOADER);
+      ModifierModule.LOADER.register(getResource("golden_attribute"), GoldenAttributeModule.LOADER);
       // interaction
       ModifierModule.LOADER.register(getResource("brush"), BrushModule.LOADER);
       ModifierModule.LOADER.register(getResource("campfire_extinguish"), ExtinguishCampfireModule.LOADER);
@@ -1039,6 +1065,8 @@ public final class TinkerModifiers extends TinkerModule {
       ToolVariable.register(getResource("stat_multiplier"), StatMultiplierVariable.LOADER);
       ToolVariable.register(getResource("mod_data"), ModDataVariable.LOADER);
       ToolVariable.register(getResource("modifier_level"), ModifierLevelVariable.LOADER);
+      ToolVariable.register(getResource("fluid_amount"), FluidAmountVariable.LOADER);
+      ToolVariable.register(getResource("tank_capacity"), TankCapacityVariable.LOADER);
       // stat
       ConditionalStatVariable.LOADER.register(getResource("constant"), ConditionalStatVariable.Constant.LOADER);
       ConditionalStatVariable.register(getResource("entity"), EntityConditionalStatVariable.LOADER);

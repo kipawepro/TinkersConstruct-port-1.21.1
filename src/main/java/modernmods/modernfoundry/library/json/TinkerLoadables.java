@@ -2,6 +2,7 @@ package modernmods.modernfoundry.library.json;
 
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.StatType;
 import net.minecraft.tags.TagKey;
@@ -9,6 +10,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Instrument;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.LightLayer;
@@ -56,11 +59,18 @@ public class TinkerLoadables {
   public static final StringLoadable<RecipeType<?>> RECIPE_TYPE = new RegistryLoadable<>(BuiltInRegistries.RECIPE_TYPE);
 
   /* Tag keys */
+  public static final StringLoadable<TagKey<Instrument>> INSTRUMENT_TAGS = Loadables.tagKey(Registries.INSTRUMENT);
   public static final StringLoadable<TagKey<Modifier>> MODIFIER_TAGS = Loadables.tagKey(ModifierManager.REGISTRY_KEY);
   public static final StringLoadable<TagKey<IMaterial>> MATERIAL_TAGS = Loadables.tagKey(MaterialManager.REGISTRY_KEY);
 
   /* Mapped items */
   public static final StringLoadable<IMaterialItem> MATERIAL_ITEM = instance(Loadables.ITEM, IMaterialItem.class, "Expected item to be instance of IMaterialItem");
+  /** Material item that maps air to {@link IMaterialItem#EMPTY} */
+  public static final StringLoadable<IMaterialItem> OPTIONAL_MATERIAL_ITEM = Loadables.ITEM.xmap((item, error) -> {
+    if (item == Items.AIR) return IMaterialItem.EMPTY;
+    if (item instanceof IMaterialItem material) return material;
+    throw error.create("Expected item to be instance of IMaterialItem");
+  }, (item, error) -> item.asItem());
   public static final StringLoadable<IModifiable> MODIFIABLE_ITEM = instance(Loadables.ITEM, IModifiable.class, "Expected item to be instance of IModifiable");
   public static final StringLoadable<IToolPart> TOOL_PART_ITEM = instance(Loadables.ITEM, IToolPart.class, "Expected item to be instance of IToolPart");
   public static final StringLoadable<SimpleParticleType> SIMPLE_PARTICLE = instance(Loadables.PARTICLE_TYPE, SimpleParticleType.class, "Expected particle type to be instance of SimpleParticleType");
@@ -88,11 +98,11 @@ public class TinkerLoadables {
   /** Loadble requiring the argument to be an instance of the passed class */
   @SuppressWarnings("unchecked")  // The type works when deserializing, so it works when serializing
   public static <B, T> StringLoadable<T> instance(StringLoadable<B> loadable, Class<T> typeClass, String errorMsg) {
-    return loadable.comapFlatMap((base, error) -> {
+    return loadable.xmap((base, error) -> {
       if (typeClass.isInstance(base)) {
         return typeClass.cast(base);
       }
       throw error.create(errorMsg);
-    }, t -> (B)t);
+    }, (t,e) -> (B)t);
   }
 }

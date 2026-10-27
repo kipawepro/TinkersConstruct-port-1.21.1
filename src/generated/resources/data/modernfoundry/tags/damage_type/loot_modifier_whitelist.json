@@ -1,0 +1,12 @@
+{
+  "values": [
+    "#modernfoundry:is_melee",
+    "modernfoundry:piercing",
+    "modernfoundry:fluid_fire_melee",
+    "modernfoundry:fluid_cold_melee",
+    "modernfoundry:fluid_magic_melee",
+    "modernfoundry:water_melee",
+    "modernfoundry:explosion_melee",
+    "modernfoundry:mob_explosion_melee"
+  ]
+}

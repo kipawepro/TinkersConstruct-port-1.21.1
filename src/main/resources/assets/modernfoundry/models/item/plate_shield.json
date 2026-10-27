@@ -12,7 +12,6 @@
     "small": [ "modernfoundry:item/tool/armor/plate/shield/modifiers/" ],
     "large": [ "modernfoundry:item/tool/armor/plate/shield/large_modifiers/" ]
   },
-  "first_modifiers": [ "modernfoundry:banner" ],
   "parts": [
     { "name": "core",    "index": 0 },
     { "name": "plating", "index": 1 }

@@ -9,6 +9,12 @@
         "level": 1,
         "name": "modernfoundry:lure_rod"
       }
+    ],
+    "modernfoundry:shell": [
+      {
+        "level": 1,
+        "name": "modernfoundry:thorns_shell"
+      }
     ]
   }
 }

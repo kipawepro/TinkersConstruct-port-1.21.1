@@ -2,7 +2,7 @@
   "modules": [
     {
       "type": "modernfoundry:material_stats",
-      "primary_part": 0,
+      "primary_part": 1,
       "stat_types": [
         "modernfoundry:ribcage",
         {
@@ -10,6 +10,15 @@
           "stat": "modernfoundry:slime"
         }
       ]
+    },
+    {
+      "type": "modernfoundry:material_traits",
+      "hooks": [
+        "modernfoundry:tool_traits",
+        "modernfoundry:trim_trait"
+      ],
+      "material_index": 0,
+      "stat_type": "modernfoundry:ribcage"
     },
     {
       "type": "modernfoundry:default_materials",
@@ -27,7 +36,7 @@
     {
       "type": "modernfoundry:multiply_stats",
       "multipliers": {
-        "modernfoundry:attack_damage": 0.6
+        "modernfoundry:attack_damage": 0.75
       }
     },
     {
@@ -48,21 +57,9 @@
       "traits": [
         {
           "level": 1,
-          "name": "modernfoundry:ambidextrous"
-        },
-        {
-          "level": 1,
           "name": "modernfoundry:reach"
         }
       ]
-    },
-    {
-      "type": "modernfoundry:material_traits",
-      "hooks": [
-        "modernfoundry:trim_trait"
-      ],
-      "material_index": 1,
-      "stat_type": "modernfoundry:slime"
     },
     {
       "type": "modernfoundry:unique_material_name",

@@ -1,0 +1,26 @@
+{
+  "constant": {
+    "_trim": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:armor_trim",
+        "slot": "leggings"
+      },
+      "modifier": "modernfoundry:trim"
+    }
+  },
+  "modifiers": {
+    "modernfoundry:emerald": "modernfoundry:item/tool/armor/modifiers/leggings/modernfoundry_emerald",
+    "modernfoundry:fiery": {
+      "luminosity": 10,
+      "texture": "modernfoundry:item/tool/armor/modifiers/leggings/modernfoundry_fiery"
+    },
+    "modernfoundry:leaping": "modernfoundry:item/tool/armor/modifiers/leggings/modernfoundry_leaping",
+    "modernfoundry:luck": "modernfoundry:item/tool/armor/modifiers/leggings/modernfoundry_luck",
+    "modernfoundry:shield_strap": "modernfoundry:item/tool/armor/modifiers/leggings/modernfoundry_shield_strap",
+    "modernfoundry:speedy": "modernfoundry:item/tool/armor/modifiers/leggings/modernfoundry_speedy",
+    "modernfoundry:step_up": "modernfoundry:item/tool/armor/modifiers/leggings/modernfoundry_step_up",
+    "modernfoundry:swift_sneak": "modernfoundry:item/tool/armor/modifiers/leggings/modernfoundry_swift_sneak",
+    "modernfoundry:thorns": "modernfoundry:item/tool/armor/modifiers/leggings/modernfoundry_thorns"
+  }
+}

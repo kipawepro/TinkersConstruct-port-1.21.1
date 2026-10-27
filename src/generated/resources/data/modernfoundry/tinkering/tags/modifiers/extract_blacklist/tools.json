@@ -3,6 +3,7 @@
     "modernfoundry:embellishment",
     "modernfoundry:dyed",
     "modernfoundry:trim",
+    "modernfoundry:banner",
     "modernfoundry:rebalanced",
     "modernfoundry:overslime",
     "#modernfoundry:remove_blacklist"

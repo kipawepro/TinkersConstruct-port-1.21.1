@@ -1,8 +1,11 @@
 package modernmods.modernfoundry.library.recipe.melting;
 
+import modernmods.modernfoundry.common.config.Config;
+import modernmods.modernfoundry.library.recipe.melting.IMeltingContainer.OreRateType;
 import lombok.Getter;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
@@ -16,18 +19,17 @@ import modernmods.hilt.data.loadable.primitive.IntLoadable;
 import modernmods.hilt.data.loadable.record.RecordLoadable;
 import modernmods.hilt.recipe.helper.FluidOutput;
 import modernmods.hilt.recipe.helper.LoadableRecipeSerializer;
-import modernmods.modernfoundry.common.config.Config;
-import modernmods.modernfoundry.library.recipe.melting.IMeltingContainer.OreRateType;
 import modernmods.modernfoundry.smeltery.TinkerSmeltery;
 
-import javax.annotation.Nullable;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * Recipe to melt an ingredient into a specific fuel
+ * Recipe to melt an ingredient into a specific fuel.
+ * @see DisplayMeltingRecipe
  */
-public class MeltingRecipe implements IMeltingRecipe {
+public class MeltingRecipe implements IMeltingRecipe, IDisplayableMeltingRecipe {
   /* Reusable fields */
   protected static final LoadableField<Ingredient, MeltingRecipe> INPUT = IngredientLoadable.DISALLOW_EMPTY.requiredField("ingredient", MeltingRecipe::getInput);
   protected static final LoadableField<FluidOutput, MeltingRecipe> OUTPUT = FluidOutput.Loadable.REQUIRED.requiredField("result", r -> r.output);
@@ -56,7 +58,11 @@ public class MeltingRecipe implements IMeltingRecipe {
     this(id, group, input, output, temperature, time, byproducts, true);
   }
 
-  /** Constructor that allows canceling the lookup addition, for generated recipes in JEI */
+  /**
+   * Constructor that allows canceling the lookup addition, for generated recipes in JEI
+   * @deprecated use {@link DisplayMeltingRecipe}
+   */
+  @Deprecated
   public MeltingRecipe(ResourceLocation id, String group, Ingredient input, FluidOutput output, int temperature, int time, List<FluidOutput> byproducts, boolean addLookup) {
     this.id = id;
     this.group = group;
@@ -85,11 +91,6 @@ public class MeltingRecipe implements IMeltingRecipe {
     return time;
   }
 
-  /** Gets the output of this recipe */
-  public FluidStack getOutput() {
-    return output.get();
-  }
-
   @Override
   public FluidStack getOutput(IMeltingContainer inv) {
     return output.copy();
@@ -103,12 +104,6 @@ public class MeltingRecipe implements IMeltingRecipe {
   @Override
   public RecipeSerializer<?> getSerializer() {
     return TinkerSmeltery.meltingSerializer.get();
-  }
-
-  /** If nonnull, recipe is boosted by this ore type */
-  @Nullable
-  public OreRateType getOreType() {
-    return null;
   }
 
   @Override
@@ -131,11 +126,38 @@ public class MeltingRecipe implements IMeltingRecipe {
     });
   }
 
+  /* JEI */
+
+  @Override
+  public ResourceLocation getRecipeId() {
+    return getId();
+  }
+
+  @Override
+  public List<ItemStack> getInputs() {
+    return Arrays.asList(input.getItems());
+  }
+
+  @Override
+  public List<FluidStack> getOutputs() {
+    return List.of(getOutput());
+  }
+
   /** Gets the recipe output for foundry display in JEI */
+  @Override
   public List<List<FluidStack>> getOutputWithByproducts() {
     if (outputWithByproducts == null) {
       outputWithByproducts = Stream.concat(Stream.of(output), byproducts.stream()).map(fluid -> List.of(fluid.get())).toList();
     }
     return outputWithByproducts;
+  }
+
+
+  /* Legacy JEI */
+
+  /** @deprecated use {@link #getOutputs()} */
+  @Deprecated(forRemoval = true)
+  public FluidStack getOutput() {
+    return output.get();
   }
 }

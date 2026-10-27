@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType.BlockEntitySupplier;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
-import modernmods.hilt.util.BlockEntityHelper;
 import modernmods.modernfoundry.tables.block.entity.chest.TinkersChestBlockEntity;
 
 public class TinkersChestBlock extends ChestBlock {
@@ -21,11 +20,9 @@ public class TinkersChestBlock extends ChestBlock {
   @Override
   public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader world, BlockPos pos, Player player) {
     ItemStack stack = new ItemStack(this);
-    BlockEntityHelper.get(TinkersChestBlockEntity.class, world, pos).ifPresent(te -> {
-      if (te.hasColor()) {
-        ((DyeableLeatherItem) stack.getItem()).setColor(stack, te.getColor());
-      }
-    });
+    if (world.getBlockEntity(pos) instanceof TinkersChestBlockEntity te && te.hasColor()) {
+      ((DyeableLeatherItem) stack.getItem()).setColor(stack, te.getColor());
+    }
     return stack;
   }
 }

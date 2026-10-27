@@ -11,6 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.common.ClientEventBase;
+import modernmods.modernfoundry.gadgets.client.FancyArmorStandRenderer;
 import modernmods.modernfoundry.gadgets.client.FancyItemFrameRenderer;
 import modernmods.modernfoundry.gadgets.entity.shuriken.ShurikenEntityBase;
 import modernmods.modernfoundry.tools.client.material.ThrownShurikenRenderer;
@@ -27,6 +28,7 @@ public class GadgetClientEvents extends ClientEventBase {
   @SubscribeEvent
   static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
     event.registerEntityRenderer(TinkerGadgets.itemFrameEntity.get(), FancyItemFrameRenderer::new);
+    event.registerEntityRenderer(TinkerGadgets.armorStandEntity.get(), FancyArmorStandRenderer::new);
     EntityRendererProvider<ThrowableItemProjectile> throwable = ThrownItemRenderer::new;
     event.registerEntityRenderer(TinkerGadgets.glowBallEntity.get(), throwable);
     event.registerEntityRenderer(TinkerGadgets.eflnEntity.get(), throwable);

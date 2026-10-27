@@ -1,12 +1,15 @@
 {
-  "level_display": "modernfoundry:default",
+  "level_display": "modernfoundry:single_level",
   "modules": [
     {
       "type": "modernfoundry:stat_boost",
       "each_level": 0.1,
       "operation": "add",
       "stat": "modernfoundry:knockback_resistance"
+    },
+    {
+      "type": "modernfoundry:material_variant_color",
+      "material": "modernfoundry:wool"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

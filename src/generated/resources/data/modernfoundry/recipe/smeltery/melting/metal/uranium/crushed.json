@@ -1,0 +1,27 @@
+{
+  "type": "modernfoundry:ore_melting",
+  "id": "modernfoundry:smeltery/melting/metal/uranium/crushed",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "create:crushed_raw_uranium"
+    }
+  ],
+  "byproducts": [
+    {
+      "amount": 90,
+      "rate": "metal",
+      "tag": "c:molten_copper"
+    }
+  ],
+  "ingredient": {
+    "item": "create:crushed_raw_uranium"
+  },
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_uranium"
+  },
+  "temperature": 830,
+  "time": 92
+}

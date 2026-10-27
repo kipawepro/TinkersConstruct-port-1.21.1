@@ -1,0 +1,20 @@
+{
+  "constant": {
+    "__dyed": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:dyed",
+        "texture": "modernfoundry:item/tool/armor/slime/wings/slime"
+      },
+      "modifier": "modernfoundry:dyed"
+    },
+    "_trim": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:custom_trim",
+        "root": "modernfoundry:item/tool/armor/slime/wings/trim"
+      },
+      "modifier": "modernfoundry:trim"
+    }
+  }
+}

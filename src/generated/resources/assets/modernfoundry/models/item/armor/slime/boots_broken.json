@@ -3,11 +3,12 @@
   "parent": "neoforge:item/default",
   "textures": {
     "slime": "modernfoundry:item/tool/armor/slime/boots/slime_broken",
-    "laces": "modernfoundry:item/tool/armor/slime/boots/laces_broken"
+    "laces": "modernfoundry:item/tool/armor/slime/boots/laces"
   },
   "modifier_maps": [
     "modernfoundry:slime/boots_broken",
-    "modernfoundry:slime/boots"
+    "modernfoundry:slime/boots",
+    "modernfoundry:armor/boots"
   ],
   "parts": [
     {
@@ -18,8 +19,5 @@
       "name": "laces",
       "index": 0
     }
-  ],
-  "first_modifiers": [
-    "modernfoundry:trim"
   ]
 }

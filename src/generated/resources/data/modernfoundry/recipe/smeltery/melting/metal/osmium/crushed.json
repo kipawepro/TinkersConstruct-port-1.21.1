@@ -1,0 +1,27 @@
+{
+  "type": "modernfoundry:ore_melting",
+  "id": "modernfoundry:smeltery/melting/metal/osmium/crushed",
+  "byproducts": [
+    {
+      "amount": 90,
+      "rate": "metal",
+      "tag": "c:molten_iron"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "create:crushed_raw_osmium"
+    }
+  ],
+  "ingredient": {
+    "item": "create:crushed_raw_osmium"
+  },
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_osmium"
+  },
+  "temperature": 975,
+  "time": 98
+}

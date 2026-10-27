@@ -26,7 +26,6 @@ import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.HitResult;
 import modernmods.hilt.block.InventoryBlock;
 import modernmods.hilt.block.RetexturedBlock;
-import modernmods.hilt.util.BlockEntityHelper;
 import modernmods.hilt.util.RetexturedHelper;
 import modernmods.modernfoundry.smeltery.block.entity.component.DuctBlockEntity;
 import modernmods.modernfoundry.smeltery.block.entity.component.SmelteryComponentBlockEntity;
@@ -54,11 +53,11 @@ public class SearedDuctBlock extends InventoryBlock {
   @SuppressWarnings("deprecation")
   @Override
   @Deprecated
-  public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-    if (!newState.is(this)) {
-      BlockEntityHelper.get(SmelteryComponentBlockEntity.class, worldIn, pos).ifPresent(te -> te.notifyMasterOfChange(pos, newState));
+  public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+    if (!newState.is(this) && world.getBlockEntity(pos) instanceof SmelteryComponentBlockEntity te) {
+      te.notifyMasterOfChange(pos, newState);
     }
-    super.onRemove(state, worldIn, pos, newState, isMoving);
+    super.onRemove(state, world, pos, newState, isMoving);
   }
 
   @Override

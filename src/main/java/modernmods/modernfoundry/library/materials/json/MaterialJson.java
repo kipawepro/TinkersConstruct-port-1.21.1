@@ -1,6 +1,7 @@
 package modernmods.modernfoundry.library.materials.json;
 
 import lombok.Data;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import org.jetbrains.annotations.ApiStatus.Internal;
 import modernmods.modernfoundry.library.json.JsonRedirect;
@@ -19,6 +20,8 @@ public class MaterialJson {
   private final Integer tier;
   @Nullable
   private final Integer sortOrder;
+  @Nullable
+  private final Rarity rarity;
   @Nullable
   private final Boolean hidden;
   @Nullable

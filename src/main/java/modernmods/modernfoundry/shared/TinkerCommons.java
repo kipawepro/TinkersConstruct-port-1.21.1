@@ -34,6 +34,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import modernmods.hilt.data.predicate.block.BlockPredicate;
 import modernmods.hilt.data.predicate.damage.DamageSourcePredicate;
 import modernmods.hilt.data.predicate.entity.LivingEntityPredicate;
+import modernmods.hilt.data.predicate.fluid.FluidPredicate;
 import modernmods.hilt.data.predicate.item.ItemPredicate;
 import modernmods.hilt.item.EdibleItem;
 import modernmods.hilt.registration.object.EnumObject;
@@ -57,6 +58,7 @@ import modernmods.modernfoundry.library.json.predicate.HarvestTierPredicate;
 import modernmods.modernfoundry.library.json.predicate.HasMobEffectPredicate;
 import modernmods.modernfoundry.library.json.predicate.TinkerPredicate;
 import modernmods.modernfoundry.library.recipe.ingredient.BlockTagIngredient;
+import modernmods.modernfoundry.library.recipe.ingredient.InstrumentIngredient;
 import modernmods.modernfoundry.library.recipe.ingredient.NoContainerIngredient;
 import modernmods.modernfoundry.library.utils.SlimeBounceHandler;
 import modernmods.modernfoundry.shared.block.BetterPaneBlock;
@@ -78,6 +80,7 @@ import modernmods.modernfoundry.shared.item.CheeseItem;
 import modernmods.modernfoundry.shared.item.TinkerBookItem;
 import modernmods.modernfoundry.shared.item.TinkerBookItem.BookType;
 import modernmods.modernfoundry.shared.particle.FluidParticleData;
+import modernmods.modernfoundry.tables.TinkerTables;
 import modernmods.modernfoundry.tools.TinkerModifiers;
 
 import static modernmods.modernfoundry.TConstruct.getResource;
@@ -110,7 +113,7 @@ public final class TinkerCommons extends TinkerModule {
   public static final ItemObject<ClearGlassPaneBlock> clearGlassPane = BLOCKS.register("clear_glass_pane", () -> new ClearGlassPaneBlock(glassBuilder(MapColor.NONE)), BLOCK_ITEM);
   public static final EnumObject<GlassColor,ClearStainedGlassBlock> clearStainedGlass = BLOCKS.registerEnum(GlassColor.values(), "clear_stained_glass", (color) -> new ClearStainedGlassBlock(glassBuilder(color.getDye().getMapColor()), color), BLOCK_ITEM);
   public static final EnumObject<GlassColor,ClearStainedGlassPaneBlock> clearStainedGlassPane = BLOCKS.registerEnum(GlassColor.values(), "clear_stained_glass_pane", (color) -> new ClearStainedGlassPaneBlock(glassBuilder(color.getDye().getMapColor()), color), BLOCK_ITEM);
-  public static final ItemObject<GlassBlock> soulGlass = BLOCKS.register("soul_glass", () -> new SoulGlassBlock(glassBuilder(MapColor.COLOR_BROWN).speedFactor(0.2F).noCollission().isViewBlocking((state, getter, pos) -> true)), TOOLTIP_BLOCK_ITEM);
+  public static final ItemObject<GlassBlock> soulGlass = BLOCKS.register("soul_glass", () -> new SoulGlassBlock(glassBuilder(MapColor.COLOR_BROWN).speedFactor(0.2F).noCollission().forceSolidOn().isViewBlocking((state, getter, pos) -> true)), TOOLTIP_BLOCK_ITEM);
   public static final ItemObject<ClearGlassPaneBlock> soulGlassPane = BLOCKS.register("soul_glass_pane", () -> new SoulGlassPaneBlock(glassBuilder(MapColor.COLOR_BROWN).speedFactor(0.2F)), TOOLTIP_BLOCK_ITEM);
   // panes
   public static final ItemObject<IronBarsBlock> goldBars = BLOCKS.register("gold_bars", () -> new IronBarsBlock(builder(MapColor.NONE, SoundType.METAL).requiresCorrectToolForDrops().strength(3.0F, 6.0F).noOcclusion()), TOOLTIP_BLOCK_ITEM);
@@ -165,6 +168,7 @@ public final class TinkerCommons extends TinkerModule {
   public static final DeferredHolder<? super LootPoolEntryType, LootPoolEntryType> lootTagPreference = LOOT_ENTRIES.register("tag_preference", () -> new LootPoolEntryType(TagPreferenceLootEntry.CODEC));
   public static final DeferredHolder<? super IngredientType<NoContainerIngredient>, IngredientType<NoContainerIngredient>> noContainerIngredient = INGREDIENT_TYPES.register("no_container", () -> new IngredientType<>(NoContainerIngredient.Serializer.INSTANCE.codec(), NoContainerIngredient.Serializer.INSTANCE.streamCodec()));
   public static final DeferredHolder<? super IngredientType<BlockTagIngredient>, IngredientType<BlockTagIngredient>> blockTagIngredient = INGREDIENT_TYPES.register("block_tag", () -> new IngredientType<>(BlockTagIngredient.Serializer.INSTANCE.codec(), BlockTagIngredient.Serializer.INSTANCE.streamCodec()));
+  public static final DeferredHolder<? super IngredientType<InstrumentIngredient>, IngredientType<InstrumentIngredient>> instrumentIngredient = INGREDIENT_TYPES.register("instrument", () -> new IngredientType<>(InstrumentIngredient.CODEC, InstrumentIngredient.STREAM_CODEC));
 
   /* Recipe conditions */
   public static final DeferredHolder<? super com.mojang.serialization.MapCodec<? extends ICondition>, com.mojang.serialization.MapCodec<? extends ICondition>> configCondition = CONDITION_CODECS.register(ConfigEnabledCondition.ID.getPath(), () -> ConfigEnabledCondition.CODEC);
@@ -220,11 +224,16 @@ public final class TinkerCommons extends TinkerModule {
       BlockPredicate.LOADER.register(getResource("can_melt"), TinkerPredicate.CAN_MELT_BLOCK.getLoader());
       BlockPredicate.LOADER.register(getResource("harvest_tier"), HarvestTierPredicate.LOADER);
       BlockPredicate.LOADER.register(getResource("variable_range"), BlockVariableRangePredicate.LOADER);
+      // fluid
+      FluidPredicate.LOADER.register(getResource("fuel"), TinkerPredicate.FUEL.getLoader());
     }
   }
 
   /** Adds all relevant items to the creative tab */
   private static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
+    // tables
+    TinkerTables.addTabItems(itemDisplayParameters, output);
+
     // books
     output.accept(materialsAndYou);
     output.accept(punySmelting);

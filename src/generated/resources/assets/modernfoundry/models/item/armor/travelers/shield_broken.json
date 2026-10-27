@@ -13,9 +13,6 @@
     "modernfoundry:item/tool/armor/travelers/shield/modifiers/broken/",
     "modernfoundry:item/tool/armor/travelers/shield/modifiers/"
   ],
-  "first_modifiers": [
-    "modernfoundry:dyed"
-  ],
   "parts": [
     {
       "name": "wood",

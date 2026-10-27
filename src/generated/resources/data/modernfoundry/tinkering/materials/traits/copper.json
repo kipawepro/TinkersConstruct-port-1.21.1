@@ -14,8 +14,8 @@
     ],
     "modernfoundry:skull": [
       {
-        "level": 2,
-        "name": "modernfoundry:respiration"
+        "level": 1,
+        "name": "modernfoundry:respiration_skull"
       },
       {
         "level": 1,

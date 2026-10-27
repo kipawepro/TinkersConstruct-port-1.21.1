@@ -59,9 +59,22 @@ public abstract class ArmoredSlimeEntity extends Slime {
     builder.define(METAL, false);
   }
 
+  @Override
+  public void setSize(int size, boolean health) {
+    super.setSize(size, health);
+    AttributeInstance instance = getAttribute(Attributes.ARMOR);
+    if (instance != null) {
+      instance.setBaseValue(isMetal() ? size : 0);
+    }
+  }
+
   /** Sets this slime to have a metal core */
   protected void setMetal(boolean metal) {
     this.entityData.set(METAL, metal);
+    AttributeInstance instance = getAttribute(Attributes.ARMOR);
+    if (instance != null) {
+      instance.setBaseValue(metal ? getSize() : 0);
+    }
   }
 
   /** Returns true if the slime has a metal core */

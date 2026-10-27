@@ -7,11 +7,8 @@
   },
   "modifier_maps": [
     "modernfoundry:plate/chestplate_broken",
-    "modernfoundry:plate/chestplate"
-  ],
-  "first_modifiers": [
-    "modernfoundry:dyed",
-    "modernfoundry:trim"
+    "modernfoundry:plate/chestplate",
+    "modernfoundry:armor/chestplate"
   ],
   "parts": [
     {

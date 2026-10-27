@@ -1,0 +1,27 @@
+{
+  "type": "modernfoundry:ore_melting",
+  "id": "modernfoundry:smeltery/melting/metal/tin/crushed",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "create:crushed_raw_tin"
+    }
+  ],
+  "byproducts": [
+    {
+      "amount": 90,
+      "rate": "metal",
+      "tag": "c:molten_copper"
+    }
+  ],
+  "ingredient": {
+    "item": "create:crushed_raw_tin"
+  },
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_tin"
+  },
+  "temperature": 225,
+  "time": 59
+}

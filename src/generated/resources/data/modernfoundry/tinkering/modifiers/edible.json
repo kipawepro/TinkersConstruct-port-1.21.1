@@ -1,0 +1,16 @@
+{
+  "level_display": "modernfoundry:default",
+  "modules": [
+    {
+      "type": "modernfoundry:edible"
+    },
+    {
+      "type": "modernfoundry:trait",
+      "fixed_level": true,
+      "level": 1,
+      "name": "modernfoundry:edible_tooltip"
+    }
+  ],
+  "priority": 40,
+  "show_in_tooltips": "never"
+}

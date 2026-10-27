@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "id": "modernfoundry:gadgets/armor_stands/bone",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "modernfoundry:seared_paver_slab"
+    },
+    "S": {
+      "tag": "modernfoundry:bones"
+    }
+  },
+  "pattern": [
+    "SSS",
+    " S ",
+    "SBS"
+  ],
+  "result": {
+    "id": "modernfoundry:bone_armor_stand"
+  },
+  "show_notification": true
+}

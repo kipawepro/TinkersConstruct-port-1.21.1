@@ -28,9 +28,6 @@
     "modernfoundry:ribcage": {
       "repair_amount": 357
     },
-    "modernfoundry:shield_core": {},
-    "modernfoundry:skull": {
-      "durability": 157
-    }
+    "modernfoundry:shield_core": {}
   }
 }

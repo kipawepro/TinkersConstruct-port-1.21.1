@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "modernfoundry:ichor_slime_ball"
   },
-  "restore_amount": 100,
+  "restore_amount": 60,
   "tools": {
     "tag": "modernfoundry:modifiable/durability"
   }

@@ -24,6 +24,7 @@ import modernmods.modernfoundry.library.module.ModuleHook;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
 
 import java.util.List;
+import java.util.Set;
 
 import static modernmods.modernfoundry.library.tools.definition.module.material.MaterialRepairModule.getDurability;
 
@@ -63,6 +64,11 @@ public sealed class MaterialRepairModule implements ModifierModule, MaterialRepa
   @Override
   public boolean isRepairMaterial(IToolStackView tool, ModifierEntry modifier, MaterialId material) {
     return this.material.equals(material) && condition().matches(tool, modifier);
+  }
+
+  @Override
+  public void addRepairMaterials(IToolStackView tool, ModifierEntry modifier, Set<MaterialId> materials) {
+    materials.add(material);
   }
 
   /** Gets the repair amount for the given tool after validating conditions */

@@ -44,6 +44,5 @@
       "operation": "add",
       "stat": "modernfoundry:accuracy"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

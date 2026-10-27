@@ -1,0 +1,27 @@
+{
+  "type": "modernfoundry:ore_melting",
+  "id": "modernfoundry:smeltery/melting/metal/aluminum/crushed",
+  "byproducts": [
+    {
+      "amount": 90,
+      "rate": "metal",
+      "tag": "c:molten_iron"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "create:crushed_raw_aluminum"
+    }
+  ],
+  "ingredient": {
+    "item": "create:crushed_raw_aluminum"
+  },
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_aluminum"
+  },
+  "temperature": 425,
+  "time": 71
+}

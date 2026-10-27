@@ -5,7 +5,8 @@ import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.stats.MaterialStatsId;
 import modernmods.modernfoundry.library.modifiers.ModifierId;
 
-/** Interface for serializing the modifier material repair recipes */
+/** @deprecated use {@link modernmods.modernfoundry.library.modifiers.modules.behavior.MaterialRepairModule} */
+@Deprecated(forRemoval = true)
 public interface IModifierMaterialRepairRecipe {
   /* Fields */
   LoadableField<ModifierId,IModifierMaterialRepairRecipe> MODIFIER_FIELD = ModifierId.PARSER.requiredField("modifier", IModifierMaterialRepairRecipe::getModifier);

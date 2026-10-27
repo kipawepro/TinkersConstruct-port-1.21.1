@@ -1,0 +1,27 @@
+{
+  "type": "modernfoundry:ore_melting",
+  "id": "modernfoundry:smeltery/melting/metal/iron/crushed",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "create:crushed_raw_iron"
+    }
+  ],
+  "byproducts": [
+    {
+      "amount": 90,
+      "rate": "metal",
+      "tag": "c:molten_steel"
+    }
+  ],
+  "ingredient": {
+    "item": "create:crushed_raw_iron"
+  },
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_iron"
+  },
+  "temperature": 800,
+  "time": 90
+}

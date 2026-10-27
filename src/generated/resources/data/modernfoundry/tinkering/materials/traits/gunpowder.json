@@ -5,6 +5,16 @@
         "level": 1,
         "name": "modernfoundry:explosive"
       }
+    ],
+    "modernfoundry:skull": [
+      {
+        "level": 1,
+        "name": "modernfoundry:self_destructive"
+      },
+      {
+        "level": 1,
+        "name": "modernfoundry:creeper_disguise"
+      }
     ]
   }
 }

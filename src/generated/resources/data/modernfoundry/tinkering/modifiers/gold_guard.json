@@ -1,0 +1,19 @@
+{
+  "level_display": "modernfoundry:single_level",
+  "modules": [
+    {
+      "type": "modernfoundry:golden_attribute",
+      "attribute": "minecraft:generic.max_health",
+      "each_level": 4.0,
+      "flat": 4.0,
+      "operation": "addition"
+    },
+    {
+      "type": "modernfoundry:volatile_flag",
+      "flag": "modernfoundry:piglin_neutral",
+      "modifier_level": {
+        "min": 2
+      }
+    }
+  ]
+}

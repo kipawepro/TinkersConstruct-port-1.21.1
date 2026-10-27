@@ -5,6 +5,5 @@
       "type": "modernfoundry:reverse_punch",
       "each_level": 0.6
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

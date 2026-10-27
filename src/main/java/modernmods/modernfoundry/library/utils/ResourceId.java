@@ -15,10 +15,12 @@ public abstract class ResourceId extends ResourceLocation {
     this(location.getNamespace(), location.getPath());
   }
 
+  @SuppressWarnings("removal")
   public ResourceId(String namespace, String path) {
     super(namespace, path);
   }
 
+  @SuppressWarnings("removal")
   public ResourceId(String location) {
     this(ResourceLocation.parse(location));
   }

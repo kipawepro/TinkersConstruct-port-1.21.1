@@ -1,10 +1,10 @@
 package modernmods.modernfoundry.library.modifiers.modules.armor;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;

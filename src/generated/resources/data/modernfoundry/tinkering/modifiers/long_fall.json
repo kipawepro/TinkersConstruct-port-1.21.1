@@ -3,21 +3,15 @@
   "modules": [
     {
       "type": "modernfoundry:requirements",
-      "display_modifiers": [
-        {
-          "level": 2,
-          "name": "modernfoundry:feather_falling"
-        }
-      ],
       "requirement": {
         "type": "modernfoundry:has_modifier",
         "check": "all",
         "level": {
-          "min": 2
+          "min": 4
         },
         "modifier": {
           "type": "modernfoundry:single",
-          "modifier": "modernfoundry:feather_falling"
+          "modifier": "modernfoundry:feather_fall"
         }
       },
       "translation_key": "modifier.modernfoundry.long_fall.requirements"
@@ -29,6 +23,5 @@
         "tag": "modernfoundry:protection/fall"
       }
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

@@ -1,0 +1,29 @@
+{
+  "constant": {
+    "_trim": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:armor_trim",
+        "slot": "chestplate"
+      },
+      "modifier": "modernfoundry:trim"
+    }
+  },
+  "modifiers": {
+    "modernfoundry:ambidextrous": "modernfoundry:item/tool/armor/modifiers/chestplate/modernfoundry_ambidextrous",
+    "modernfoundry:emerald": "modernfoundry:item/tool/armor/modifiers/chestplate/modernfoundry_emerald",
+    "modernfoundry:fiery": {
+      "luminosity": 10,
+      "texture": "modernfoundry:item/tool/armor/modifiers/chestplate/modernfoundry_fiery"
+    },
+    "modernfoundry:haste": {
+      "luminosity": 7,
+      "texture": "modernfoundry:item/tool/armor/modifiers/chestplate/modernfoundry_haste"
+    },
+    "modernfoundry:knockback": "modernfoundry:item/tool/armor/modifiers/chestplate/modernfoundry_knockback",
+    "modernfoundry:reach": "modernfoundry:item/tool/armor/modifiers/chestplate/modernfoundry_reach",
+    "modernfoundry:sleeves": "modernfoundry:item/tool/armor/modifiers/chestplate/modernfoundry_sleeves",
+    "modernfoundry:strength": "modernfoundry:item/tool/armor/modifiers/chestplate/modernfoundry_strength",
+    "modernfoundry:thorns": "modernfoundry:item/tool/armor/modifiers/chestplate/modernfoundry_thorns"
+  }
+}

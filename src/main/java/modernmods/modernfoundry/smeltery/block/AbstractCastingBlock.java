@@ -2,6 +2,7 @@ package modernmods.modernfoundry.smeltery.block;
 
 import lombok.Getter;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.Containers;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -17,7 +18,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import modernmods.hilt.util.BlockEntityHelper;
 import modernmods.modernfoundry.shared.block.TableBlock;
 import modernmods.modernfoundry.smeltery.block.entity.CastingBlockEntity;
 
@@ -78,18 +78,19 @@ public abstract class AbstractCastingBlock extends TableBlock {
   @SuppressWarnings("deprecation")
   @Deprecated
   @Override
-  public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
-    if (worldIn.isClientSide()) {
-      return;
+  public void neighborChanged(BlockState state, Level world, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+    if (!world.isClientSide && world.getBlockEntity(pos) instanceof CastingBlockEntity casting) {
+      casting.handleRedstone(world.hasNeighborSignal(pos));
     }
-    BlockEntityHelper.get(CastingBlockEntity.class, worldIn, pos).ifPresent(casting -> casting.handleRedstone(worldIn.hasNeighborSignal(pos)));
   }
 
   @SuppressWarnings("deprecation")
   @Deprecated
   @Override
-  public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
-    BlockEntityHelper.get(CastingBlockEntity.class, worldIn, pos).ifPresent(CastingBlockEntity::swap);
+  public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource rand) {
+    if (world.getBlockEntity(pos) instanceof CastingBlockEntity casting) {
+      casting.swap();
+    }
   }
 
   @Override
@@ -103,7 +104,20 @@ public abstract class AbstractCastingBlock extends TableBlock {
   }
 
   @Override
-  public int getAnalogOutputSignal(BlockState blockState, Level worldIn, BlockPos pos) {
-    return BlockEntityHelper.get(CastingBlockEntity.class, worldIn, pos).map(CastingBlockEntity::getAnalogSignal).orElse(0);
+  public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+    if (world.getBlockEntity(pos) instanceof CastingBlockEntity casting) {
+      return casting.getAnalogSignal();
+    }
+    return 0;
+  }
+
+  @Override
+  public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+    if (!state.is(newState.getBlock()) && level.getBlockEntity(pos) instanceof CastingBlockEntity casting) {
+      Containers.dropContents(level, pos, casting);
+      casting.clearContent();
+      level.updateNeighbourForOutputSignal(pos, this);
+    }
+    super.onRemove(state, level, pos, newState, isMoving);
   }
 }

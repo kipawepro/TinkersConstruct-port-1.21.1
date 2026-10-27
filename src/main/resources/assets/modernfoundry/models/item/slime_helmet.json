@@ -2,15 +2,12 @@
   "loader": "modernfoundry:tool",
   "parent": "neoforge:item/default",
   "textures": {
-    "slime": "modernfoundry:item/tool/armor/slime/helmet/slime",
-    "skull": "modernfoundry:item/tool/armor/slime/helmet/skull"
+    "slime": "modernfoundry:item/tool/armor/slime/helmet/slime"
   },
-  "modifier_maps": ["modernfoundry:slime/helmet"],
+  "modifier_maps": ["modernfoundry:slime/helmet", "modernfoundry:armor/helmet"],
   "parts": [
-    { "name": "skull", "index": 0 },
     { "name": "slime", "index": 1 }
   ],
-  "first_modifiers": [ "modernfoundry:trim" ],
   "overrides": [
     {
       "predicate": { "modernfoundry:broken": 1 },

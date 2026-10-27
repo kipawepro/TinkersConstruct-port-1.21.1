@@ -1,0 +1,10 @@
+{
+  "type": "modernfoundry:material",
+  "id": "modernfoundry:tools/materials/nautilus_shell",
+  "ingredient": {
+    "item": "minecraft:nautilus_shell"
+  },
+  "material": "modernfoundry:nautilus",
+  "needed": 1,
+  "value": 4
+}

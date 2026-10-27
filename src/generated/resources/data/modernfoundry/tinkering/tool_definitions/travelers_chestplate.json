@@ -27,7 +27,7 @@
     {
       "type": "modernfoundry:multiply_stats",
       "multipliers": {
-        "modernfoundry:attack_damage": 0.55,
+        "modernfoundry:attack_damage": 0.6,
         "modernfoundry:durability": 0.75
       }
     },

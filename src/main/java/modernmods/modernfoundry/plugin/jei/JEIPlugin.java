@@ -1,5 +1,20 @@
 package modernmods.modernfoundry.plugin.jei;
 
+import java.util.stream.Stream;
+import modernmods.modernfoundry.library.recipe.display.FilteredRecipe;
+import modernmods.modernfoundry.library.recipe.casting.material.MaterialCastingLookup;
+import modernmods.modernfoundry.library.recipe.material.MaterialRecipeCache;
+import modernmods.modernfoundry.library.recipe.material.IDisplayMaterialRecipe;
+import modernmods.modernfoundry.library.recipe.tinkerstation.IDisplayToolTinkering;
+import modernmods.modernfoundry.library.recipe.modifiers.adding.OverslimeCraftingTableRecipe;
+import modernmods.modernfoundry.plugin.jei.util.PerRecipeCraftingExtension;
+import modernmods.modernfoundry.plugin.jei.material.OverslimeRecipeExtension;
+import modernmods.modernfoundry.plugin.jei.material.MaterialIconIngredientRenderer;
+import modernmods.modernfoundry.plugin.jei.material.MaterialIngredientHelper;
+import modernmods.modernfoundry.plugin.jei.material.MaterialCategory;
+import modernmods.modernfoundry.plugin.jei.modifiers.ToolTinkeringExtension;
+import modernmods.modernfoundry.plugin.jei.modifiers.ToolTinkeringCategory;
+import modernmods.modernfoundry.plugin.jei.melting.FuelCategory;
 import com.google.common.collect.ImmutableList;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -170,6 +185,10 @@ public class JEIPlugin implements IModPlugin {
     registry.addRecipeCategories(new PartBuilderCategory(guiHelper));
     // modifier worktable
     registry.addRecipeCategories(new ModifierWorktableCategory(guiHelper));
+    registry.addRecipeCategories(new FuelCategory(guiHelper));
+    registry.addRecipeCategories(new ToolTinkeringCategory(guiHelper));
+    ToolTinkeringExtension.prepareDrawables(guiHelper);
+    registry.addRecipeCategories(new MaterialCategory(guiHelper));
   }
 
   @Override
@@ -183,6 +202,7 @@ public class JEIPlugin implements IModPlugin {
     List<SlotCount> slots = SlotType.getAllSlotTypes().stream().map(type -> new SlotCount(type, 1)).toList();
     SlotIngredientRenderer.clearCache();
     registration.register(TConstructJEIConstants.SLOT_TYPE, slots, new SlotIngredientHelper(), SlotIngredientRenderer.INGREDIENT);
+    registration.register(TConstructJEIConstants.MATERIAL_TYPE, List.of(), new MaterialIngredientHelper(), MaterialIconIngredientRenderer.INSTANCE);
   }
 
   @Override
@@ -190,6 +210,7 @@ public class JEIPlugin implements IModPlugin {
     registry.getCraftingCategory().addExtension(ShapedMaterialRecipe.class, ShapedMaterialExtension.INSTANCE);
     registry.getCraftingCategory().addExtension(ShapedMaterialsRecipe.class, ShapedMaterialsExtension.INSTANCE);
     registry.getCraftingCategory().addExtension(ShapelessMaterialsRecipe.class, MaterialsCraftingExtension.SHAPELESS);
+    registry.getCraftingCategory().addExtension(OverslimeCraftingTableRecipe.class, new PerRecipeCraftingExtension<>(OverslimeRecipeExtension::new));
   }
 
   @Override
@@ -208,7 +229,14 @@ public class JEIPlugin implements IModPlugin {
     List<MeltingRecipe> meltingRecipes = RecipeHelper.getJEIRecipes(access, manager, TinkerRecipeTypes.MELTING.get(), MeltingRecipe.class);
     register.addRecipes(TConstructJEIConstants.MELTING, meltingRecipes);
     register.addRecipes(TConstructJEIConstants.FOUNDRY, meltingRecipes);
-    MeltingFuelHandler.setMeltngFuels(RecipeHelper.getRecipes(manager, TinkerRecipeTypes.FUEL.get(), MeltingFuel.class));
+    List<MeltingFuel> fuels = RecipeHelper.getRecipes(manager, TinkerRecipeTypes.FUEL.get(), MeltingFuel.class);
+    MeltingFuelHandler.setMeltngFuels(fuels);
+    register.addRecipes(TConstructJEIConstants.FUEL, fuels);
+    register.addRecipes(TConstructJEIConstants.TOOL_MODIFICATION, FilteredRecipe.unfiltered(RecipeHelper.getJEIRecipes(access, manager, TinkerRecipeTypes.TINKER_STATION.get(), IDisplayToolTinkering.class)));
+    register.addRecipes(TConstructJEIConstants.MATERIALS, Stream.<IDisplayMaterialRecipe>concat(
+        MaterialRecipeCache.getSortedRecipes().stream(),
+        Stream.concat(MaterialCastingLookup.getSortedCastingFluids().stream(), MaterialCastingLookup.getSortedCompositeFluids().stream()))
+      .sorted(Comparator.comparing(IDisplayMaterialRecipe::getMaterial)).toList());
 
     // entity melting
     List<EntityMeltingRecipe> entityMeltingRecipes = RecipeHelper.getJEIRecipes(access, manager, TinkerRecipeTypes.ENTITY_MELTING.get(), EntityMeltingRecipe.class);
@@ -284,14 +312,18 @@ public class JEIPlugin implements IModPlugin {
     registry.addRecipeCatalyst(new ItemStack(TinkerTables.modifierWorktable), TConstructJEIConstants.MODIFIER_WORKTABLE);
 
     // smeltery
-    registry.addRecipeCatalyst(new ItemStack(TinkerSmeltery.searedMelter), TConstructJEIConstants.MELTING);
-    registry.addRecipeCatalyst(new ItemStack(TinkerSmeltery.searedHeater), RecipeTypes.FUELING);
+    registry.addRecipeCatalyst(new ItemStack(TinkerSmeltery.searedMelter), TConstructJEIConstants.MELTING, TConstructJEIConstants.FUEL);
+    registry.addRecipeCatalyst(new ItemStack(TinkerSmeltery.searedHeater), RecipeTypes.FUELING, TConstructJEIConstants.FUEL);
     addCastingCatalyst(registry, TinkerSmeltery.searedTable, TConstructJEIConstants.CASTING_TABLE, TinkerRecipeTypes.MOLDING_TABLE.get());
     addCastingCatalyst(registry, TinkerSmeltery.searedBasin, TConstructJEIConstants.CASTING_BASIN, TinkerRecipeTypes.MOLDING_BASIN.get());
     registry.addRecipeCatalyst(new ItemStack(TinkerSmeltery.smelteryController), TConstructJEIConstants.MELTING, TConstructJEIConstants.ALLOY, TConstructJEIConstants.ENTITY_MELTING);
 
     // foundry
-    registry.addRecipeCatalyst(new ItemStack(TinkerSmeltery.scorchedAlloyer), TConstructJEIConstants.ALLOY);
+    registry.addRecipeCatalyst(new ItemStack(TinkerSmeltery.scorchedAlloyer), TConstructJEIConstants.ALLOY, TConstructJEIConstants.FUEL);
+    registry.addRecipeCatalyst(new ItemStack(TinkerTables.tinkerStation), TConstructJEIConstants.TOOL_MODIFICATION);
+    registry.addRecipeCatalyst(new ItemStack(TinkerTables.tinkersAnvil), TConstructJEIConstants.TOOL_MODIFICATION);
+    registry.addRecipeCatalyst(new ItemStack(TinkerTables.scorchedAnvil), TConstructJEIConstants.TOOL_MODIFICATION);
+    registry.addRecipeCatalyst(new ItemStack(TinkerTables.partBuilder), TConstructJEIConstants.MATERIALS);
     addCastingCatalyst(registry, TinkerSmeltery.scorchedTable, TConstructJEIConstants.CASTING_TABLE, TinkerRecipeTypes.MOLDING_TABLE.get());
     addCastingCatalyst(registry, TinkerSmeltery.scorchedBasin, TConstructJEIConstants.CASTING_BASIN, TinkerRecipeTypes.MOLDING_BASIN.get());
     registry.addRecipeCatalyst(new ItemStack(TinkerSmeltery.foundryController), TConstructJEIConstants.FOUNDRY);

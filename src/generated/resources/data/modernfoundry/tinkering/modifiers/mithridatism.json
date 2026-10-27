@@ -5,6 +5,5 @@
       "type": "modernfoundry:effect_immunity",
       "effect": "minecraft:poison"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

@@ -19,27 +19,17 @@
       "modernfoundry:shield_core",
       "modernfoundry:maille",
       "modernfoundry:cuirass",
-      "modernfoundry:slime",
-      "modernfoundry:shell"
+      "modernfoundry:slime"
     ],
     "transformer": {
       "type": "modernfoundry:recolor_sprite",
       "color_mapping": {
         "type": "modernfoundry:grey_to_color",
-        "palette": [
-          {
-            "color": "FF000000",
-            "grey": 63
-          },
-          {
-            "color": "FF222222",
-            "grey": 102
-          },
-          {
-            "color": "00000000",
-            "grey": 103
-          }
-        ]
+        "palette": {
+          "063": "FF000000",
+          "102": "FF222222",
+          "103": "00000000"
+        }
       }
     }
   }

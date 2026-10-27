@@ -146,6 +146,7 @@
   "modernfoundry:bouncy":           "modernfoundry:gui/modifiers/armor/bouncy",
   "modernfoundry:double_jump":      "modernfoundry:gui/modifiers/armor/double_jump",
   "modernfoundry:feather_falling":  "modernfoundry:gui/modifiers/armor/feather_falling",
+  "modernfoundry:feather_fall":     "modernfoundry:gui/modifiers/armor/feather_falling",
   "modernfoundry:flamewake":        "modernfoundry:gui/modifiers/armor/flamewake",
   "modernfoundry:frost_walker":     "modernfoundry:gui/modifiers/armor/frost_walker",
   "modernfoundry:lightspeed_armor": "modernfoundry:gui/modifiers/armor/lightspeed",

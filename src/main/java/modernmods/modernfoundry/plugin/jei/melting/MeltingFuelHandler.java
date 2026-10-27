@@ -48,6 +48,22 @@ public class MeltingFuelHandler {
    * @param temperature  Recipe temperature
    * @return  List of fuels for the given temperature
    */
+  private static List<ItemStack> allSolidFuels;
+
+  public static List<ItemStack> getAllSolidFuels() {
+    if (allSolidFuels == null) {
+      allSolidFuels = net.minecraft.core.registries.BuiltInRegistries.ITEM.stream()
+        .map(ItemStack::new)
+        .filter(stack -> getFuelDuration(stack) > 0)
+        .toList();
+    }
+    return allSolidFuels;
+  }
+
+  public static int getFuelDuration(ItemStack stack) {
+    return stack.isEmpty() ? 0 : stack.getBurnTime(net.minecraft.world.item.crafting.RecipeType.SMELTING);
+  }
+
   public static List<FluidStack> getUsableFuels(int temperature) {
     // first fuel list with a temperature bigger is the one to use
     for (Pair<Integer, List<FluidStack>> pair : fuelLookup) {

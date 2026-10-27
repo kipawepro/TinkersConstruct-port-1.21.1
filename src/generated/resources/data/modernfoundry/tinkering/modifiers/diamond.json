@@ -49,7 +49,14 @@
       "flat": 0.5,
       "operation": "add",
       "stat": "modernfoundry:projectile_damage"
+    },
+    {
+      "type": "modernfoundry:volatile_flag",
+      "flag": "modernfoundry:diamond_armor",
+      "tool": {
+        "type": "hilt:tag",
+        "tag": "modernfoundry:modifiable/armor/worn"
+      }
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

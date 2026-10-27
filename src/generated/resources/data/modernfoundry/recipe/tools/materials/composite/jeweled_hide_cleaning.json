@@ -5,6 +5,7 @@
     "amount": 50,
     "tag": "modernfoundry:venom"
   },
+  "hide_in_book": true,
   "input": "modernfoundry:jeweled_hide",
   "output": "modernfoundry:leather",
   "temperature": 10

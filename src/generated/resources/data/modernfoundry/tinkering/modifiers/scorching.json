@@ -7,6 +7,5 @@
       "percent": false,
       "target": "hilt:on_fire"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

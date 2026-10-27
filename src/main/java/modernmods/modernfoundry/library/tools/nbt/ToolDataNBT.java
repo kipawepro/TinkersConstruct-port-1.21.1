@@ -1,6 +1,7 @@
 package modernmods.modernfoundry.library.tools.nbt;
 
 import net.minecraft.nbt.CompoundTag;
+import javax.annotation.Nullable;
 import modernmods.modernfoundry.library.tools.SlotType;
 
 /**
@@ -8,10 +9,24 @@ import modernmods.modernfoundry.library.tools.SlotType;
  * Typically, slots are only directly modifiable by the tool, though all contexts are free to view them.
  */
 public class ToolDataNBT extends ModDataNBT {
+  @Nullable
+  private Runnable changeListener;
+
   public ToolDataNBT() {}
 
   protected ToolDataNBT(CompoundTag nbt) {
     super(nbt);
+  }
+
+  void setChangeListener(@Nullable Runnable changeListener) {
+    this.changeListener = changeListener;
+  }
+
+  @Override
+  protected void onChanged() {
+    if (changeListener != null) {
+      changeListener.run();
+    }
   }
 
   @Override
@@ -30,6 +45,7 @@ public class ToolDataNBT extends ModDataNBT {
     } else {
       getData().putInt(type.getName(), value);
     }
+    onChanged();
   }
 
   /**

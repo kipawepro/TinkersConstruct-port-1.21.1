@@ -9,13 +9,13 @@
     "modernfoundry:laces": [
       {
         "level": 1,
-        "name": "modernfoundry:snow_boots"
+        "name": "modernfoundry:rugged"
       }
     ],
     "modernfoundry:skull": [
       {
-        "level": 2,
-        "name": "modernfoundry:consecrated"
+        "level": 1,
+        "name": "modernfoundry:consecrated_skull"
       },
       {
         "level": 1,

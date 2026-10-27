@@ -1,7 +1,7 @@
 {
   "type": "modernfoundry:part_builder",
   "id": "modernfoundry:tools/parts/builder/ribcage",
-  "cost": 2,
+  "cost": 4,
   "pattern": "modernfoundry:ribcage",
   "pattern_item": {
     "tag": "modernfoundry:patterns/default"

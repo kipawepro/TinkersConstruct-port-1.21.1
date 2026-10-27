@@ -1,0 +1,20 @@
+{
+  "type": "modernfoundry:material",
+  "id": "modernfoundry:tools/materials/horn/default",
+  "conditions": [
+    {
+      "type": "hilt:tag_combination_filled",
+      "ignore": "modernfoundry:variant_horns",
+      "match": "minecraft:goat_horns",
+      "registry": "minecraft:instrument"
+    }
+  ],
+  "ingredient": {
+    "type": "modernfoundry:instrument",
+    "ignore": "modernfoundry:variant_horns",
+    "item": "minecraft:goat_horn"
+  },
+  "material": "modernfoundry:horn",
+  "needed": 1,
+  "value": 4
+}

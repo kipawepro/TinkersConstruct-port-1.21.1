@@ -3,10 +3,7 @@
   "id": "modernfoundry:smeltery/entity_melting/guardian",
   "damage": 4,
   "entity": {
-    "types": [
-      "minecraft:guardian",
-      "minecraft:elder_guardian"
-    ]
+    "tag": "c:guardians"
   },
   "result": {
     "amount": 50,

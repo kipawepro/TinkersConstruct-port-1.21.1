@@ -1,0 +1,10 @@
+{
+  "type": "modernfoundry:material_melting",
+  "id": "modernfoundry:tools/materials/melting/venom",
+  "input": "modernfoundry:venom",
+  "result": {
+    "amount": 250,
+    "fluid": "modernfoundry:venom"
+  },
+  "temperature": 10
+}

@@ -1,5 +1,6 @@
 package modernmods.modernfoundry.smeltery.block.component;
 
+import modernmods.hilt.util.BlockEntityHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -25,7 +26,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.fluids.FluidStack;
 import modernmods.hilt.fluid.FluidTransferHelper;
-import modernmods.hilt.util.BlockEntityHelper;
 import modernmods.modernfoundry.library.recipe.FluidValues;
 import modernmods.modernfoundry.library.utils.NBTTags;
 import modernmods.modernfoundry.smeltery.block.entity.ITankBlockEntity;

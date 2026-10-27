@@ -4,7 +4,10 @@
     {
       "type": "modernfoundry:mob_disguise",
       "entity": "minecraft:wither_skeleton"
+    },
+    {
+      "type": "modernfoundry:rarity",
+      "rarity": "uncommon"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

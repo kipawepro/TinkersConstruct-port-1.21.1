@@ -60,6 +60,7 @@ public class BlockTagIngredient implements ICustomIngredient {
   }
 
   /** Gets the ordered matching items set */
+  @SuppressWarnings("deprecation")
   private Set<Item> getMatchingItems() {
     if (matchingItems == null) {
       matchingItems = RegistryHelper.getTagValueStream(BuiltInRegistries.BLOCK, tag)

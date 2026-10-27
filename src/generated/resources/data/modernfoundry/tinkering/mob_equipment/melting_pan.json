@@ -1,9 +1,5 @@
 {
-  "entity": [
-    "minecraft:zombie",
-    "minecraft:zombie_villager",
-    "minecraft:husk"
-  ],
+  "entity": "#modernfoundry:spawns_with/melting_pan",
   "equip": {
     "chance": 0.05,
     "materials": [

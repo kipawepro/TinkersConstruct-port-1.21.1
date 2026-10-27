@@ -5,6 +5,11 @@ import mezz.jei.api.ingredients.IIngredientTypeWithSubtypes;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.resources.ResourceLocation;
 import modernmods.modernfoundry.TConstruct;
+import modernmods.modernfoundry.library.materials.definition.LazyMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialVariant;
+import modernmods.modernfoundry.library.recipe.fuel.MeltingFuel;
+import modernmods.modernfoundry.library.recipe.material.IDisplayMaterialRecipe;
+import modernmods.modernfoundry.library.recipe.tinkerstation.IDisplayToolTinkering;
 import modernmods.modernfoundry.library.modifiers.Modifier;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
 import modernmods.modernfoundry.library.recipe.alloying.AlloyRecipe;
@@ -41,6 +46,22 @@ public class TConstructJEIConstants {
       return ingredient.getModifier();
     }
   };
+  public static final IIngredientTypeWithSubtypes<LazyMaterial, MaterialVariant> MATERIAL_TYPE = new IIngredientTypeWithSubtypes<>() {
+    @Override
+    public Class<? extends MaterialVariant> getIngredientClass() {
+      return MaterialVariant.class;
+    }
+
+    @Override
+    public Class<? extends LazyMaterial> getIngredientBaseClass() {
+      return LazyMaterial.class;
+    }
+
+    @Override
+    public LazyMaterial getBase(MaterialVariant variant) {
+      return variant.getBase();
+    }
+  };
   public static final IIngredientType<Pattern> PATTERN_TYPE = () -> Pattern.class;
   public static final IIngredientTypeWithSubtypes<SlotType, SlotCount> SLOT_TYPE = new IIngredientTypeWithSubtypes<>() {
     @Override
@@ -68,6 +89,9 @@ public class TConstructJEIConstants {
   public static final RecipeType<MeltingRecipe> MELTING = type("melting", MeltingRecipe.class);
   public static final RecipeType<EntityMeltingRecipe> ENTITY_MELTING = type("entity_melting", EntityMeltingRecipe.class);
   public static final RecipeType<AlloyRecipe> ALLOY = type("alloy", AlloyRecipe.class);
+  public static final RecipeType<MeltingFuel> FUEL = type("fuel", MeltingFuel.class);
+  public static final RecipeType<IDisplayToolTinkering> TOOL_MODIFICATION = type("tool_modification", IDisplayToolTinkering.class);
+  public static final RecipeType<IDisplayMaterialRecipe> MATERIALS = type("materials", IDisplayMaterialRecipe.class);
   public static final RecipeType<MeltingRecipe> FOUNDRY = type("foundry", MeltingRecipe.class);
 
   // tinker station

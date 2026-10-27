@@ -16,6 +16,7 @@ import modernmods.hilt.fluid.FluidTransferHelper;
 import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.common.TinkerTags;
 import modernmods.modernfoundry.common.TinkerTags.Modifiers;
+import modernmods.modernfoundry.library.modifiers.Modifier;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
 import modernmods.modernfoundry.library.modifiers.ModifierHooks;
 import modernmods.modernfoundry.library.modifiers.ModifierId;
@@ -48,9 +49,16 @@ public class ModifierCrystalItem extends Item {
 
   @Override
   public Component getName(ItemStack stack) {
-    ModifierId modifier = getModifier(stack);
-    if (modifier != null) {
-      return Component.translatable(getDescriptionId(stack) + ".format", Component.translatable(Util.makeTranslationKey("modifier", modifier)));
+    ModifierId id = getModifier(stack);
+    if (id != null) {
+      Modifier modifier = ModifierManager.getValue(id);
+      Component modifierName;
+      if (modifier != ModifierManager.INSTANCE.getDefaultValue()) {
+        modifierName = modifier.getDisplayName();
+      } else {
+        modifierName = Component.translatable(Util.makeTranslationKey("modifier", id));
+      }
+      return Component.translatable(getDescriptionId(stack) + ".format", modifierName).setStyle(modifierName.getStyle());
     }
     return super.getName(stack);
   }

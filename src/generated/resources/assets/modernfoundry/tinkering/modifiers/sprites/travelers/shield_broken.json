@@ -1,0 +1,21 @@
+{
+  "constant": {
+    "__dyed": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:material_has_fallback",
+        "fallback": "wool",
+        "if_false": {
+          "type": "modernfoundry:dyed",
+          "texture": "modernfoundry:item/tool/armor/travelers/shield/dyed_broken"
+        },
+        "if_true": {
+          "type": "modernfoundry:dyed",
+          "texture": "modernfoundry:item/tool/armor/travelers/shield/cuirass_broken_modernfoundry_wool_white"
+        },
+        "index": 1
+      },
+      "modifier": "modernfoundry:dyed"
+    }
+  }
+}

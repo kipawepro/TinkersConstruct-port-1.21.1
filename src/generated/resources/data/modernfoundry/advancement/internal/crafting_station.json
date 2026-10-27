@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "crafting_station": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernfoundry:crafting_station"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "crafting_station"
+    ]
+  ],
+  "rewards": {
+    "function": "modernfoundry:grant_advancement/story_root"
+  },
+  "sends_telemetry_event": false
+}

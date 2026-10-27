@@ -3,7 +3,7 @@
   "id": "modernfoundry:tools/recycling/travelers_gear",
   "parts": [
     "modernfoundry:repair_kit",
-    "modernfoundry:maille"
+    "modernfoundry:repair_kit"
   ],
   "pattern": {
     "item": "modernfoundry:venom_bottle"

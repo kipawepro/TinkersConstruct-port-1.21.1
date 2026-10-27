@@ -27,32 +27,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "blazing_bone": {
-      "conditions": {
-        "items": [
-          {
-            "type": "modernfoundry:tool_stack",
-            "predicate": {
-              "type": "hilt:and",
-              "predicates": [
-                {
-                  "type": "hilt:set",
-                  "items": [
-                    "modernfoundry:slime_helmet"
-                  ]
-                },
-                {
-                  "type": "modernfoundry:has_material",
-                  "index": 0,
-                  "material": "modernfoundry:blazing_bone"
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "bone": {
       "conditions": {
         "items": [
@@ -183,32 +157,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "glass": {
-      "conditions": {
-        "items": [
-          {
-            "type": "modernfoundry:tool_stack",
-            "predicate": {
-              "type": "hilt:and",
-              "predicates": [
-                {
-                  "type": "hilt:set",
-                  "items": [
-                    "modernfoundry:slime_helmet"
-                  ]
-                },
-                {
-                  "type": "modernfoundry:has_material",
-                  "index": 0,
-                  "material": "modernfoundry:glass"
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "gold": {
       "conditions": {
         "items": [
@@ -227,6 +175,32 @@
                   "type": "modernfoundry:has_material",
                   "index": 0,
                   "material": "modernfoundry:gold"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "gunpowder": {
+      "conditions": {
+        "items": [
+          {
+            "type": "modernfoundry:tool_stack",
+            "predicate": {
+              "type": "hilt:and",
+              "predicates": [
+                {
+                  "type": "hilt:set",
+                  "items": [
+                    "modernfoundry:slime_helmet"
+                  ]
+                },
+                {
+                  "type": "modernfoundry:has_material",
+                  "index": 0,
+                  "material": "modernfoundry:gunpowder"
                 }
               ]
             }
@@ -442,32 +416,6 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "venombone": {
-      "conditions": {
-        "items": [
-          {
-            "type": "modernfoundry:tool_stack",
-            "predicate": {
-              "type": "hilt:and",
-              "predicates": [
-                {
-                  "type": "hilt:set",
-                  "items": [
-                    "modernfoundry:slime_helmet"
-                  ]
-                },
-                {
-                  "type": "modernfoundry:has_material",
-                  "index": 0,
-                  "material": "modernfoundry:venombone"
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -479,7 +427,7 @@
     "hidden": false,
     "icon": {
       "item": "modernfoundry:slime_helmet",
-      "nbt": "{Damage:0,tic_broken:0b,tic_materials:[\"modernfoundry:glass\",\"modernfoundry:enderslime\"]}"
+      "nbt": "{Damage:0,tic_broken:0b,tic_materials:[\"modernfoundry:gunpowder\",\"modernfoundry:enderslime\"]}"
     },
     "show_toast": true,
     "title": {
@@ -488,7 +436,7 @@
   },
   "requirements": [
     [
-      "glass"
+      "gunpowder"
     ],
     [
       "blaze"
@@ -533,14 +481,8 @@
       "dragon_scale"
     ],
     [
-      "venombone"
-    ],
-    [
-      "blazing_bone"
-    ],
-    [
       "knightmetal"
     ]
   ],
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }

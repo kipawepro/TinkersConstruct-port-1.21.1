@@ -23,6 +23,5 @@
     {
       "type": "modernfoundry:show_interaction_source"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

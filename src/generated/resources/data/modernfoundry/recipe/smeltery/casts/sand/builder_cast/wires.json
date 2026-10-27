@@ -11,5 +11,6 @@
   "pattern_item": {
     "tag": "modernfoundry:casts/sand"
   },
-  "result": "modernfoundry:wire_sand_cast"
+  "result": "modernfoundry:wire_sand_cast",
+  "title_key": "modernfoundry:sand_cast"
 }

@@ -1,0 +1,13 @@
+{
+  "constant": {
+    "_banner": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:banner",
+        "prefix": "modernfoundry:item/tool/armor/plate/shield/banner_small/",
+        "prefix_large": "modernfoundry:item/tool/armor/plate/shield/banner_large/"
+      },
+      "modifier": "modernfoundry:banner"
+    }
+  }
+}

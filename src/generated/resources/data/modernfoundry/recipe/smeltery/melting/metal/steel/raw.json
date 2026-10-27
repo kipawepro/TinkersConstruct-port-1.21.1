@@ -8,6 +8,12 @@
       "tag": "c:molten_iron"
     }
   ],
+  "conditions": [
+    {
+      "type": "hilt:tag_filled",
+      "tag": "c:raw_materials/steel"
+    }
+  ],
   "ingredient": {
     "tag": "c:raw_materials/steel"
   },

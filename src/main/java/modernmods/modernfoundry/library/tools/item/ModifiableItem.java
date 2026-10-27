@@ -20,6 +20,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
@@ -56,6 +57,7 @@ import modernmods.modernfoundry.library.modifiers.hook.interaction.UsingToolModi
 import modernmods.modernfoundry.library.modifiers.modules.build.RarityModule;
 import modernmods.modernfoundry.library.tools.IndestructibleItemEntity;
 import modernmods.modernfoundry.library.tools.capability.ToolCapabilityProvider;
+import modernmods.modernfoundry.library.tools.capability.inventory.ToolInventoryCapability;
 import modernmods.modernfoundry.library.tools.definition.ToolDefinition;
 import modernmods.modernfoundry.library.tools.definition.module.display.ToolNameHook;
 import modernmods.modernfoundry.library.tools.definition.module.mining.IsEffectiveToolHook;
@@ -182,7 +184,7 @@ public class ModifiableItem extends TieredItem implements IModifiableDisplay {
   }
 
 
-  /* Indestructible items */
+  /* Item entity */
 
   @Override
   public boolean hasCustomEntity(ItemStack stack) {
@@ -193,6 +195,12 @@ public class ModifiableItem extends TieredItem implements IModifiableDisplay {
   @Override
   public Entity createEntity(Level world, Entity original, ItemStack stack) {
     return IndestructibleItemEntity.createFrom(world, original, stack);
+  }
+
+  @Deprecated
+  @Override
+  public void onDestroyed(ItemEntity entity) {
+    ToolInventoryCapability.onDestroyed(entity);
   }
 
 

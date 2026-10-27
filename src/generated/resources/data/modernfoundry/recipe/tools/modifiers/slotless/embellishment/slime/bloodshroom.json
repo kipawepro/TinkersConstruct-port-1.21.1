@@ -2,6 +2,12 @@
   "type": "modernfoundry:swappable_modifier",
   "id": "modernfoundry:tools/modifiers/slotless/embellishment/slime/bloodshroom",
   "allow_crystal": false,
+  "conditions": [
+    {
+      "type": "hilt:tag_filled",
+      "tag": "modernfoundry:modifiable/embellishment/slime"
+    }
+  ],
   "inputs": [
     {
       "item": "modernfoundry:bloodshroom_planks"

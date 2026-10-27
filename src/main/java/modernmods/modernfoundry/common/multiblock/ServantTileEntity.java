@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import modernmods.modernfoundry.compat.neoforged.neoforge.registries.ForgeRegistries;
 import modernmods.hilt.block.entity.HiltBlockEntity;
 import modernmods.hilt.util.BlockEntityHelper;
+import modernmods.hilt.data.loadable.Loadables;
 import modernmods.modernfoundry.library.utils.TagUtil;
 import modernmods.modernfoundry.smeltery.block.component.SearedBlock;
 
@@ -89,9 +90,8 @@ public class ServantTileEntity extends HiltBlockEntity implements IServantLogic 
 
   @Override
   public void notifyMasterOfChange(BlockPos pos, BlockState state) {
-    if (validateMaster()) {
-      assert masterPos != null;
-      BlockEntityHelper.get(IMasterLogic.class, level, masterPos).ifPresent(te -> te.notifyChange(pos, state));
+    if (level != null && masterPos != null && validateMaster() && level.getBlockEntity(masterPos) instanceof IMasterLogic te) {
+      te.notifyChange(pos, state);
     }
   }
 
@@ -149,10 +149,11 @@ public class ServantTileEntity extends HiltBlockEntity implements IServantLogic 
    * Writes the master position and master block to the given compound
    * @param tags  Tags
    */
+  @SuppressWarnings({"UnusedReturnValue"})
   protected CompoundTag writeMaster(CompoundTag tags) {
     if (masterPos != null && masterBlock != null) {
       tags.put(TAG_MASTER_POS, NbtUtils.writeBlockPos(masterPos.subtract(this.worldPosition)));
-      tags.putString(TAG_MASTER_BLOCK, BuiltInRegistries.BLOCK.getKey(masterBlock).toString());
+      tags.putString(TAG_MASTER_BLOCK, Loadables.BLOCK.getKey(masterBlock).toString());
     }
     return tags;
   }

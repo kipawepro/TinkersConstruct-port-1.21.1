@@ -1,8 +1,5 @@
 {
   "values": [
-    "#c:glass/colorless",
-    "#c:glass/tinted",
-    "#c:glass/silica",
-    "#c:stained_glass"
+    "modernfoundry:soul_glass"
   ]
 }

@@ -1,1 +1,10 @@
-{}
+{
+  "perStat": {
+    "modernfoundry:slime": [
+      {
+        "level": 1,
+        "name": "modernfoundry:scrumptious"
+      }
+    ]
+  }
+}

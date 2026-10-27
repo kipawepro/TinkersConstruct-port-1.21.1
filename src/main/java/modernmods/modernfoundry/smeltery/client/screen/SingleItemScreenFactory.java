@@ -1,12 +1,13 @@
 package modernmods.modernfoundry.smeltery.client.screen;
 
-import net.minecraft.client.gui.screens.MenuScreens.ScreenConstructor;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.client.gui.screens.MenuScreens.ScreenConstructor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import modernmods.hilt.client.screen.BackgroundContainerScreen;
+import modernmods.hilt.data.loadable.Loadables;
 import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.smeltery.menu.SingleItemContainerMenu;
 

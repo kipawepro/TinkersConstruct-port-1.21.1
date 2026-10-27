@@ -2,6 +2,7 @@ package modernmods.modernfoundry.tools.modifiers.traits.skull;
 
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
@@ -15,24 +16,24 @@ import modernmods.modernfoundry.library.modifiers.ModifierEntry;
 import modernmods.modernfoundry.library.modifiers.ModifierHooks;
 import modernmods.modernfoundry.library.modifiers.hook.armor.EquipmentChangeModifierHook;
 import modernmods.modernfoundry.library.modifiers.hook.interaction.KeybindInteractModifierHook;
-import modernmods.modernfoundry.library.modifiers.impl.NoLevelsModifier;
+import modernmods.modernfoundry.library.modifiers.impl.SingleLevelModifier;
 import modernmods.modernfoundry.library.module.ModuleHookMap.Builder;
 import modernmods.modernfoundry.library.tools.context.EquipmentChangeContext;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
 import modernmods.modernfoundry.shared.TinkerEffects;
 import modernmods.modernfoundry.tools.modifiers.effect.NoMilkEffect;
 
-public class SelfDestructiveModifier extends NoLevelsModifier implements KeybindInteractModifierHook, EquipmentChangeModifierHook {
+// TODO: migrate to JSON
+public class SelfDestructiveModifier extends SingleLevelModifier implements KeybindInteractModifierHook, EquipmentChangeModifierHook {
   @Override
   protected void registerHooks(Builder hookBuilder) {
-    super.registerHooks(hookBuilder);
     hookBuilder.addHook(this, ModifierHooks.ARMOR_INTERACT, ModifierHooks.EQUIPMENT_CHANGE);
   }
 
   @Override
   public boolean startInteract(IToolStackView tool, ModifierEntry modifier, Player player, EquipmentSlot slot, TooltipKey keyModifier) {
     if (player.isShiftKeyDown()) {
-      TinkerEffects.selfDestructing.get().apply(player, 30, 2, true);
+      player.addEffect(new MobEffectInstance(TinkerEffects.holder(TinkerEffects.selfDestructing), 30, 2 * modifier.intEffectiveLevel()));
       player.playSound(SoundEvents.CREEPER_PRIMED, 1.0F, 0.5F);
       return true;
     }

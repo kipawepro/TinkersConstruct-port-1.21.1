@@ -105,6 +105,7 @@ public class ToolClientEvents extends ClientEventBase {
     ModifierManager.INSTANCE.getAllValues().forEach(modifier -> modifier.clearCache(PackType.CLIENT_RESOURCES));
   };
 
+  @SuppressWarnings("deprecation")
   @SubscribeEvent
   static void addResourceListener(RegisterClientReloadListenersEvent manager) {
     ModifierModelManager.init(manager);
@@ -156,6 +157,15 @@ public class ToolClientEvents extends ClientEventBase {
     event.registerEntityRenderer(TinkerTools.thrownTool.get(), ThrownToolRenderer::new);
     event.registerEntityRenderer(TinkerModifiers.fluidSpitEntity.get(), FluidEffectProjectileRenderer::new);
     event.registerEntityRenderer(TinkerModifiers.fireball.get(), context -> new ThrownItemRenderer<>(context, 0.75f, true));
+  }
+
+  @SubscribeEvent
+  static void registerClientExtensions(net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent event) {
+    for (net.minecraft.world.item.Item item : net.minecraft.core.registries.BuiltInRegistries.ITEM) {
+      if (item instanceof modernmods.modernfoundry.library.tools.item.ranged.ModifiableLauncherItem launcher) {
+        launcher.initializeClient(extension -> event.registerItem(extension, item));
+      }
+    }
   }
 
   @SubscribeEvent

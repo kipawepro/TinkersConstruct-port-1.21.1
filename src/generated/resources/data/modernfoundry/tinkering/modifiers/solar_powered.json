@@ -1,11 +1,15 @@
 {
-  "level_display": "modernfoundry:default",
+  "level_display": "modernfoundry:single_level",
   "modules": [
     {
       "type": "modernfoundry:reduce_tool_damage",
       "formula": [
+        0.01,
+        "$level",
+        "*",
+        0.04,
+        "+",
         "$light",
-        0.05,
         "*"
       ],
       "reinforced_tooltip": true,
@@ -19,6 +23,5 @@
       }
     }
   ],
-  "priority": 185,
-  "tooltip_display": "always"
+  "priority": 185
 }

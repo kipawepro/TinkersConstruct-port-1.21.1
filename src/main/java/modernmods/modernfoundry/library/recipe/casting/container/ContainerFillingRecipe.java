@@ -25,19 +25,20 @@ import modernmods.hilt.data.loadable.record.RecordLoadable;
 import modernmods.hilt.recipe.IMultiRecipe;
 import modernmods.hilt.recipe.helper.LoadableRecipeSerializer;
 import modernmods.hilt.recipe.helper.TypeAwareRecipeSerializer;
+import modernmods.modernfoundry.common.TinkerTags;
 import modernmods.modernfoundry.library.recipe.casting.DisplayCastingRecipe;
 import modernmods.modernfoundry.library.recipe.casting.ICastingContainer;
 import modernmods.modernfoundry.library.recipe.casting.ICastingRecipe;
 import modernmods.modernfoundry.library.utils.TagUtil;
+import modernmods.modernfoundry.library.recipe.casting.IDisplayableCastingRecipe;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
  * Casting recipe that takes an arbitrary fluid for a given amount and fills a container
  */
 @RequiredArgsConstructor
-public class ContainerFillingRecipe implements ICastingRecipe, IMultiRecipe<DisplayCastingRecipe> {
+public class ContainerFillingRecipe implements ICastingRecipe, IMultiRecipe<IDisplayableCastingRecipe> {
   public static final RecordLoadable<ContainerFillingRecipe> LOADER = RecordLoadable.create(
     LoadableRecipeSerializer.TYPED_SERIALIZER.requiredField(), ContextKey.ID.requiredField(), LoadableRecipeSerializer.RECIPE_GROUP,
     IntLoadable.FROM_ONE.requiredField("fluid_amount", r -> r.fluidAmount),
@@ -110,24 +111,42 @@ public class ContainerFillingRecipe implements ICastingRecipe, IMultiRecipe<Disp
 
   /* Display */
   /** Cache of items to display for this container */
-  private List<DisplayCastingRecipe> displayRecipes = null;
+  private List<IDisplayableCastingRecipe> displayRecipes = null;
 
   @Override
-  public List<DisplayCastingRecipe> getRecipes(RegistryAccess access) {
+  public List<IDisplayableCastingRecipe> getRecipes(RegistryAccess access) {
     if (displayRecipes == null) {
-      List<ItemStack> casts = Collections.singletonList(new ItemStack(container));
-      displayRecipes = ForgeRegistries.FLUIDS.getValues().stream()
-                                             .filter(fluid -> fluid.getBucket() != Items.AIR && fluid.isSource(fluid.defaultFluidState()))
-                                             .map(fluid -> {
-                                               FluidStack fluidStack = new FluidStack(fluid, fluidAmount);
-                                               ItemStack stack = new ItemStack(container);
-                                               stack = FluidUtil.getFluidHandler(stack).map(handler -> {
-                                                 handler.fill(fluidStack, FluidAction.EXECUTE);
-                                                 return handler.getContainer();
-                                               }).orElse(stack);
-                                               return new DisplayCastingRecipe(getId(), getType(), casts, Collections.singletonList(fluidStack), stack, 5, true);
-                                             })
-                                             .toList();
+      // filter fluid registry to just fluids we care about
+      List<FluidStack> fluids = ForgeRegistries.FLUIDS.getValues().stream()
+        .filter(fluid -> {
+          // skip flowing fluids (redundant to source), fluids with no bucket (probably internal), and fluids hidden from recipe viewers (they be hidden)
+          if (fluid.isSource(fluid.defaultFluidState()) && !fluid.is(TinkerTags.Fluids.HIDE_IN_CREATIVE_TANKS)) {
+            try {
+              Item bucket = fluid.getBucket();
+              return bucket != Items.AIR && !bucket.builtInRegistryHolder().is(TinkerTags.Items.HIDDEN_IN_RECIPE_VIEWERS);
+            } catch (Exception e) {
+              // Registrate (popular dependency for making registration easier) is broken and throws in getBucket for fluids with no bucket
+              // we could just skip the bucket check, but its just going to throw when we try to fill an empty bucket in map below
+            }
+          }
+          return false;
+        })
+        .map(fluid -> new FluidStack(fluid, fluidAmount))
+        .toList();
+      // fill the container with each fluid stack
+      List<ItemStack> results = fluids.stream().map(fluid -> {
+        ItemStack stack = new ItemStack(container);
+        return FluidUtil.getFluidHandler(stack).map(handler -> {
+          handler.fill(fluid, FluidAction.EXECUTE);
+          return handler.getContainer();
+        }).orElse(stack);
+      }).toList();
+      displayRecipes = List.of(DisplayCastingRecipe.type(getType()).id(getId())
+        // cast is just an empty container, which is "consumed"
+        .cast(new ItemStack(container)).consumed()
+        .fluids(fluids).results(results).linkFluidsToOutput()
+        .coolingTime(5)
+        .build());
     }
     return displayRecipes;
   }

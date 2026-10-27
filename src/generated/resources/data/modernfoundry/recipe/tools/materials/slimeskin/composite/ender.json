@@ -6,6 +6,6 @@
     "tag": "modernfoundry:ender_slime"
   },
   "input": "modernfoundry:leather",
-  "output": "modernfoundry:enderslime_vine#slimeskin",
+  "output": "modernfoundry:enderslimeskin",
   "temperature": 70
 }

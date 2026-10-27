@@ -30,7 +30,7 @@
     {
       "type": "modernfoundry:multiply_stats",
       "multipliers": {
-        "modernfoundry:attack_damage": 0.4
+        "modernfoundry:attack_damage": 0.5
       }
     },
     {

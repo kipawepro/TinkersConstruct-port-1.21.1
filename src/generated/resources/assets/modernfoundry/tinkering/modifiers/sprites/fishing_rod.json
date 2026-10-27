@@ -1,0 +1,45 @@
+{
+  "constant": {
+    "__tipped": {
+      "type": "modernfoundry:trait",
+      "model": {
+        "type": "modernfoundry:potion",
+        "texture": "modernfoundry:item/tool/fishing_rod/modifiers/tipped"
+      },
+      "modifier": "modernfoundry:tipped"
+    },
+    "fluid": {
+      "type": "modernfoundry:tank",
+      "full": "modernfoundry:item/tool/fishing_rod/fluid_full",
+      "partial": "modernfoundry:item/tool/fishing_rod/fluid_partial"
+    }
+  },
+  "modifiers": {
+    "modernfoundry:bounce": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_bounce",
+    "modernfoundry:channeling": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_channeling",
+    "modernfoundry:collecting": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_collecting",
+    "modernfoundry:diamond": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_diamond",
+    "modernfoundry:emerald": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_emerald",
+    "modernfoundry:experienced": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_experienced",
+    "modernfoundry:fiery": {
+      "luminosity": 10,
+      "texture": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_fiery"
+    },
+    "modernfoundry:grapple": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_grapple",
+    "modernfoundry:lure": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_lure",
+    "modernfoundry:netherite": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_netherite",
+    "modernfoundry:overforced": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_overforced",
+    "modernfoundry:punch": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_punch",
+    "modernfoundry:quick_charge": {
+      "luminosity": 7,
+      "texture": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_quick_charge"
+    },
+    "modernfoundry:reinforced": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_reinforced",
+    "modernfoundry:tank": "modernfoundry:item/tool/fishing_rod/modifiers/tank",
+    "modernfoundry:trueshot": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_trueshot",
+    "modernfoundry:unbreakable": {
+      "luminosity": 2,
+      "texture": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_unbreakable"
+    }
+  }
+}

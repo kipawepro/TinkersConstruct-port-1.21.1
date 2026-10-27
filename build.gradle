@@ -202,6 +202,20 @@ configurations {
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name 'RyanHCode'
+                url 'https://maven.ryanhcode.dev/releases'
+            }
+        }
+        filter {
+            includeGroup 'dev.ryanhcode.sable-companion'
+        }
+    }
     maven {
         name 'NeoForge'
         url 'https://maven.neoforged.net/releases'
@@ -236,6 +250,18 @@ dependencies {
         throw new GradleException("Missing ${hiltJar}; fetch the matching Hilt release JAR before building ModernFoundry")
     }
     implementation files(hiltJar)
+    jarJar(implementation('modernmods:hilt:1.13')) {
+        version {
+            strictly '[1.13]'
+            prefer '1.13'
+        }
+    }
+
+    jarJar(api("dev.ryanhcode.sable-companion:sable-companion-common-${minecraft_version}:[${sable_companion_version},)")) {
+        version {
+            prefer sable_companion_version
+        }
+    }
 
     // compile against the JEI API but do not include it at runtime
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
@@ -282,7 +308,10 @@ tasks.named('processResources', ProcessResources).configure {
         'hilt_range': hilt_range,
         'hilt_version': hilt_version,
         'jei_range': jei_range,
-        'json_things_range': json_things_range
+        'json_things_range': json_things_range,
+        'create_range': create_range,
+        'sable_range': sable_range,
+        'aeronautics_range': aeronautics_range
     ]
     inputs.properties replaceProperties
 
@@ -292,11 +321,12 @@ tasks.named('processResources', ProcessResources).configure {
 }
 
 tasks.named('jar', Jar).configure {
+    archiveClassifier = 'slim'
     exclude 'net/**'
 
     manifest {
         attributes([
-                "Specification-Title"     : "Modern Foundry",
+                "Specification-Title"     : "Tinkers Construct (Unofficial port)",
                 "Specification-Vendor"    : "Modern Mods",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
@@ -305,6 +335,10 @@ tasks.named('jar', Jar).configure {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+}
+
+tasks.named('jarJar').configure {
+    archiveClassifier = ''
 }
 
 java {

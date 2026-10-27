@@ -1,4 +1,4 @@
 {
-  "level_display": "modernfoundry:default",
-  "tooltip_display": "never"
+  "level_display": "modernfoundry:no_levels",
+  "show_in_tooltips": "advanced"
 }

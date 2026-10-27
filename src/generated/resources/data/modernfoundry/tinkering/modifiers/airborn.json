@@ -1,0 +1,11 @@
+{
+  "level_display": "modernfoundry:single_level",
+  "modules": [
+    {
+      "type": "modernfoundry:protection",
+      "attacker": "modernfoundry:airborne",
+      "damage_source": "hilt:can_protect",
+      "flat": 2.5
+    }
+  ]
+}

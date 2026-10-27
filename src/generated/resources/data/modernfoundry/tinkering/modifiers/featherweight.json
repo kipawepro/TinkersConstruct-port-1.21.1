@@ -16,7 +16,25 @@
     {
       "type": "modernfoundry:protection",
       "damage_source": "hilt:can_protect",
-      "each_level": -1.25,
+      "each_level": -0.625,
+      "tool": {
+        "type": "hilt:tag",
+        "tag": "modernfoundry:modifiable/armor"
+      }
+    },
+    {
+      "type": "modernfoundry:attribute",
+      "attribute": "minecraft:generic.movement_speed",
+      "each_level": 0.05,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
       "tool": {
         "type": "hilt:tag",
         "tag": "modernfoundry:modifiable/armor"
@@ -25,7 +43,7 @@
     {
       "type": "modernfoundry:attribute",
       "attribute": "modernfoundry:player.use_item_speed",
-      "each_level": 0.1,
+      "each_level": 0.05,
       "operation": "addition",
       "slots": [
         "mainhand",
@@ -41,6 +59,5 @@
       },
       "tooltip_style": "percent"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

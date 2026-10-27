@@ -31,7 +31,7 @@ import modernmods.modernfoundry.common.config.Config;
 import modernmods.modernfoundry.library.client.materials.MaterialRenderInfo;
 import modernmods.modernfoundry.library.client.materials.MaterialRenderInfo.TintedSprite;
 import modernmods.modernfoundry.library.client.materials.MaterialRenderInfoLoader;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.tools.part.IMaterialItem;
 
@@ -153,7 +153,7 @@ public class MaterialModel implements IUnbakedGeometry<MaterialModel> {
     }
 
     // after that its base logic
-    return bakeInternal(owner, spriteGetter, transforms, Objects.requireNonNullElse(material, IMaterial.UNKNOWN_ID), index, overrides);
+    return bakeInternal(owner, spriteGetter, transforms, Objects.requireNonNullElse(material, MaterialId.UNKNOWN), index, overrides);
   }
 
   /**

@@ -3,7 +3,7 @@
   "id": "modernfoundry:smeltery/entity_melting/creeper",
   "damage": 2,
   "entity": {
-    "type": "minecraft:creeper"
+    "tag": "c:creepers"
   },
   "result": {
     "amount": 50,

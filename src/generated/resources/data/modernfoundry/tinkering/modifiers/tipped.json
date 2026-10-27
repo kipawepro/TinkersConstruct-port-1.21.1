@@ -4,6 +4,5 @@
     {
       "type": "modernfoundry:tipped"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

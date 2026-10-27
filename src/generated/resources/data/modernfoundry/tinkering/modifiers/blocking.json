@@ -4,6 +4,5 @@
     {
       "type": "modernfoundry:blocking"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

@@ -11,7 +11,6 @@ import net.minecraft.world.level.Level;
 import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.common.TinkerTags;
 import modernmods.modernfoundry.common.config.Config;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
 import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
 import modernmods.modernfoundry.library.modifiers.ModifierHooks;
@@ -26,7 +25,11 @@ import modernmods.modernfoundry.tables.TinkerTables;
 
 import javax.annotation.Nullable;
 
-/** Recipe using repair kits in the crafting table */
+/**
+ * Recipe using repair kits in the crafting table.
+ * @see TinkerStationRepairRecipe
+ * @see modernmods.hilt.recipe.helper.SimpleFinishedRecipe
+ */
 public class CraftingTableRepairKitRecipe extends CustomRecipe {
   private final ResourceLocation id;
 
@@ -97,7 +100,7 @@ public class CraftingTableRepairKitRecipe extends CustomRecipe {
     }
     // if the material is invalid
     MaterialId inputMaterial = IMaterialItem.getMaterialFromStack(inputs.repairKit).getId();
-    if (inputMaterial.equals(IMaterial.UNKNOWN_ID)) {
+    if (inputMaterial.equals(MaterialId.UNKNOWN)) {
       return false;
     }
     // tool must be damaged and be repairable with this material

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "id": "modernfoundry:gadgets/armor_stands/bamboo",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "modernfoundry:pattern"
+    },
+    "S": {
+      "item": "minecraft:bamboo"
+    }
+  },
+  "pattern": [
+    "SSS",
+    " S ",
+    "SBS"
+  ],
+  "result": {
+    "id": "modernfoundry:bamboo_armor_stand"
+  },
+  "show_notification": true
+}

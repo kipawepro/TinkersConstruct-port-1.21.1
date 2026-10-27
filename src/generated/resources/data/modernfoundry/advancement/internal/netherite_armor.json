@@ -1,0 +1,84 @@
+{
+  "criteria": {
+    "has_armor": {
+      "conditions": {
+        "items": [
+          {
+            "type": "modernfoundry:tool_stack",
+            "predicate": {
+              "type": "hilt:and",
+              "predicates": [
+                {
+                  "type": "hilt:tag",
+                  "tag": "modernfoundry:modifiable/armor/helmets"
+                },
+                {
+                  "type": "modernfoundry:has_volatile_key",
+                  "key": "modernfoundry:netherite"
+                }
+              ]
+            }
+          },
+          {
+            "type": "modernfoundry:tool_stack",
+            "predicate": {
+              "type": "hilt:and",
+              "predicates": [
+                {
+                  "type": "hilt:tag",
+                  "tag": "modernfoundry:modifiable/armor/chestplate"
+                },
+                {
+                  "type": "modernfoundry:has_volatile_key",
+                  "key": "modernfoundry:netherite"
+                }
+              ]
+            }
+          },
+          {
+            "type": "modernfoundry:tool_stack",
+            "predicate": {
+              "type": "hilt:and",
+              "predicates": [
+                {
+                  "type": "hilt:tag",
+                  "tag": "modernfoundry:modifiable/armor/leggings"
+                },
+                {
+                  "type": "modernfoundry:has_volatile_key",
+                  "key": "modernfoundry:netherite"
+                }
+              ]
+            }
+          },
+          {
+            "type": "modernfoundry:tool_stack",
+            "predicate": {
+              "type": "hilt:and",
+              "predicates": [
+                {
+                  "type": "hilt:tag",
+                  "tag": "modernfoundry:modifiable/armor/boots"
+                },
+                {
+                  "type": "modernfoundry:has_volatile_key",
+                  "key": "modernfoundry:netherite"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_armor"
+    ]
+  ],
+  "rewards": {
+    "function": "modernfoundry:grant_advancement/nether_netherite_armor"
+  },
+  "sends_telemetry_event": false
+}

@@ -13,6 +13,7 @@ import modernmods.modernfoundry.library.tools.stat.FloatToolStat;
 import modernmods.modernfoundry.library.tools.stat.ModifierStatsBuilder;
 import modernmods.modernfoundry.library.tools.stat.ToolStatId;
 import modernmods.modernfoundry.library.tools.stat.ToolStats;
+import modernmods.modernfoundry.library.tools.stat.impl.IntegerToolStat;
 import modernmods.modernfoundry.tools.TinkerModifiers;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class OverslimeModule extends CapacityBarHook.PersistentDataCapacityBar {
   public static final OverslimeModule INSTANCE = new OverslimeModule();
 
   /** Stat for the overslime cap, copies the durability global multiplier on build */
-  public static final FloatToolStat OVERSLIME_STAT = new FloatToolStat(new ToolStatId(TConstruct.MOD_ID, "overslime"), 0xFF71DC85, 0, 0, Short.MAX_VALUE, TinkerTags.Items.DURABILITY) {
+  public static final FloatToolStat OVERSLIME_STAT = new IntegerToolStat(new ToolStatId(TConstruct.MOD_ID, "overslime"), 0xFF71DC85, 0, 0, Short.MAX_VALUE, TinkerTags.Items.DURABILITY) {
     @Override
     public Float build(ModifierStatsBuilder parent, Object builderObj) {
       return super.build(parent, builderObj) * parent.getMultiplier(ToolStats.DURABILITY);

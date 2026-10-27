@@ -1,0 +1,27 @@
+{
+  "type": "modernfoundry:ore_melting",
+  "id": "modernfoundry:smeltery/melting/metal/gold/crushed",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "create:crushed_raw_gold"
+    }
+  ],
+  "byproducts": [
+    {
+      "amount": 90,
+      "rate": "metal",
+      "tag": "c:molten_cobalt"
+    }
+  ],
+  "ingredient": {
+    "item": "create:crushed_raw_gold"
+  },
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_gold"
+  },
+  "temperature": 700,
+  "time": 85
+}

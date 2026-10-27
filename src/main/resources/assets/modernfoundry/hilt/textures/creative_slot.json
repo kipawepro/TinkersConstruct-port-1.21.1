@@ -1,0 +1,9 @@
+{
+  "textures": {
+    "slotless": "modernfoundry:item/slot/slotless",
+    "upgrades": "modernfoundry:item/slot/upgrade",
+    "abilities": "modernfoundry:item/slot/ability",
+    "souls": "modernfoundry:item/materials/hollow_gem",
+    "defense": "modernfoundry:item/slot/defense"
+  }
+}

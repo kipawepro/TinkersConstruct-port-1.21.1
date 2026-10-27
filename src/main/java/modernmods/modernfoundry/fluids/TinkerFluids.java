@@ -67,8 +67,10 @@ import modernmods.modernfoundry.shared.TinkerEffects;
 import modernmods.modernfoundry.shared.TinkerFood;
 import modernmods.modernfoundry.shared.block.SlimeType;
 import modernmods.modernfoundry.smeltery.TinkerSmeltery;
+import modernmods.modernfoundry.smeltery.block.component.SearedTankBlock.TankType;
 import modernmods.modernfoundry.smeltery.item.CopperCanItem;
 import modernmods.modernfoundry.smeltery.item.TankItem;
+import modernmods.modernfoundry.tables.TinkerTables;
 import modernmods.modernfoundry.tools.data.material.MaterialIds;
 import modernmods.modernfoundry.tools.network.FluidDataSerializer;
 import modernmods.modernfoundry.world.TinkerWorld;
@@ -91,9 +93,9 @@ public final class TinkerFluids extends TinkerModule {
   /** Creative tab for general items, or those that lack another tab */
   public static final DeferredHolder<? super CreativeModeTab, CreativeModeTab> tabFluids = CREATIVE_TABS.register(
     "fluids", () -> CreativeModeTab.builder().title(TConstruct.makeTranslation("itemGroup", "fluids"))
-                                   .icon(() -> new ItemStack(TinkerFluids.moltenIron))
-                                   .displayItems(TinkerFluids::addTabItems)
-                                   .withTabsBefore(TinkerSmeltery.tabSmeltery.getId())
+                                   .icon(() -> TankItem.fillTank(TinkerSmeltery.searedTank, TankType.FUEL_GAUGE, TinkerFluids.moltenCobalt.get()))
+                                   .displayItems(TinkerFluids::addFilledContainers)
+                                   .withTabsBefore(TinkerTables.tabTables.getId())
                                    .withSearchBar()
                                    .build());
 
@@ -371,7 +373,7 @@ public final class TinkerFluids extends TinkerModule {
 
   /** Adds all relevant items to the creative tab, called by smeltery */
   @SuppressWarnings("deprecation")
-  private static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
+  public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
     // containers
     output.accept(splashBottle);
     output.accept(lingeringBottle);
@@ -467,7 +469,10 @@ public final class TinkerFluids extends TinkerModule {
     acceptCompat(output, fieryLiquid, "fiery", MaterialIds.fiery);
     BuiltInRegistries.POTION.holders().filter(holder -> !holder.is(Potions.WATER)).forEachOrdered(holder ->
       output.accept(PotionFluidType.potionBucket(holder.key())));
+  }
 
+  /** Adds all filled containers to the fluids tab. */
+  private static void addFilledContainers(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
     // add copper cans, tanks, and lanterns for all the fluids
     CopperCanItem.addFilledVariants(output::accept);
     TankItem.addFilledVariants(output::accept);

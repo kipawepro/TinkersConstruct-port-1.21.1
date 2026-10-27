@@ -15,6 +15,7 @@ import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.tags.TagKey;
 import net.minecraft.tags.TagLoader;
 import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.ICondition.IContext;
 import modernmods.hilt.data.gson.ConditionSerializer;
@@ -23,6 +24,7 @@ import modernmods.modernfoundry.library.exception.TinkerJSONException;
 import modernmods.modernfoundry.library.json.JsonRedirect;
 import modernmods.modernfoundry.library.materials.json.MaterialJson;
 import modernmods.modernfoundry.library.utils.GenericTagUtil;
+import modernmods.modernfoundry.library.utils.JsonUtils;
 import modernmods.modernfoundry.library.utils.Util;
 
 import javax.annotation.Nullable;
@@ -217,9 +219,11 @@ public class MaterialManager extends SimpleJsonResourceReloadListener {
     }
     this.redirects = redirects;
     onMaterialUpdate();
-    
-    log.debug("Loaded materials: {}", Util.toIndentedStringList(materials.keySet().stream().sorted().toList()));
-    log.debug("Loaded redirects: {}", Util.toIndentedStringList(redirects.keySet().stream().sorted().toList()));
+
+    if (log.isDebugEnabled() && JsonUtils.debugLogResourceValues()) {
+      log.debug("Loaded materials: {}", Util.toIndentedStringList(materials.keySet().stream().sorted().toList()));
+      log.debug("Loaded redirects: {}", Util.toIndentedStringList(redirects.entrySet().stream().sorted(Entry.comparingByKey()).toList()));
+    }
     long timeStep = System.nanoTime();
     log.info("Loaded {} materials in {} ms", materials.size(), (timeStep - time) / 1000000f);
 
@@ -252,7 +256,6 @@ public class MaterialManager extends SimpleJsonResourceReloadListener {
           ICondition redirectCondition = redirect.getCondition();
           if (redirectCondition == null || redirectCondition.test(conditionContext)) {
             MaterialId redirectTarget = new MaterialId(redirect.getId());
-            log.debug("Redirecting material {} to {}", materialId, redirectTarget);
             redirects.put(new MaterialId(materialId), redirectTarget);
             return null;
           }
@@ -272,9 +275,14 @@ public class MaterialManager extends SimpleJsonResourceReloadListener {
 
       boolean isCraftable = Boolean.TRUE.equals(materialJson.getCraftable());
       boolean hidden = Boolean.TRUE.equals(materialJson.getHidden());
+      int tier = requireNonNullElse(materialJson.getTier(), 0);
+      Rarity rarity = materialJson.getRarity();
+      if (rarity == null) {
+        rarity = IMaterial.computeRarity(tier);
+      }
 
       // parse trait
-      return new Material(materialId, requireNonNullElse(materialJson.getTier(), 0), requireNonNullElse(materialJson.getSortOrder(), 100), isCraftable, hidden);
+      return new Material(materialId, tier, requireNonNullElse(materialJson.getSortOrder(), 100), rarity, isCraftable, hidden);
     } catch (Exception e) {
       log.error("Could not deserialize material {}. JSON: {}", materialId, jsonObject, e);
       return null;

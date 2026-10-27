@@ -36,6 +36,7 @@ import modernmods.modernfoundry.library.json.predicate.tool.HasToolHookPredicate
 import modernmods.modernfoundry.library.json.predicate.tool.PersistentDataPredicate;
 import modernmods.modernfoundry.library.json.predicate.tool.StatInRangePredicate;
 import modernmods.modernfoundry.library.json.predicate.tool.StatInSetPredicate;
+import modernmods.modernfoundry.library.json.predicate.tool.ToolActionPredicate;
 import modernmods.modernfoundry.library.json.predicate.tool.ToolContextPredicate;
 import modernmods.modernfoundry.library.json.predicate.tool.ToolStackPredicate;
 import modernmods.modernfoundry.library.json.predicate.tool.ToolVariableRangePredicate;
@@ -46,8 +47,8 @@ import modernmods.modernfoundry.library.materials.definition.IMaterial;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.modifiers.ModifierHooks;
 import modernmods.modernfoundry.library.modifiers.ModifierManager;
-import modernmods.modernfoundry.library.modifiers.modules.behavior.EdibleModule;
 import modernmods.modernfoundry.library.modifiers.modules.capacity.OverslimeModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleModule;
 import modernmods.modernfoundry.library.recipe.ingredient.ToolHookIngredient;
 import modernmods.modernfoundry.library.tools.IndestructibleItemEntity;
 import modernmods.modernfoundry.library.tools.SlotType;
@@ -90,6 +91,7 @@ import modernmods.modernfoundry.library.tools.definition.module.material.Materia
 import modernmods.modernfoundry.library.tools.definition.module.material.MaterialTraitsModule;
 import modernmods.modernfoundry.library.tools.definition.module.material.PartStatsModule;
 import modernmods.modernfoundry.library.tools.definition.module.material.PartsModule;
+import modernmods.modernfoundry.library.tools.definition.module.material.RemappingMaterialsModule;
 import modernmods.modernfoundry.library.tools.definition.module.material.StatlessPartRepairModule;
 import modernmods.modernfoundry.library.tools.definition.module.material.ToolMaterialHook;
 import modernmods.modernfoundry.library.tools.definition.module.mining.IsEffectiveModule;
@@ -115,6 +117,7 @@ import modernmods.modernfoundry.library.tools.nbt.ToolStack;
 import modernmods.modernfoundry.library.tools.stat.ToolStats;
 import modernmods.modernfoundry.library.utils.BlockSideHitListener;
 import modernmods.modernfoundry.tables.TinkerTables;
+import modernmods.modernfoundry.shared.TinkerCommons;
 import modernmods.modernfoundry.tools.data.ModifierIds;
 import modernmods.modernfoundry.tools.data.material.MaterialIds;
 import modernmods.modernfoundry.tools.entity.CombatFishingHook;
@@ -150,11 +153,11 @@ public final class TinkerTools extends TinkerModule {
   /** Creative tab for complete tools */
   public static final DeferredHolder<? super CreativeModeTab, CreativeModeTab> tabTools = CREATIVE_TABS.register(
     "tools", () -> CreativeModeTab.builder().title(TConstruct.makeTranslation("itemGroup", "tools"))
-                                  .icon(() -> TinkerTools.pickaxe.get().getRenderTool())
-                                  .displayItems(TinkerTools::addTabItems)
-                                  .withTabsBefore(TinkerTables.tabTables.getId())
-                                  .withSearchBar()
-                                  .build());
+      .icon(() -> TinkerTools.pickaxe.get().getRenderTool())
+      .displayItems(TinkerTools::addTabItems)
+      .withTabsBefore(TinkerCommons.tabGeneral.getId())
+      .withSearchBar()
+      .build());
 
   /** Loot function type for tool add data */
   public static final DeferredHolder<LootItemFunctionType<?>, ? extends LootItemFunctionType<?>> lootAddToolData = LOOT_FUNCTIONS.register("add_tool_data", () -> new LootItemFunctionType<>(AddToolDataFunction.CODEC));
@@ -296,8 +299,10 @@ public final class TinkerTools extends TinkerModule {
       ToolStats.register(OverslimeModule.OVERSLIME_STAT);
       ToolStats.register(ToolTankHelper.CAPACITY_STAT);
       ToolStats.register(ToolEnergyCapability.MAX_STAT);
-      ToolStats.register(EdibleModule.HUNGER);
-      ToolStats.register(EdibleModule.SATURATION);
+      ToolStats.registerConditional(EdibleModule.HUNGER);
+      ToolStats.registerConditional(EdibleModule.SATURATION);
+      ToolStats.register(EdibleModule.EAT_DURATION);
+      ToolStats.registerConditional(EdibleModule.COUNTER_CHANCE);
 
       ToolModule.LOADER.register(getResource("empty"), ToolModule.EMPTY.getLoader());
       // tool definition components
@@ -320,6 +325,7 @@ public final class TinkerTools extends TinkerModule {
       ToolModule.LOADER.register(getResource("tool_parts"), PartsModule.LOADER);
       ToolModule.LOADER.register(getResource("material_repair"), MaterialRepairModule.LOADER);
       ToolModule.LOADER.register(getResource("default_materials"), DefaultMaterialsModule.LOADER);
+      ToolModule.LOADER.register(getResource("remapping_materials"), RemappingMaterialsModule.LOADER);
       ToolModule.LOADER.register(getResource("statless_part_repair"), StatlessPartRepairModule.LOADER);
       // aoe
       AreaOfEffectIterator.LOADER.register(getResource("empty"), AreaOfEffectIterator.EMPTY.getLoader());
@@ -358,6 +364,7 @@ public final class TinkerTools extends TinkerModule {
       ToolStackPredicate.LOADER.register(getResource("stat_in_set"), StatInSetPredicate.LOADER);
       ToolStackPredicate.LOADER.register(getResource("has_volatile_key"), VolatileDataPredicate.LOADER);
       ToolStackPredicate.LOADER.register(getResource("variable_range"), ToolVariableRangePredicate.LOADER);
+      ToolStackPredicate.LOADER.register(getResource("tool_action"), ToolActionPredicate.LOADER);
     }
   }
 
@@ -365,6 +372,7 @@ public final class TinkerTools extends TinkerModule {
   private static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {
     // start with tools that lack materials
     Consumer<ItemStack> output = tab::accept;
+
     acceptTool(output, flintAndBrick);
     acceptTool(output, skyStaff);
     acceptTool(output, earthStaff);

@@ -1,0 +1,19 @@
+{
+  "type": "modernfoundry:material_value_swapping",
+  "id": "modernfoundry:tools/armor/travelers/boots_cuirass",
+  "cost": 2,
+  "index": 1,
+  "material": {
+    "type": "modernfoundry:stat_type",
+    "stat_type": "modernfoundry:cuirass"
+  },
+  "max_stack_size": 16,
+  "tools": [
+    {
+      "item": "modernfoundry:travelers_boots"
+    },
+    {
+      "item": "modernfoundry:travelers_shield"
+    }
+  ]
+}

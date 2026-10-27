@@ -1,0 +1,11 @@
+{
+  "type": "modernfoundry:item_part_builder",
+  "id": "modernfoundry:tools/building/elytra_copying",
+  "cost": 32,
+  "material": "modernfoundry:dragon_scale",
+  "pattern": "modernfoundry:maille",
+  "pattern_item": {
+    "item": "minecraft:elytra"
+  },
+  "result": "minecraft:elytra"
+}

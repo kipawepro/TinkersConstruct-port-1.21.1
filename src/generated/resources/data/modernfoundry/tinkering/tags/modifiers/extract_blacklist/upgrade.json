@@ -1,3 +1,7 @@
 {
-  "values": []
+  "values": [
+    "modernfoundry:leaping",
+    "modernfoundry:reflecting",
+    "modernfoundry:returning"
+  ]
 }

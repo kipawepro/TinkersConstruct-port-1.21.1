@@ -1,4 +1,26 @@
+# 1.5.0
+* Synced with the latest official Tinkers' Construct 1.20.1 changes.
+    * Added fancy armor stands (bamboo, bone, necrotic bone, clear), the horn material, the phantom cuirass and the reworked Gold Guard and Chrysophilite.
+    * Added edible tool modules, tool inventories dropping when the tool is destroyed, and the upstream balance changes.
+    * Fixed fake players causing unpredictable AOE mining.
+    * Added the Fuel, Materials and Tool Modification JEI categories.
+    * Shields can now take a banner's patterns without its base color using a sky slime bottle.
+* Fixed the Melting modifier not filling its tank.
+* Fixed part chests and smeltery blocks losing their contents on relog.
+* Fixed Tree Physics compatibility: axes are tagged as vanilla axes and no longer fell the whole tree while Tree Physics is installed, unless sneaking.
+* Fixed the Kama not shearing sheep, mooshrooms and snow golems.
+* Fixed casting tables and basins destroying the cast when broken.
+* Added melting recipes for Create crushed ores.
+* Fixed a Crafting Station duplication glitch.
+* Fixed bows, crossbows and war picks: draw time, loaded ammo, held pose, and the mod's arrows as ammo.
+
 # Unreleased
+* Added Create, Sable, and Create Aeronautics compatibility for NeoForge 1.21.1.
+    * Create heated mixing now supports molten amethyst bronze, slimesteel, rose gold, pig iron, manyullyn, hepatizon, and Queen's Slime.
+    * Create zinc ore, zinc products, and brass now feed complete Zinc and Brass melee, harvesting, and ranged tool materials only while Create is installed.
+    * Create pipes, pumps, and tanks now redetect formed smeltery drains and ducts and can transfer or store Modern Foundry fluids through NeoForge capabilities.
+    * Embedded Sable Companion and projected shield attack positions out of moving sub-levels before calculating block angles.
+    * Registered slime blocks as bouncy Sable surfaces and the Kama as a Simulated rope-cutting tool.
 * Fixed smeltery fluid synchronization racing with external pipe transfers.
     * Network packets now snapshot fluid stacks before asynchronous encoding, preventing Mekanism and other compatible fluid pipes from disconnecting clients during imports or exports.
 * Fixed Slime armor rendering on Minecraft 1.21.1.

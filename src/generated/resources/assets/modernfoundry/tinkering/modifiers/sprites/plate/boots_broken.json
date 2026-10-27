@@ -1,0 +1,12 @@
+{
+  "constant": {
+    "__dyed": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:dyed",
+        "texture": "modernfoundry:item/tool/armor/plate/boots/maille_broken"
+      },
+      "modifier": "modernfoundry:dyed"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "constant": {
+    "__dyed": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:material_has_fallback",
+        "fallback": "wool",
+        "if_false": {
+          "type": "modernfoundry:dyed",
+          "texture": "modernfoundry:item/tool/armor/travelers/goggles/dyed"
+        },
+        "if_true": {
+          "type": "modernfoundry:dyed",
+          "texture": "modernfoundry:item/tool/armor/travelers/goggles/cuirass_modernfoundry_wool_white"
+        },
+        "index": 1
+      },
+      "modifier": "modernfoundry:dyed"
+    },
+    "_trim": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:custom_trim",
+        "root": "modernfoundry:item/tool/armor/travelers/goggles/trim"
+      },
+      "modifier": "modernfoundry:trim"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "color": "FFFFDD59",
+  "generator": {
+    "supported_stats": [
+      "modernfoundry:laces",
+      "modernfoundry:slimesuit_overlay",
+      "modernfoundry:repair_kit",
+      "modernfoundry:bowstring"
+    ],
+    "transformer": {
+      "type": "modernfoundry:recolor_sprite",
+      "color_mapping": {
+        "type": "modernfoundry:grey_to_color",
+        "palette": {
+          "000": "FF000000",
+          "063": "FF8E6100",
+          "102": "FFAF7F05",
+          "140": "FFCC990E",
+          "178": "FFE2B221",
+          "216": "FFFFDD59",
+          "255": "FFFFEC89"
+        }
+      }
+    }
+  }
+}

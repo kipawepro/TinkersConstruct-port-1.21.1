@@ -9,9 +9,6 @@
     "modernfoundry:spider_head",
     "modernfoundry:cave_spider_head",
     "modernfoundry:piglin_brute_head",
-    "modernfoundry:zombified_piglin_head",
-    "modernfoundry:venombone_head",
-    "modernfoundry:blazing_bone_head",
-    "modernfoundry:necronium_head"
+    "modernfoundry:zombified_piglin_head"
   ]
 }

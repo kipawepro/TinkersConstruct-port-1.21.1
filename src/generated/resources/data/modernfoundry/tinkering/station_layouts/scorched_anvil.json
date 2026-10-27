@@ -4,11 +4,6 @@
   },
   "input_slots": [
     {
-      "icon": "modernfoundry:quartz",
-      "x": 15,
-      "y": 62
-    },
-    {
       "icon": "modernfoundry:dust",
       "x": 11,
       "y": 37
@@ -26,6 +21,11 @@
     {
       "icon": "modernfoundry:gem",
       "x": 51,
+      "y": 62
+    },
+    {
+      "icon": "modernfoundry:quartz",
+      "x": 15,
       "y": 62
     }
   ],

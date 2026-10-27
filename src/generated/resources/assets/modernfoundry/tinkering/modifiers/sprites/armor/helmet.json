@@ -1,0 +1,21 @@
+{
+  "constant": {
+    "_trim": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:armor_trim",
+        "slot": "helmet"
+      },
+      "modifier": "modernfoundry:trim"
+    }
+  },
+  "modifiers": {
+    "modernfoundry:aqua_affinity": "modernfoundry:item/tool/armor/modifiers/helmet/modernfoundry_aqua_affinity",
+    "modernfoundry:emerald": "modernfoundry:item/tool/armor/modifiers/helmet/modernfoundry_emerald",
+    "modernfoundry:fiery": {
+      "luminosity": 10,
+      "texture": "modernfoundry:item/tool/armor/modifiers/helmet/modernfoundry_fiery"
+    },
+    "modernfoundry:thorns": "modernfoundry:item/tool/armor/modifiers/helmet/modernfoundry_thorns"
+  }
+}

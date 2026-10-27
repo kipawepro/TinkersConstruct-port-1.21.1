@@ -2,7 +2,7 @@
   "type": "modernfoundry:casting_basin",
   "id": "modernfoundry:smeltery/casting/blaze/congealed",
   "cast": {
-    "tag": "modernfoundry:congealed_slime"
+    "item": "modernfoundry:earth_congealed_slime"
   },
   "cast_consumed": true,
   "cooling_time": 120,

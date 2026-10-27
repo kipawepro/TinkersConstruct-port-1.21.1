@@ -10,12 +10,22 @@
       {
         "level": 1,
         "name": "modernfoundry:projectile_protection"
+      },
+      {
+        "level": 1,
+        "name": "modernfoundry:iron_armor"
+      }
+    ],
+    "modernfoundry:maille": [
+      {
+        "level": 1,
+        "name": "modernfoundry:projectile_protection"
       }
     ],
     "modernfoundry:skull": [
       {
         "level": 1,
-        "name": "modernfoundry:plague"
+        "name": "modernfoundry:rebuff"
       },
       {
         "level": 1,

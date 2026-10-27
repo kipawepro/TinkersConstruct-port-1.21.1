@@ -1,5 +1,6 @@
 package modernmods.modernfoundry.smeltery.block.entity;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -414,15 +415,15 @@ public class ChannelBlockEntity extends HiltBlockEntity implements IFluidPacketR
   }
 
   @Override
-  protected void saveSynced(CompoundTag nbt) {
-    super.saveSynced(nbt);
+  public void saveSynced(CompoundTag nbt, HolderLookup.Provider registries) {
+    super.saveSynced(nbt, registries);
     nbt.putByteArray(TAG_IS_FLOWING, isFlowing);
     nbt.put(TAG_TANK, tank.writeToNBT(new CompoundTag()));
   }
 
 	@Override
-	public void load(CompoundTag nbt) {
-		super.load(nbt);
+	public void loadAdditional(CompoundTag nbt, HolderLookup.Provider registries) {
+		super.loadAdditional(nbt, registries);
 
 		// isFlowing
 		if (nbt.contains(TAG_IS_FLOWING)) {

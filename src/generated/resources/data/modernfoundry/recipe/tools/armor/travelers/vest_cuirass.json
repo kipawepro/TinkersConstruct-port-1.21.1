@@ -1,0 +1,14 @@
+{
+  "type": "modernfoundry:material_value_swapping",
+  "id": "modernfoundry:tools/armor/travelers/vest_cuirass",
+  "cost": 6,
+  "index": 1,
+  "material": {
+    "type": "modernfoundry:stat_type",
+    "stat_type": "modernfoundry:cuirass"
+  },
+  "max_stack_size": 16,
+  "tools": {
+    "item": "modernfoundry:travelers_chestplate"
+  }
+}

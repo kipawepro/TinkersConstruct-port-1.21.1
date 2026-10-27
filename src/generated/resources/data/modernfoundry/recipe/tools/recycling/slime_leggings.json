@@ -1,0 +1,14 @@
+{
+  "type": "modernfoundry:part_builder_tool_recycling",
+  "id": "modernfoundry:tools/recycling/slime_leggings",
+  "parts": [
+    "modernfoundry:shell",
+    "modernfoundry:repair_kit"
+  ],
+  "pattern": {
+    "item": "modernfoundry:venom_bottle"
+  },
+  "tools": {
+    "item": "modernfoundry:slime_leggings"
+  }
+}

@@ -2,7 +2,7 @@
   "modules": [
     {
       "type": "modernfoundry:material_stats",
-      "primary_part": 0,
+      "primary_part": 1,
       "stat_types": [
         "modernfoundry:skull",
         {
@@ -12,8 +12,16 @@
       ]
     },
     {
-      "type": "modernfoundry:default_materials",
-      "materials": [
+      "type": "modernfoundry:material_traits",
+      "hooks": [
+        "modernfoundry:trim_trait"
+      ],
+      "material_index": 0,
+      "stat_type": "modernfoundry:skull"
+    },
+    {
+      "type": "modernfoundry:remapping_materials",
+      "missing": [
         {
           "type": "modernfoundry:random",
           "allow_hidden": true
@@ -21,6 +29,13 @@
         {
           "type": "modernfoundry:fixed",
           "material": "modernfoundry:blood"
+        }
+      ],
+      "remap": [
+        {
+          "modernfoundry:blazing_bone": "modernfoundry:blaze",
+          "modernfoundry:glass": "modernfoundry:gunpowder",
+          "modernfoundry:venombone": "modernfoundry:ice"
         }
       ]
     },
@@ -30,14 +45,6 @@
         "abilities": 2,
         "upgrades": 3
       }
-    },
-    {
-      "type": "modernfoundry:material_traits",
-      "hooks": [
-        "modernfoundry:trim_trait"
-      ],
-      "material_index": 1,
-      "stat_type": "modernfoundry:slime"
     },
     {
       "type": "modernfoundry:unique_material_name",

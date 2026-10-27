@@ -21,6 +21,7 @@ import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
@@ -197,7 +198,7 @@ public class ModifiableArmorItem extends ArmorItem implements IModifiableDisplay
   }
 
 
-  /* Indestructible items */
+  /* Item entity */
 
   @Override
   public boolean hasCustomEntity(ItemStack stack) {
@@ -208,6 +209,12 @@ public class ModifiableArmorItem extends ArmorItem implements IModifiableDisplay
   @Override
   public Entity createEntity(Level level, Entity original, ItemStack stack) {
     return IndestructibleItemEntity.createFrom(level, original, stack);
+  }
+
+  @Deprecated
+  @Override
+  public void onDestroyed(ItemEntity entity) {
+    ToolInventoryCapability.onDestroyed(entity);
   }
 
 
@@ -343,9 +350,9 @@ public class ModifiableArmorItem extends ArmorItem implements IModifiableDisplay
 
   @Override
   public boolean elytraFlightTick(ItemStack stack, LivingEntity entity, int flightTicks) {
-    if (getEquipmentSlot() == EquipmentSlot.CHEST) {
+    if (type == Type.CHESTPLATE) {
       ToolStack tool = ToolStack.from(stack);
-      if (!tool.isBroken()) {
+      if (!tool.isBroken() && tool.getVolatileData().getBoolean(ELYTRA)) {
         // if any modifier says stop flying, stop flying
         for (ModifierEntry entry : tool.getModifierList()) {
           if (entry.getHook(ModifierHooks.ELYTRA_FLIGHT).elytraFlightTick(tool, entry, entity, flightTicks)) {

@@ -6,13 +6,14 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import modernmods.modernfoundry.common.TinkerTags;
 import modernmods.modernfoundry.library.json.LevelingInt;
-import modernmods.modernfoundry.library.json.LevelingValue;
 import modernmods.modernfoundry.library.modifiers.Modifier;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
 import modernmods.modernfoundry.library.modifiers.ModifierHooks;
 import modernmods.modernfoundry.library.modifiers.hook.behavior.ProcessLootModifierHook;
-import modernmods.modernfoundry.library.modifiers.modules.behavior.EdibleModule;
 import modernmods.modernfoundry.library.modifiers.modules.build.StatBoostModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleConsumeDurabilityModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleModule;
+import modernmods.modernfoundry.library.modifiers.modules.interaction.edible.EdibleRepresentativeItemModule;
 import modernmods.modernfoundry.library.module.ModuleHookMap.Builder;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
 import modernmods.modernfoundry.shared.TinkerCommons;
@@ -25,7 +26,9 @@ public class TastyModifier extends Modifier implements ProcessLootModifierHook {
   @Override
   protected void registerHooks(Builder hookBuilder) {
     hookBuilder.addHook(this, ModifierHooks.PROCESS_LOOT);
-    hookBuilder.addModule(new EdibleModule(TinkerCommons.bacon, LevelingInt.flat(16), LevelingInt.eachLevel(15), LevelingValue.eachLevel(0.15f)));
+    hookBuilder.addModule(EdibleModule.EDIBLE_TRAIT);
+    hookBuilder.addModule(new EdibleRepresentativeItemModule(TinkerCommons.bacon));
+    hookBuilder.addModule(new EdibleConsumeDurabilityModule(LevelingInt.eachLevel(15)));
     hookBuilder.addModule(StatBoostModule.add(EdibleModule.HUNGER).eachLevel(1));
     hookBuilder.addModule(StatBoostModule.add(EdibleModule.SATURATION).flat(0.4f));
   }

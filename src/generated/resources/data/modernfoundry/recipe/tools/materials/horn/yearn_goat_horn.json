@@ -1,0 +1,12 @@
+{
+  "type": "modernfoundry:material",
+  "id": "modernfoundry:tools/materials/horn/yearn_goat_horn",
+  "ingredient": {
+    "type": "modernfoundry:instrument",
+    "instrument": "minecraft:yearn_goat_horn",
+    "item": "minecraft:goat_horn"
+  },
+  "material": "modernfoundry:horn#minecraft.yearn_goat_horn",
+  "needed": 1,
+  "value": 4
+}

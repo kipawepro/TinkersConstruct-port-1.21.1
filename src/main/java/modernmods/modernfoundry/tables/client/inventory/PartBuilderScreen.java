@@ -21,13 +21,17 @@ import modernmods.modernfoundry.library.materials.definition.MaterialVariant;
 import modernmods.modernfoundry.library.materials.stats.IMaterialStats;
 import modernmods.modernfoundry.library.modifiers.Modifier;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
+import modernmods.modernfoundry.library.modifiers.util.ModifierTooltip;
 import modernmods.modernfoundry.library.recipe.material.IMaterialValue;
 import modernmods.modernfoundry.library.recipe.partbuilder.IPartBuilderRecipe;
 import modernmods.modernfoundry.library.recipe.partbuilder.Pattern;
 import modernmods.modernfoundry.library.utils.Util;
 import modernmods.modernfoundry.tables.block.entity.table.PartBuilderBlockEntity;
 import modernmods.modernfoundry.tables.menu.PartBuilderContainerMenu;
+import modernmods.modernfoundry.tools.stats.StatlessMaterialStats;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
@@ -37,6 +41,8 @@ public class PartBuilderScreen extends BaseTabbedScreen<PartBuilderBlockEntity,P
   private static final MutableComponent UNCRAFTABLE_MATERIAL = TConstruct.makeTranslation("gui", "part_builder.uncraftable").withStyle(ChatFormatting.RED);
   private static final MutableComponent UNCRAFTABLE_MATERIAL_TOOLTIP = TConstruct.makeTranslation("gui", "part_builder.uncraftable.tooltip");
   private static final ResourceLocation BACKGROUND = TConstruct.getResource("textures/gui/part_builder.png");
+  /** Comparator to order stats in the part builder display */
+  private static final Comparator<IMaterialStats> STATS_COMPARATOR = Comparator.comparing(IMaterialStats::getIdentifier);
   // locations
   // slider
   /** Texture U for the handle texture */
@@ -277,7 +283,11 @@ public class PartBuilderScreen extends BaseTabbedScreen<PartBuilderBlockEntity,P
     }
 
     MaterialId id = materialVariant.getId();
-    for (IMaterialStats stat : MaterialRegistry.getInstance().getAllStats(id)) {
+    List<IMaterialStats> materialStats = new ArrayList<>(MaterialRegistry.getInstance().getAllStats(id));
+    materialStats.sort(STATS_COMPARATOR);
+    for (IMaterialStats stat : materialStats) {
+      // skip repair kit, its just an internal marker and the traits are inaccurate
+      if (stat == StatlessMaterialStats.REPAIR_KIT) continue;
       List<Component> info = stat.getLocalizedInfo();
 
       if (!info.isEmpty()) {
@@ -292,8 +302,10 @@ public class PartBuilderScreen extends BaseTabbedScreen<PartBuilderBlockEntity,P
           for (ModifierEntry trait : traits) {
             if (trait.isBound()) {
               Modifier mod = trait.getModifier();
-              stats.add(mod.getDisplayName(trait.getLevel()));
-              tips.add(mod.getDescription(trait.getLevel()));
+              if (mod.shouldDisplay(ModifierTooltip.PART_BUILDER)) {
+                stats.add(mod.getDisplayName(trait.getLevel()));
+                tips.add(mod.getDescription(trait.getLevel()));
+              }
             }
           }
         }

@@ -16,9 +16,11 @@ import modernmods.hilt.data.predicate.IJsonPredicate;
 import modernmods.hilt.data.predicate.block.BlockPredicate;
 import modernmods.hilt.data.predicate.damage.DamageSourcePredicate;
 import modernmods.hilt.data.predicate.entity.LivingEntityPredicate;
+import modernmods.hilt.data.predicate.fluid.FluidPredicate;
 import modernmods.hilt.data.predicate.item.ItemPredicate;
 import modernmods.modernfoundry.library.modifiers.hook.armor.OnAttackedModifierHook;
 import modernmods.modernfoundry.library.recipe.casting.CastingRecipeLookup;
+import modernmods.modernfoundry.library.recipe.fuel.MeltingFuelLookup;
 import modernmods.modernfoundry.library.recipe.melting.MeltingRecipeLookup;
 import modernmods.modernfoundry.library.tools.item.ModifiableItem;
 
@@ -64,6 +66,9 @@ public class TinkerPredicate {
   public static BlockPredicate CAN_MELT_BLOCK = BlockPredicate.simple(state -> MeltingRecipeLookup.canMelt(state.getBlock()));
   /** Predicate matching meltable items */
   public static ItemPredicate CAN_MELT_ITEM = ItemPredicate.simple(MeltingRecipeLookup::canMelt);
+
+  /** Predicate matching fluids registered as a smeltery fuel */
+  public static FluidPredicate FUEL = FluidPredicate.simple(MeltingFuelLookup::isFuel);
 
   /** Helper for dealing with the common case of nullable entities, often used when they are entity but not living. */
   public static boolean matches(IJsonPredicate<LivingEntity> predicate, @Nullable LivingEntity entity) {

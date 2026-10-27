@@ -1,5 +1,7 @@
 package modernmods.modernfoundry.library.tools.definition.module.aoe;
 
+import java.util.List;
+import net.neoforged.fml.ModList;
 import com.google.common.collect.AbstractIterator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -57,6 +59,9 @@ public record TreeAOEIterator(int width, int depth) implements AreaOfEffectItera
    * @return  Correct iterator for the targeted block
    */
   public static Iterable<BlockPos> calculate(Level level, @Nullable Player player, BlockPos origin, Direction sideHit, BlockState state, int extraWidth, int extraDepth) {
+    if (ModList.get().isLoaded("treephysics") && (player == null || !player.isShiftKeyDown())) {
+      return List.of();
+    }
     Direction depthDir;
     Direction widthDir;
     // if we have expanders, add them in

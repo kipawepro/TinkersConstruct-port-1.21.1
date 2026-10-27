@@ -11,5 +11,6 @@
   "pattern_item": {
     "tag": "modernfoundry:casts/red_sand"
   },
-  "result": "modernfoundry:coin_red_sand_cast"
+  "result": "modernfoundry:coin_red_sand_cast",
+  "title_key": "modernfoundry:sand_cast"
 }

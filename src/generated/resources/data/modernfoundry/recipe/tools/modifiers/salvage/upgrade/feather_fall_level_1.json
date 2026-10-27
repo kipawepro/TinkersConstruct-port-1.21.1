@@ -1,0 +1,12 @@
+{
+  "type": "modernfoundry:modifier_salvage",
+  "id": "modernfoundry:tools/modifiers/salvage/upgrade/feather_fall_level_1",
+  "level": 1,
+  "modifier": "modernfoundry:feather_fall",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "tag": "modernfoundry:modifiable/armor/boots"
+  }
+}

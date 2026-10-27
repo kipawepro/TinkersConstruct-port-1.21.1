@@ -1,4 +1,7 @@
 {
   "type": "modernfoundry:banner_modifier",
-  "id": "modernfoundry:tools/modifiers/slotless/banner"
+  "id": "modernfoundry:tools/modifiers/slotless/banner",
+  "clear_input": {
+    "item": "modernfoundry:sky_slime_bottle"
+  }
 }

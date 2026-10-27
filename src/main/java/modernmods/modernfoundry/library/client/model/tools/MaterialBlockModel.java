@@ -52,7 +52,7 @@ import modernmods.modernfoundry.library.client.materials.MaterialRenderInfo;
 import modernmods.modernfoundry.library.client.materials.MaterialRenderInfo.TintedSprite;
 import modernmods.modernfoundry.library.client.materials.MaterialRenderInfoLoader;
 import modernmods.modernfoundry.library.client.model.ModelProperties;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.tools.nbt.MaterialIdNBT;
 import modernmods.modernfoundry.library.tools.part.IMaterialItem;
@@ -340,7 +340,7 @@ public class MaterialBlockModel implements IUnbakedGeometry<MaterialBlockModel> 
 
     /** Gets the model for the given material */
     public BakedModel getCachedModel(MaterialVariantId material) {
-      if (IMaterial.UNKNOWN_ID.equals(material)) {
+      if (MaterialId.UNKNOWN.equals(material)) {
         return originalModel;
       }
       return cache.computeIfAbsent(material, baker);

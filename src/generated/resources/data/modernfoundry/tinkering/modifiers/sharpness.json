@@ -11,6 +11,5 @@
       "operation": "add",
       "stat": "modernfoundry:attack_damage"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

@@ -18,14 +18,15 @@ import modernmods.hilt.recipe.IMultiRecipe;
 import modernmods.hilt.recipe.helper.ItemOutput;
 import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.common.TinkerTags;
-import modernmods.modernfoundry.library.materials.definition.MaterialVariant;
 import modernmods.modernfoundry.library.recipe.partbuilder.DisplayPartRecipe;
+import modernmods.modernfoundry.library.recipe.partbuilder.IDisplayPartBuilderRecipe;
 import modernmods.modernfoundry.library.recipe.partbuilder.IPartBuilderContainer;
 import modernmods.modernfoundry.library.recipe.partbuilder.IPartBuilderRecipe;
 import modernmods.modernfoundry.library.recipe.partbuilder.Pattern;
 import modernmods.modernfoundry.library.tools.helper.ModifierUtil;
 import modernmods.modernfoundry.tables.TinkerTables;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -34,7 +35,7 @@ import java.util.stream.Stream;
 import static modernmods.modernfoundry.tables.recipe.PartBuilderToolRecycle.NO_MODIFIERS;
 
 /** Recipe for recycling a vanilla tool or a tinkers tool with no materials in the part builder */
-public class PartBuilderRecycle implements IPartBuilderRecipe, IMultiRecipe<DisplayPartRecipe> {
+public class PartBuilderRecycle implements IPartBuilderRecipe, IMultiRecipe<IDisplayPartBuilderRecipe> {
   /** Title for the screen */
   private static final Component RECYCLING = TConstruct.makeTranslation("recipe", "recycling");
   /** General instructions for recycling */
@@ -179,15 +180,19 @@ public class PartBuilderRecycle implements IPartBuilderRecipe, IMultiRecipe<Disp
 
 
   /* JEI */
-  private List<DisplayPartRecipe> displayRecipes;
+  private List<IDisplayPartBuilderRecipe> displayRecipes;
 
   @Override
-  public List<DisplayPartRecipe> getRecipes(RegistryAccess access) {
+  public List<IDisplayPartBuilderRecipe> getRecipes(RegistryAccess access) {
     if (displayRecipes == null) {
       List<ItemStack> patternItems = List.of(pattern.getItems());
-      List<ItemStack> toolItems = List.of(tool.getItems());
-      displayRecipes = results.entrySet().stream()
-        .map(entry -> new DisplayPartRecipe(id, MaterialVariant.UNKNOWN, entry.getKey(), patternItems, 0, toolItems, List.of(entry.getValue().get()))).toList();
+      displayRecipes = Arrays.stream(tool.getItems()).map(tool -> DisplayPartRecipe.id(id)
+        .title(RECYCLING).tooltip(INSTRUCTIONS)
+        .patterns(results.keySet().stream().toList())
+        .patternItems(patternItems)
+        .materialItem(tool)
+        .results(results.values().stream().map(ItemOutput::get).toList())
+        .build()).toList();
     }
     return displayRecipes;
   }

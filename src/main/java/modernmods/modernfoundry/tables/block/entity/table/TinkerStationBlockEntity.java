@@ -1,5 +1,6 @@
 package modernmods.modernfoundry.tables.block.entity.table;
 
+import modernmods.modernfoundry.library.materials.definition.IMaterial;
 import lombok.Getter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -26,7 +27,7 @@ import modernmods.modernfoundry.common.SoundUtils;
 import modernmods.modernfoundry.common.Sounds;
 import modernmods.modernfoundry.common.network.TinkerNetwork;
 import modernmods.modernfoundry.library.client.model.ModelProperties;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.recipe.RecipeResult;
 import modernmods.modernfoundry.library.recipe.TinkerRecipeTypes;
@@ -77,7 +78,7 @@ public class TinkerStationBlockEntity extends RetexturedTableBlockEntity impleme
 
   /** Material variant texture, alterantive to {@link #getTexture()} in the model. */
   @Getter
-  private MaterialVariantId material = IMaterial.UNKNOWN_ID;
+  private MaterialVariantId material = MaterialId.UNKNOWN;
 
   public TinkerStationBlockEntity(BlockPos pos, BlockState state) {
     // if the block is the right type, use it for slot count
@@ -321,7 +322,7 @@ public class TinkerStationBlockEntity extends RetexturedTableBlockEntity impleme
   public void updateTexture(String name) {
     // reset material
     if (!name.isEmpty()) {
-      this.material = IMaterial.UNKNOWN_ID;
+      this.material = MaterialId.UNKNOWN;
     }
     super.updateTexture(name);
   }
@@ -359,7 +360,7 @@ public class TinkerStationBlockEntity extends RetexturedTableBlockEntity impleme
   public void loadAdditional(CompoundTag tags, HolderLookup.Provider registries) {
     super.loadAdditional(tags, registries);
     if (tags.contains(MATERIAL_TAG, Tag.TAG_STRING)) {
-      material = Objects.requireNonNullElse(MaterialVariantId.tryParse(tags.getString(MATERIAL_TAG)), IMaterial.UNKNOWN_ID);
+      material = Objects.requireNonNullElse(MaterialVariantId.tryParse(tags.getString(MATERIAL_TAG)), MaterialId.UNKNOWN);
       RetexturedHelper.onTextureUpdated(this);
     }
   }

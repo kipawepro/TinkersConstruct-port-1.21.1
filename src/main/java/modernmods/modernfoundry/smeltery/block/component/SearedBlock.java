@@ -55,7 +55,9 @@ public class SearedBlock extends Block implements EntityBlock {
         }
       } else {
         // block changed, tell the master then ditch the block entity
-        BlockEntityHelper.get(SmelteryComponentBlockEntity.class, world, pos).ifPresent(te -> te.notifyMasterOfChange(pos, newState));
+        if (world.getBlockEntity(pos) instanceof SmelteryComponentBlockEntity te) {
+          te.notifyMasterOfChange(pos, newState);
+        }
         world.removeBlockEntity(pos);
       }
     }

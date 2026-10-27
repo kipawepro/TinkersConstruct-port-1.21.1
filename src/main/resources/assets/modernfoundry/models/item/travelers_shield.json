@@ -7,7 +7,6 @@
   },
   "modifier_maps": ["modernfoundry:travelers/shield"],
   "modifier_roots": [ "modernfoundry:item/tool/armor/travelers/shield/modifiers/" ],
-  "first_modifiers": [ "modernfoundry:dyed" ],
   "parts": [
     { "name": "wood", "index": 0 },
     { "name": "cuirass", "index": 1 }

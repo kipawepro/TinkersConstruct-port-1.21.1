@@ -1,6 +1,7 @@
 package modernmods.modernfoundry.library.materials.stats;
 
 import net.minecraft.resources.ResourceLocation;
+import modernmods.modernfoundry.library.materials.IMaterialUser;
 import modernmods.modernfoundry.library.materials.MaterialRegistry;
 import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.utils.IdParser;
@@ -11,7 +12,7 @@ import javax.annotation.Nullable;
 /**
  * This is just a copy of ResourceLocation for type safety.
  */
-public class MaterialStatsId extends ResourceId {
+public class MaterialStatsId extends ResourceId implements IMaterialUser {
   public static final IdParser<MaterialStatsId> PARSER = new IdParser<>(MaterialStatsId::new, "Material Stat Type");
 
   public MaterialStatsId(String text) {
@@ -27,6 +28,7 @@ public class MaterialStatsId extends ResourceId {
   }
 
   /** Checks if the given material can be used */
+  @Override
   public boolean canUseMaterial(MaterialId material) {
     return MaterialRegistry.getInstance().getMaterialStats(material.getId(), this).isPresent();
   }

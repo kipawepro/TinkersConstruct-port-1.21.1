@@ -32,6 +32,7 @@ import modernmods.modernfoundry.library.materials.stats.MaterialStatsId;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
 import modernmods.modernfoundry.library.modifiers.ModifierHooks;
 import modernmods.modernfoundry.library.modifiers.hook.interaction.EntityInteractionModifierHook;
+import modernmods.modernfoundry.library.modifiers.util.ModifierTooltip;
 import modernmods.modernfoundry.library.tools.definition.ToolDefinition;
 import modernmods.modernfoundry.library.tools.definition.module.ToolHooks;
 import modernmods.modernfoundry.library.tools.definition.module.display.ToolNameHook;
@@ -203,7 +204,7 @@ public class TooltipUtil {
   public static void addModifierNames(ItemStack stack, IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipFlag flag) {
     RegistryAccess access = player == null ? null : player.level().registryAccess();
     for (ModifierEntry entry : tool.getModifierList()) {
-      if (entry.getModifier().shouldDisplay(false)) {
+      if (entry.getModifier().shouldDisplay(ModifierTooltip.TOOL)) {
         Component name = entry.getModifier().getDisplayName(tool, entry, access);
         if (flag.isAdvanced() && Config.CLIENT.modifiersIDsInAdvancedTooltips.get()) {
           tooltips.add(Component.translatable(KEY_ID_FORMAT, name, Component.literal(entry.getModifier().getId().toString())).withStyle(ChatFormatting.DARK_GRAY));
@@ -380,7 +381,7 @@ public class TooltipUtil {
       // display tool parts as the tool part name, nicer to work with
       Component componentName;
       if (i < partCount) {
-        componentName = parts.get(i).withMaterial(material).getHoverName();
+        componentName = parts.get(i).withMaterialForDisplay(material).getHoverName();
       } else {
         componentName = Component.translatable(KEY_FORMAT, MaterialTooltipCache.getDisplayName(material), Component.translatable(Util.makeTranslationKey("stat", components.get(i))));
       }

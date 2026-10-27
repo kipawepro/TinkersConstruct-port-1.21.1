@@ -4,7 +4,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import modernmods.hilt.data.loadable.primitive.IntLoadable;
 import modernmods.hilt.data.loadable.record.RecordLoadable;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.module.HookProvider;
 import modernmods.modernfoundry.library.module.ModuleHook;
@@ -46,7 +46,7 @@ public record FixedMaterialToolName(int index) implements ToolNameHook.FromDefau
   @Override
   public Component getDisplayName(ToolDefinition definition, ItemStack stack, @Nullable IToolStackView tool, Component itemName) {
     MaterialVariantId material = ToolNameHook.getTool(stack, tool).getMaterials().get(index).getVariant();
-    if (IMaterial.UNKNOWN_ID.equals(material)) {
+    if (MaterialId.UNKNOWN.equals(material)) {
       return itemName;
     }
     return MaterialToolName.nameForMaterial(material, itemName);

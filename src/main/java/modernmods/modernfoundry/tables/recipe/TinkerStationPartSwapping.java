@@ -8,29 +8,42 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 import modernmods.hilt.data.loadable.field.ContextKey;
 import modernmods.hilt.data.loadable.record.RecordLoadable;
+import modernmods.hilt.recipe.IMultiRecipe;
 import modernmods.hilt.recipe.ingredient.SizedIngredient;
+import modernmods.modernfoundry.library.materials.IMaterialRegistry;
+import modernmods.modernfoundry.library.materials.MaterialRegistry;
 import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
+import modernmods.modernfoundry.library.materials.definition.MaterialVariant;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.recipe.RecipeResult;
 import modernmods.modernfoundry.library.recipe.casting.material.MaterialCastingLookup;
 import modernmods.modernfoundry.library.recipe.modifiers.adding.ModifierRecipe;
+import modernmods.modernfoundry.library.recipe.tinkerstation.IDisplayToolTinkering;
 import modernmods.modernfoundry.library.recipe.tinkerstation.IMutableTinkerStationContainer;
 import modernmods.modernfoundry.library.recipe.tinkerstation.ITinkerStationContainer;
 import modernmods.modernfoundry.library.recipe.tinkerstation.building.MaterialSwappingRecipe;
 import modernmods.modernfoundry.library.tools.definition.module.material.ToolPartsHook;
+import modernmods.modernfoundry.library.tools.helper.ToolBuildHandler;
 import modernmods.modernfoundry.library.tools.item.IModifiable;
 import modernmods.modernfoundry.library.tools.nbt.LazyToolStack;
+import modernmods.modernfoundry.library.tools.nbt.ToolStack;
 import modernmods.modernfoundry.library.tools.part.IToolPart;
 import modernmods.modernfoundry.tables.TinkerTables;
 
+import java.util.Arrays;
 import java.util.BitSet;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
- * Recipe that replaces a tool part with another
+ * Recipe that replaces a tool part with another.
+ * TODO 1.21: rename this to something clearer like {@code PartMaterialSwappingRecipe} given we now have so many part swapping recipes.
+ * That or merge it into tool building as previously planned.
  */
-public class TinkerStationPartSwapping extends MaterialSwappingRecipe {
+public class TinkerStationPartSwapping extends MaterialSwappingRecipe implements IMultiRecipe<IDisplayToolTinkering> {
   public static final RecordLoadable<TinkerStationPartSwapping> LOADER = RecordLoadable.create(ContextKey.ID.requiredField(), TOOLS_FIELD, STACK_SIZE_FIELD, EXTRA_REQUIREMENTS_FIELD, TinkerStationPartSwapping::new);
 
   protected TinkerStationPartSwapping(ResourceLocation id, Ingredient tools, int maxStackSize, List<SizedIngredient> extraRequirements) {
@@ -91,7 +104,7 @@ public class TinkerStationPartSwapping extends MaterialSwappingRecipe {
       if (!stack.isEmpty() && stack.getItem() instanceof IToolPart part) {
         // ensure the part is valid
         MaterialVariantId partVariant = part.getMaterial(stack);
-        if (partVariant.equals(IMaterial.UNKNOWN_ID)) {
+        if (partVariant.equals(MaterialId.UNKNOWN)) {
           return RecipeResult.pass();
         }
 
@@ -125,5 +138,41 @@ public class TinkerStationPartSwapping extends MaterialSwappingRecipe {
   @Override
   public RecipeSerializer<?> getSerializer() {
     return TinkerTables.tinkerStationPartSwappingSerializer.get();
+  }
+
+
+  /* JEI */
+  private List<IDisplayToolTinkering> multiRecipes;
+
+  @Override
+  public List<IDisplayToolTinkering> getRecipes(RegistryAccess access) {
+    if (multiRecipes == null) {
+      IMaterialRegistry registry = MaterialRegistry.getInstance();
+      Collection<IMaterial> materials = registry.getVisibleMaterials();
+      multiRecipes = Arrays.stream(tools.getItems()).flatMap(stack -> {
+        ToolStack tool = ToolStack.from(stack);
+        List<IToolPart> parts = ToolPartsHook.parts(tool.getDefinition());
+        // JEI only shows up to 5 slots
+        if (parts.size() > MAX_SLOTS) {
+          return Stream.empty();
+        }
+        return IntStream.range(0, parts.size()).<IDisplayToolTinkering>mapToObj(i -> {
+          IToolPart part = parts.get(i);
+          ToolStack copy = tool.copy();
+          List<IMaterial> filtered = materials.stream().filter(mat -> registry.getMaterialStats(mat.getIdentifier(), part.getStatType()).isPresent()).toList();
+          return new PartDisplayRecipe(i,
+            // one part per material
+            filtered.stream().map(mat -> part.withMaterialForDisplay(mat.getIdentifier())).toList(),
+            // single tool with the material to swap left blank
+            List.of(withMaterial(copy, i, MaterialVariant.of(ToolBuildHandler.getRenderMaterial(0))).copy()),
+            // one output per material
+            filtered.stream().map(mat -> withMaterial(copy, i, MaterialVariant.of(mat)).copy()).toList(),
+            // part info
+            filtered.stream().map(MaterialVariant::of).toList(), part
+          );
+        });
+      }).toList();
+    }
+    return multiRecipes;
   }
 }

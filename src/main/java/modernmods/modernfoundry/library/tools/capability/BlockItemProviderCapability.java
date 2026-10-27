@@ -1,7 +1,6 @@
 package modernmods.modernfoundry.library.tools.capability;
 
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -15,6 +14,8 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import modernmods.modernfoundry.compat.neoforged.neoforge.common.util.LazyOptional;
 import net.neoforged.bus.api.EventPriority;
 import org.jetbrains.annotations.ApiStatus;
+import modernmods.hilt.data.loadable.Loadables;
+import modernmods.hilt.util.LogicHelper;
 import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.common.TinkerTags;
 
@@ -66,7 +67,7 @@ public interface BlockItemProviderCapability {
     if (stack.getItem() instanceof BlockItem bItem) {
       return bItem;
     } else {
-      TConstruct.LOG.warn("BlockItemProviderCapability implementation tried to return a non-empty, non-blockitem stack! Cap: {}, Cap Class: {}, Provided Item: {}", blockProvider, blockProvider.getClass().getName(), BuiltInRegistries.ITEM.getId(stack.getItem()));
+      TConstruct.LOG.warn("BlockItemProviderCapability implementation tried to return a non-empty, non-blockitem stack! Cap: {}, Cap Class: {}, Provided Item: {}", blockProvider, blockProvider.getClass().getName(), Loadables.ITEM.getKey(stack.getItem()));
       return null;
     }
   }

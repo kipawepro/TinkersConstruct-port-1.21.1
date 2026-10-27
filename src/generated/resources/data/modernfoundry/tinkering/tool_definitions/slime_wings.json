@@ -20,9 +20,15 @@
       ]
     },
     {
+      "type": "modernfoundry:base_stats",
+      "stats": {
+        "modernfoundry:durability": 222.0
+      }
+    },
+    {
       "type": "modernfoundry:multiply_stats",
       "multipliers": {
-        "modernfoundry:attack_damage": 0.4
+        "modernfoundry:attack_damage": 0.5
       }
     },
     {
@@ -36,6 +42,11 @@
       "type": "modernfoundry:material_repair",
       "durability": 672,
       "material": "modernfoundry:phantom"
+    },
+    {
+      "type": "modernfoundry:material_repair",
+      "durability": 480,
+      "material": "modernfoundry:dragon_scale"
     },
     {
       "type": "modernfoundry:traits",

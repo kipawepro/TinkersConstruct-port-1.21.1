@@ -184,8 +184,13 @@ public class MultiblockStructureData {
       world.setBlock(pos, state.setValue(SearedBlock.IN_STRUCTURE, add), Block.UPDATE_CLIENTS);
     }
     // if the BE is there, set its property
-    BlockEntityHelper.get(IServantLogic.class, world, pos).ifPresent(
-      add ? te -> te.setPotentialMaster(master) : te -> te.removeMaster(master));
+    if (world.getBlockEntity(pos) instanceof IServantLogic te) {
+      if (add) {
+        te.setPotentialMaster(master);
+      } else {
+        te.removeMaster(master);
+      }
+    }
   }
 
   /**

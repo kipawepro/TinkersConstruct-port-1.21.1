@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType.BlockEntitySupplier;
 import net.minecraft.world.level.block.state.BlockState;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.tools.part.IMaterialItem;
 import modernmods.modernfoundry.library.utils.TagUtil;
@@ -36,12 +36,13 @@ public class MaterialBlock extends Block implements EntityBlock {
   public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
     if (TagUtil.hasTag(stack)) {
       MaterialVariantId material = IMaterialItem.getMaterialFromStack(stack);
-      if (material != IMaterial.UNKNOWN_ID && level.getBlockEntity(pos) instanceof MaterialBlockEntity be) {
+      if (material != MaterialId.UNKNOWN && level.getBlockEntity(pos) instanceof MaterialBlockEntity be) {
         be.setMaterial(material);
       }
     }
   }
 
+  @Deprecated
   @Override
   public ItemStack getCloneItemStack(net.minecraft.world.level.LevelReader level, BlockPos pos, BlockState state) {
     ItemStack stack = new ItemStack(state.getBlock());

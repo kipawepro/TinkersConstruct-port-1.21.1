@@ -1,14 +1,13 @@
 {
-  "title":"Графический интерфейс Плавильной Печи",
-    "image": {
-     "file": "modernfoundry:book/images/meltergui.png",
-	 "width": 172,
+  "title": "Графический интерфейс плавильной печи",
+  "image": {
+    "file": "modernfoundry:book/images/meltergui.png",
+    "width": 172,
     "height": 81
   },
   "text": [
     {
-      "text": "Это интерфейс базовой плавильной печи. Не больше и не меньше.",
-      "paragraph": true
+      "text": "Базовый графический интерфейс плавильной печи. Ни больше, ни меньше."
     }
 	]
 }

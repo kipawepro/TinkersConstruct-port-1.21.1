@@ -1,5 +1,6 @@
 package modernmods.modernfoundry.tools.entity;
 
+import modernmods.modernfoundry.library.materials.definition.IMaterial;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.core.BlockPos;
@@ -34,7 +35,7 @@ import net.neoforged.neoforge.common.ItemAbilities;
 import modernmods.hilt.util.CombatHelper;
 import modernmods.modernfoundry.common.TinkerDamageTypes;
 import modernmods.modernfoundry.common.TinkerTags;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
 import modernmods.modernfoundry.library.modifiers.ModifierHooks;
@@ -403,7 +404,7 @@ public class CombatFishingHook extends FishingHook implements ProjectileWithKnoc
   public void readAdditionalSaveData(CompoundTag tag) {
     super.readAdditionalSaveData(tag);
     if (tag.contains(TAG_MATERIAL)) {
-      setMaterial(Objects.requireNonNullElse(MaterialVariantId.tryParse(tag.getString(TAG_MATERIAL)), IMaterial.UNKNOWN_ID));
+      setMaterial(Objects.requireNonNullElse(MaterialVariantId.tryParse(tag.getString(TAG_MATERIAL)), MaterialId.UNKNOWN));
     }
   }
 }

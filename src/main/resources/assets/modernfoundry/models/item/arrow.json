@@ -7,7 +7,6 @@
     "feather": "modernfoundry:item/tool/ammo/arrow_feather"
   },
   "modifier_maps": ["modernfoundry:arrow"],
-  "first_modifiers": [ "modernfoundry:dyed" ],
   "parts": [
     { "name": "shaft",   "index": 1 },
     { "name": "head",    "index": 0 },

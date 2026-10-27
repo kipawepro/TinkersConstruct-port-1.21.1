@@ -1,5 +1,6 @@
 package modernmods.modernfoundry.smeltery.block.entity;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -65,16 +66,16 @@ public class HeaterBlockEntity extends NameableBlockEntity implements ILegacyCap
   /* NBT */
 
   @Override
-  public void load(CompoundTag tags) {
-    super.load(tags);
+  public void loadAdditional(CompoundTag tags, HolderLookup.Provider registries) {
+    super.loadAdditional(tags, registries);
     if (tags.contains(TAG_ITEM, Tag.TAG_COMPOUND)) {
       itemHandler.readFromNBT(tags.getCompound(TAG_ITEM));
     }
   }
 
   @Override
-  public void saveAdditional(CompoundTag tags) {
-    super.saveAdditional(tags);
+  public void saveAdditional(CompoundTag tags, HolderLookup.Provider registries) {
+    super.saveAdditional(tags, registries);
     tags.put(TAG_ITEM, itemHandler.writeToNBT());
   }
 }

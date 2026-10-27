@@ -1,0 +1,10 @@
+{
+  "perStat": {
+    "modernfoundry:ribcage": [
+      {
+        "level": 1,
+        "name": "modernfoundry:ram_attack"
+      }
+    ]
+  }
+}

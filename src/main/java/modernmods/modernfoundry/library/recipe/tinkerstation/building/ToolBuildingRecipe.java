@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -23,8 +24,7 @@ import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.library.json.TinkerLoadables;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariant;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
-import modernmods.modernfoundry.library.modifiers.ModifierEntry;
-import modernmods.modernfoundry.library.modifiers.ModifierHooks;
+import modernmods.modernfoundry.library.modifiers.hook.build.CraftCountModifierHook;
 import modernmods.modernfoundry.library.recipe.RecipeResult;
 import modernmods.modernfoundry.library.recipe.material.MaterialRecipeCache;
 import modernmods.modernfoundry.library.recipe.tinkerstation.ITinkerStationContainer;
@@ -44,6 +44,7 @@ import modernmods.modernfoundry.library.tools.nbt.ToolStack;
 import modernmods.modernfoundry.library.tools.part.IMaterialItem;
 import modernmods.modernfoundry.library.tools.part.IToolPart;
 import modernmods.modernfoundry.library.utils.TagUtil;
+import modernmods.modernfoundry.library.tools.part.MaterialItemCache;
 import modernmods.modernfoundry.tables.TinkerTables;
 
 import javax.annotation.Nullable;
@@ -54,6 +55,7 @@ import java.util.Objects;
 /**
  * This recipe is used for crafting a set of parts into a tool.
  * TODO 1.21: extend {@link MaterialSwappingRecipe} to automatically provide part swapping here.
+ * TODO 1.21: support specifying material items instead of tool parts for crafting, for the sake of JSON addons.
  */
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class ToolBuildingRecipe implements ITinkerStationRecipe {
@@ -84,6 +86,7 @@ public class ToolBuildingRecipe implements ITinkerStationRecipe {
   @Getter
   protected final IModifiable output;
   /** Size of the result */
+  @Getter
   protected final int outputCount;
   /** Layout for slots in JEI */
   @Nullable
@@ -121,6 +124,11 @@ public class ToolBuildingRecipe implements ITinkerStationRecipe {
   /** Gets the additional recipe requirements beyond the tool parts */
   public List<Ingredient> getExtraRequirements() {
     return ingredients;
+  }
+
+  /** Gets the extra materials that are applied to tools using this recipe after the tool parts. */
+  public List<MaterialVariantId> getExtraMaterials() {
+    return materials;
   }
 
   @Override
@@ -191,21 +199,21 @@ public class ToolBuildingRecipe implements ITinkerStationRecipe {
       }
     }
     // create tool
-    ToolStack tool = ToolStack.createTool(output.asItem(), output.getToolDefinition(), new MaterialNBT(materials));
-    int count = outputCount;
+    Item item = output.asItem();
+    ToolStack tool = ToolStack.createTool(item, output.getToolDefinition(), new MaterialNBT(materials));
+    int count;
     // if we have any parts set, run the count hook
     // no point running it if all materials are set through override/no materials, just set the recipe count in that case
     // note there is an edge case when you have a fixed material that adjusts count plus parts, not really a good solution for that case
-    if (parts > 0) {
-      // apply tool craft hook for remaining traits
-      float newCount = count;
-      for (ModifierEntry entry : tool.getModifiers()) {
-        newCount = entry.getHook(ModifierHooks.CRAFT_COUNT).modifyCraftCount(tool, entry, newCount);
-        if (newCount <= 0) {
-          return NO_COUNT;
-        }
+    int itemMax = item.getDefaultMaxStackSize();
+    if (parts > 0 && itemMax > 1) {
+      count = CraftCountModifierHook.maxStackSize(tool, outputCount);
+      if (count <= 0) {
+        return NO_COUNT;
       }
-      count = (int) newCount;
+    } else {
+      // the min is handled inside the max stack size helper, so just handle it here
+      count = Math.min(itemMax, outputCount);
     }
 
     // validate the tool, lets people have traits reject each other or do weird slot shenanigans
@@ -213,7 +221,7 @@ public class ToolBuildingRecipe implements ITinkerStationRecipe {
     if (error != null) {
       return RecipeResult.failure(error);
     }
-    return LazyToolStack.success(tool, Math.min(output.asItem().getDefaultInstance().getMaxStackSize(), count));
+    return LazyToolStack.success(tool, count);
   }
 
 
@@ -237,12 +245,7 @@ public class ToolBuildingRecipe implements ITinkerStationRecipe {
    */
   public List<List<ItemStack>> getAllToolParts() {
     if (allToolParts == null) {
-      allToolParts = getToolParts().stream()
-        .map(part -> MaterialRecipeCache.getAllVariants().stream()
-          .filter(mat -> part.canUseMaterial(mat.getId()))
-          .map(part::withMaterial)
-          .toList())
-        .toList();
+      allToolParts = getToolParts().stream().map(MaterialItemCache::getAllMaterials).toList();
     }
     return allToolParts;
   }

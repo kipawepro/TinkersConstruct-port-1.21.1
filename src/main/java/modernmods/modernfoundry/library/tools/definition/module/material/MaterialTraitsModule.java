@@ -6,6 +6,7 @@ import modernmods.hilt.data.loadable.record.RecordLoadable;
 import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.library.materials.MaterialRegistry;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariant;
+import modernmods.modernfoundry.library.materials.stats.MaterialStatType;
 import modernmods.modernfoundry.library.materials.stats.MaterialStatsId;
 import modernmods.modernfoundry.library.module.HookProvider;
 import modernmods.modernfoundry.library.module.ModuleHook;
@@ -36,8 +37,12 @@ public final class MaterialTraitsModule implements ToolTraitHook, ToolModule {
   private MaterialStatsId statType;
   private final int materialIndex;
 
+  public MaterialTraitsModule(MaterialStatType<?> statType, int materialIndex) {
+    this(statType.getId(), materialIndex);
+  }
+
   public MaterialTraitsModule(int materialIndex) {
-    this(null, materialIndex);
+    this((MaterialStatsId)null, materialIndex);
   }
 
   @Override

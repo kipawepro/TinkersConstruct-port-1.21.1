@@ -1,0 +1,10 @@
+{
+  "level_display": "modernfoundry:default",
+  "modules": [
+    {
+      "type": "modernfoundry:volatile_flag",
+      "flag": "modernfoundry:iron_armor"
+    }
+  ],
+  "show_in_tooltips": "never"
+}

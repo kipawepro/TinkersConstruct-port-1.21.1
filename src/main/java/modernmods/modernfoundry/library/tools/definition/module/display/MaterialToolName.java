@@ -5,7 +5,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
 import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.library.client.materials.MaterialTooltipCache;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.materials.stats.MaterialStatsId;
 import modernmods.modernfoundry.library.tools.definition.ToolDefinition;
@@ -46,7 +46,7 @@ public interface MaterialToolName extends ToolNameHook.FromDefault {
     Set<MaterialVariantId> displayMaterials = new LinkedHashSet<>(size);
     for (int i = 0; i < size; i++) {
       MaterialVariantId material = materials.get(i).getVariant();
-      if (!IMaterial.UNKNOWN_ID.equals(material) && shouldDisplayMaterial(i, components.get(i), material)) {
+      if (!MaterialId.UNKNOWN.equals(material) && shouldDisplayMaterial(i, components.get(i), material)) {
         displayMaterials.add(material);
       }
     }

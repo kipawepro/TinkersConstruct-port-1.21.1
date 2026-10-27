@@ -7,7 +7,6 @@
     "metal":   "modernfoundry:item/tool/armor/travelers/goggles/metal"
   },
   "modifier_maps": ["modernfoundry:travelers/goggles"],
-  "first_modifiers": [ "modernfoundry:dyed" ],
   "parts": [
     { "name": "base" },
     { "name": "cuirass", "index": 1 },

@@ -123,6 +123,16 @@
     },
     {
       "allow_animated": false,
+      "path": "modernfoundry:tinker_armor/slime/overlay_armor",
+      "stat_type": "modernfoundry:slimesuit_overlay"
+    },
+    {
+      "allow_animated": false,
+      "path": "modernfoundry:tinker_armor/slime/overlay_leggings",
+      "stat_type": "modernfoundry:shell"
+    },
+    {
+      "allow_animated": false,
       "path": "modernfoundry:item/tool/armor/travelers/goggles/cuirass",
       "stat_type": "modernfoundry:cuirass"
     },
@@ -392,11 +402,6 @@
     {
       "allow_animated": false,
       "path": "modernfoundry:item/tool/armor/slime/boots/laces",
-      "stat_type": "modernfoundry:laces"
-    },
-    {
-      "allow_animated": false,
-      "path": "modernfoundry:item/tool/armor/slime/boots/laces_broken",
       "stat_type": "modernfoundry:laces"
     },
     {

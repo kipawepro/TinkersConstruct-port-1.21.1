@@ -5,6 +5,5 @@
       "type": "modernfoundry:mob_disguise",
       "entity": "minecraft:zombified_piglin"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

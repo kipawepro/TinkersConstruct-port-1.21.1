@@ -14,7 +14,13 @@ import net.minecraft.world.item.BannerItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
+import modernmods.hilt.data.loadable.common.IngredientLoadable;
+import modernmods.hilt.data.loadable.field.ContextKey;
+import modernmods.hilt.data.loadable.record.RecordLoadable;
+import modernmods.modernfoundry.TConstruct;
 import net.minecraft.world.level.Level;
 import modernmods.hilt.recipe.IMultiRecipe;
 import modernmods.hilt.util.RegistryHelper;
@@ -41,11 +47,19 @@ import java.util.stream.Stream;
 
 /** Recipe to add a banner to a shield */
 public class BannerModifierRecipe implements ITinkerStationRecipe, IMultiRecipe<IDisplayModifierRecipe> {
+  private static final RecipeResult<LazyToolStack> NO_PATTERNS = RecipeResult.failure(TConstruct.makeTranslationKey("recipe", "banner.clear.no_patterns"));
+  public static final RecordLoadable<BannerModifierRecipe> LOADER = RecordLoadable.create(
+    ContextKey.ID.requiredField(),
+    IngredientLoadable.ALLOW_EMPTY.defaultField("clear_input", Ingredient.EMPTY, false, r -> r.clearInput),
+    BannerModifierRecipe::new);
+
   @Getter
   private final ResourceLocation id;
+  private final Ingredient clearInput;
 
-  public BannerModifierRecipe(ResourceLocation id) {
+  public BannerModifierRecipe(ResourceLocation id, Ingredient clearInput) {
     this.id = id;
+    this.clearInput = clearInput;
     ModifierRecipeLookup.addRecipeModifier(null, TinkerModifiers.banner);
   }
 
@@ -55,14 +69,18 @@ public class BannerModifierRecipe implements ITinkerStationRecipe, IMultiRecipe<
     if (!inv.getTinkerableStack().is(TinkerTags.Items.BANNER)) {
       return false;
     }
-    // slots must be only banner
     boolean found = false;
+    boolean clear = false;
     for (int i = 0; i < inv.getInputCount(); i++) {
       ItemStack input = inv.getInput(i);
       if (!input.isEmpty()) {
-        if (input.getItem() instanceof BannerItem) {
+        if (!clearInput.isEmpty() && clearInput.test(input)) {
+          if (clear) {
+            return false;
+          }
+          clear = true;
+        } else if (input.getItem() instanceof BannerItem) {
           if (found) {
-            // multiple banners
             return false;
           }
           found = true;
@@ -85,13 +103,17 @@ public class BannerModifierRecipe implements ITinkerStationRecipe, IMultiRecipe<
     // locate the banner
     ItemStack banner = ItemStack.EMPTY;
     DyeColor dye = DyeColor.BLACK;
+    boolean clear = false;
     for (int i = 0; i < inv.getInputCount(); i++) {
       ItemStack stack = inv.getInput(i);
-      if (!stack.isEmpty() && stack.getItem() instanceof BannerItem bannerItem) {
+      if (stack.isEmpty()) {
+        continue;
+      }
+      if (!clearInput.isEmpty() && clearInput.test(stack)) {
+        clear = true;
+      } else if (stack.getItem() instanceof BannerItem bannerItem) {
         banner = stack;
         dye = bannerItem.getColor();
-        // only need 1
-        break;
       }
     }
 
@@ -100,22 +122,35 @@ public class BannerModifierRecipe implements ITinkerStationRecipe, IMultiRecipe<
       return RecipeResult.pass();
     }
 
-    // get the banner data
-    CustomData blockEntityData = banner.get(DataComponents.BLOCK_ENTITY_DATA);
-    CompoundTag bannerData = blockEntityData == null ? null : blockEntityData.copyTag();
-    ListTag patterns = new ListTag();
-    if (bannerData != null) {
-      patterns = bannerData.getList("Patterns", Tag.TAG_COMPOUND);
+    ListTag patterns = getBannerPatterns(banner);
+    if (clear && patterns.isEmpty()) {
+      return NO_PATTERNS;
     }
-
-    // apply the pattern
-    BannerModule.copyPatterns(tool.getPersistentData(), key, dye, patterns);
+    BannerModule.copyPatterns(tool.getPersistentData(), key, clear ? null : dye, patterns);
 
     // add the modifier if missing
     if (tool.getModifierLevel(key) == 0) {
       tool.addModifier(key, 1);
     }
     return ITinkerStationRecipe.success(tool, inv);
+  }
+
+  private static ListTag getBannerPatterns(ItemStack banner) {
+    BannerPatternLayers layers = banner.get(DataComponents.BANNER_PATTERNS);
+    if (layers != null) {
+      ListTag patterns = new ListTag();
+      for (BannerPatternLayers.Layer layer : layers.layers()) {
+        layer.pattern().unwrapKey().ifPresent(patternKey -> {
+          CompoundTag tag = new CompoundTag();
+          tag.putString("Pattern", patternKey.location().toString());
+          tag.putInt("Color", layer.color().getId());
+          patterns.add(tag);
+        });
+      }
+      return patterns;
+    }
+    CustomData blockEntityData = banner.get(DataComponents.BLOCK_ENTITY_DATA);
+    return blockEntityData == null ? new ListTag() : blockEntityData.copyTag().getList("Patterns", Tag.TAG_COMPOUND);
   }
 
   @Override

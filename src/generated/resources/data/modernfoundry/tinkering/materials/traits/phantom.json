@@ -1,1 +1,16 @@
-{}
+{
+  "default": [
+    {
+      "level": 1,
+      "name": "modernfoundry:nightmare_protection"
+    }
+  ],
+  "perStat": {
+    "modernfoundry:shell": [
+      {
+        "level": 1,
+        "name": "modernfoundry:dreambound"
+      }
+    ]
+  }
+}

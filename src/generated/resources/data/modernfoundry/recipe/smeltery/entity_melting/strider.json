@@ -3,7 +3,7 @@
   "id": "modernfoundry:smeltery/entity_melting/strider",
   "damage": 4,
   "entity": {
-    "type": "minecraft:strider"
+    "tag": "c:striders"
   },
   "result": {
     "amount": 50,

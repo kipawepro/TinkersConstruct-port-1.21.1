@@ -8,6 +8,8 @@ The central idea is simple: the tool is not finished when it is crafted. Gather 
 
 **Requires:** [Hilt](https://www.curseforge.com/minecraft/mc-mods/hilt)
 
+Optional compatibility is provided for Create 6.0.10+, Sable 2.x, and Create Aeronautics 1.3.1+ on NeoForge 1.21.1. When Create is installed, its zinc ore, raw zinc, zinc products, and brass can be melted, cast, repaired, and used as complete melee, harvesting, and ranged tool materials. Create heated mixing can automate seven core molten alloys. Create pipes, mechanical pumps, fluid tanks, and other NeoForge fluid machines can transfer and store Modern Foundry fluids through tanks, casting tanks, drains, and ducts. Sable treats Modern Foundry slime and congealed-slime blocks as bouncy physics surfaces, Create Aeronautics vehicles preserve shield attack angles across moving sub-levels, and the Kama cuts Simulated rope.
+
 ## What is in the foundry
 
 ### Modular toolcrafting

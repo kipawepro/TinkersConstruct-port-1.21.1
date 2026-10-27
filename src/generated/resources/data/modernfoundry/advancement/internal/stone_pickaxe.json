@@ -1,0 +1,43 @@
+{
+  "criteria": {
+    "stone_pick": {
+      "conditions": {
+        "items": [
+          {
+            "type": "modernfoundry:tool_stack",
+            "predicate": {
+              "type": "hilt:and",
+              "predicates": [
+                {
+                  "type": "hilt:tag",
+                  "tag": "modernfoundry:modifiable/harvest"
+                },
+                {
+                  "type": "modernfoundry:tool_action",
+                  "action": "pickaxe_dig"
+                },
+                {
+                  "type": "modernfoundry:stat_in_set",
+                  "stat": "modernfoundry:harvest_tier",
+                  "values": [
+                    "minecraft:stone"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "stone_pick"
+    ]
+  ],
+  "rewards": {
+    "function": "modernfoundry:grant_advancement/story_upgrade_tools"
+  },
+  "sends_telemetry_event": false
+}

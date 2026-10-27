@@ -8,6 +8,5 @@
       "operation": "add",
       "stat": "modernfoundry:projectile_damage"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

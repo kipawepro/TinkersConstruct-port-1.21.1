@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "id": "modernfoundry:gadgets/armor_stands/clear",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "modernfoundry:clear_glass"
+    },
+    "S": {
+      "item": "modernfoundry:clear_glass_pane"
+    }
+  },
+  "pattern": [
+    "SSS",
+    " S ",
+    "SBS"
+  ],
+  "result": {
+    "id": "modernfoundry:clear_armor_stand"
+  },
+  "show_notification": true
+}

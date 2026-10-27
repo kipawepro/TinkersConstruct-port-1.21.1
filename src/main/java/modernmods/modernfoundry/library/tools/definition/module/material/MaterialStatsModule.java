@@ -9,16 +9,20 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Rarity;
 import modernmods.hilt.data.loadable.field.LoadableField;
 import modernmods.hilt.data.loadable.primitive.IntLoadable;
 import modernmods.hilt.data.loadable.record.RecordLoadable;
+import modernmods.modernfoundry.common.TinkerTags;
 import modernmods.modernfoundry.library.json.field.OptionallyNestedLoadable;
 import modernmods.modernfoundry.library.materials.IMaterialRegistry;
 import modernmods.modernfoundry.library.materials.MaterialRegistry;
 import modernmods.modernfoundry.library.materials.definition.MaterialId;
+import modernmods.modernfoundry.library.materials.definition.MaterialVariant;
 import modernmods.modernfoundry.library.materials.stats.IMaterialStats;
 import modernmods.modernfoundry.library.materials.stats.MaterialStatType;
 import modernmods.modernfoundry.library.materials.stats.MaterialStatsId;
+import modernmods.modernfoundry.library.modifiers.modules.build.RarityModule;
 import modernmods.modernfoundry.library.module.HookProvider;
 import modernmods.modernfoundry.library.module.ModuleHook;
 import modernmods.modernfoundry.library.module.ModuleHookMap;
@@ -27,10 +31,14 @@ import modernmods.modernfoundry.library.tools.definition.module.ToolHooks;
 import modernmods.modernfoundry.library.tools.definition.module.ToolModule;
 import modernmods.modernfoundry.library.tools.definition.module.build.ToolStatsHook;
 import modernmods.modernfoundry.library.tools.definition.module.build.ToolTraitHook;
+import modernmods.modernfoundry.library.tools.definition.module.build.VolatileDataToolHook;
 import modernmods.modernfoundry.library.tools.helper.ModifierBuilder;
+import modernmods.modernfoundry.library.tools.helper.ToolBuildHandler;
+import modernmods.modernfoundry.library.tools.item.IModifiable;
 import modernmods.modernfoundry.library.tools.nbt.IToolContext;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
 import modernmods.modernfoundry.library.tools.nbt.MaterialNBT;
+import modernmods.modernfoundry.library.tools.nbt.ToolDataNBT;
 import modernmods.modernfoundry.library.tools.stat.ModifierStatsBuilder;
 import modernmods.modernfoundry.tools.modules.ArmorModuleBuilder;
 import modernmods.modernfoundry.tools.stats.PlatingMaterialStats;
@@ -41,8 +49,8 @@ import java.util.Set;
 import java.util.stream.IntStream;
 
 /** Module for building tool stats using materials */
-public class MaterialStatsModule implements ToolStatsHook, ToolTraitHook, ToolMaterialHook, MaterialRepairToolHook, ToolModule {
-  private static final List<ModuleHook<?>> DEFAULT_HOOKS = HookProvider.<MaterialStatsModule>defaultHooks(ToolHooks.TOOL_STATS, ToolHooks.TOOL_TRAITS, ToolHooks.TOOL_MATERIALS, ToolHooks.MATERIAL_REPAIR);
+public class MaterialStatsModule implements ToolStatsHook, ToolTraitHook, ToolMaterialHook, MaterialRepairToolHook, ToolModule, VolatileDataToolHook {
+  private static final List<ModuleHook<?>> DEFAULT_HOOKS = HookProvider.<MaterialStatsModule>defaultHooks(ToolHooks.TOOL_STATS, ToolHooks.TOOL_TRAITS, ToolHooks.TOOL_MATERIALS, ToolHooks.MATERIAL_REPAIR, ToolHooks.VOLATILE_DATA);
   protected static final LoadableField<Integer,MaterialStatsModule> PRIMARY_PART_FIELD = IntLoadable.FROM_MINUS_ONE.defaultField("primary_part", 0, true, m -> m.primaryPart);
   public static final RecordLoadable<MaterialStatsModule> LOADER = RecordLoadable.create(
     new OptionallyNestedLoadable<>(MaterialStatsId.PARSER, "stat").list().requiredField("stat_types", m -> m.statTypes),
@@ -70,6 +78,29 @@ public class MaterialStatsModule implements ToolStatsHook, ToolTraitHook, ToolMa
   @Override
   public List<ModuleHook<?>> getDefaultHooks() {
     return DEFAULT_HOOKS;
+  }
+
+  @Override
+  public void addVolatileData(IToolContext context, ToolDataNBT volatileData) {
+    Rarity max = null;
+    MaterialNBT materials = context.getMaterials();
+    boolean shiny = false;
+    for (int i = 0; i < statTypes.size(); i++) {
+      MaterialVariant material = materials.get(i);
+      // if the material is shiny, the tool becomes shiny
+      if (MaterialRegistry.getInstance().isInTag(material.getId(), TinkerTags.Materials.SHINY)) {
+        shiny = true;
+      }
+      // keep just the rarest rarity
+      Rarity rarity = material.get().getRarity();
+      max = RarityModule.max(max, rarity);
+    }
+    if (shiny) {
+      volatileData.putBoolean(IModifiable.SHINY, true);
+    }
+    if (max != null) {
+      RarityModule.setRarity(volatileData, max);
+    }
   }
 
   @Override
@@ -104,12 +135,24 @@ public class MaterialStatsModule implements ToolStatsHook, ToolTraitHook, ToolMa
 
   @Override
   public boolean isRepairMaterial(IToolStackView tool, MaterialId material) {
+    MaterialNBT toolMaterials = tool.getMaterials();
     for (int part : getRepairIndices()) {
-      if (tool.getMaterial(part).matches(material)) {
+      if (toolMaterials.get(part).matches(material)) {
         return true;
       }
     }
     return false;
+  }
+
+  @Override
+  public void addRepairMaterials(IToolStackView tool, Set<MaterialId> materials) {
+    MaterialNBT toolMaterials = tool.getMaterials();
+    for (int part : getRepairIndices()) {
+      MaterialVariant material = toolMaterials.get(part);
+      if (!material.isUnknown() && !material.matches(ToolBuildHandler.RENDER_MATERIAL)) {
+        materials.add(material.getId());
+      }
+    }
   }
 
   @Override
@@ -174,11 +217,12 @@ public class MaterialStatsModule implements ToolStatsHook, ToolTraitHook, ToolMa
     return new ArmorBuilder(slots);
   }
 
+  @Setter
+  @Accessors(fluent = true)
   @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
   public static class Builder {
     private final ImmutableList.Builder<MaterialStatsId> stats = ImmutableList.builder();
     private final ImmutableList.Builder<Float> scales = ImmutableList.builder();
-    @Setter @Accessors(fluent = true)
     private int primaryPart = 0;
 
     /** Adds a stat type */

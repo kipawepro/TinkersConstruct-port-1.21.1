@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "id": "modernfoundry:gadgets/armor_stands/necrotic_bone",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "modernfoundry:blazewood_slab"
+    },
+    "S": {
+      "tag": "c:wither_bones"
+    }
+  },
+  "pattern": [
+    "SSS",
+    " S ",
+    "SBS"
+  ],
+  "result": {
+    "id": "modernfoundry:necrotic_bone_armor_stand"
+  },
+  "show_notification": true
+}

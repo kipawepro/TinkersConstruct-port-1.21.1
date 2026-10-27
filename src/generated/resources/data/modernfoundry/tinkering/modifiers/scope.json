@@ -5,6 +5,5 @@
       "type": "modernfoundry:zoom",
       "style": "scope"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

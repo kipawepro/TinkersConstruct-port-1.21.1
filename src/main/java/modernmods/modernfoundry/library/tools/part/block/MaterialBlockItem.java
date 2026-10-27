@@ -5,8 +5,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
+import modernmods.modernfoundry.common.TinkerTags;
+import modernmods.modernfoundry.library.materials.MaterialRegistry;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.tools.part.IMaterialItem;
 import modernmods.modernfoundry.library.tools.part.MaterialItem;
@@ -29,6 +32,11 @@ public class MaterialBlockItem extends BlockItem implements IMaterialItem {
   @Override
   public Component getName(ItemStack stack) {
     return MaterialItem.getName(this, stack);
+  }
+
+  @Override
+  public boolean isFoil(ItemStack stack) {
+    return MaterialRegistry.getInstance().isInTag(getMaterial(stack).getId(), TinkerTags.Materials.SHINY);
   }
 
   @Override

@@ -1,0 +1,32 @@
+{
+  "level_display": "modernfoundry:no_levels",
+  "modules": [
+    {
+      "type": "modernfoundry:block_damage",
+      "damage_source": {
+        "type": "hilt:tag",
+        "tag": "modernfoundry:rugged/terrain"
+      },
+      "hooks": [
+        "modernfoundry:damage_block"
+      ]
+    },
+    {
+      "type": "modernfoundry:block_damage",
+      "damage_source": {
+        "type": "hilt:tag",
+        "tag": "modernfoundry:rugged/attacks"
+      },
+      "hooks": [
+        "modernfoundry:damage_block"
+      ],
+      "modifier_level": {
+        "min": 2
+      }
+    },
+    {
+      "type": "modernfoundry:volatile_flag",
+      "flag": "modernfoundry:snow_boots"
+    }
+  ]
+}

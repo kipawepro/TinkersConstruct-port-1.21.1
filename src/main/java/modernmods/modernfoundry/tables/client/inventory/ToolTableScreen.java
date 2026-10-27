@@ -23,6 +23,7 @@ import modernmods.modernfoundry.TConstruct;
 import modernmods.modernfoundry.library.client.GuiUtil;
 import modernmods.modernfoundry.library.modifiers.Modifier;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
+import modernmods.modernfoundry.library.modifiers.util.ModifierTooltip;
 import modernmods.modernfoundry.library.tools.item.ITinkerStationDisplay;
 import modernmods.modernfoundry.library.tools.nbt.LazyToolStack;
 import modernmods.modernfoundry.library.tools.nbt.ToolStack;
@@ -163,7 +164,7 @@ public abstract class ToolTableScreen<T extends BlockEntity, C extends TabbedCon
                                            .collect(Collectors.toMap(ModifierEntry::getModifier, ModifierEntry::getLevel, Integer::sum));
       for (ModifierEntry entry : tool.getModifierList()) {
         Modifier mod = entry.getModifier();
-        if (mod.shouldDisplay(true)) {
+        if (mod.shouldDisplay(ModifierTooltip.TINKER_STATION)) {
           int level = entry.getLevel() - upgrades.getOrDefault(mod, 0);
           if (level > 0) {
             ModifierEntry trait = new ModifierEntry(entry.getModifier(), level);
@@ -184,7 +185,7 @@ public abstract class ToolTableScreen<T extends BlockEntity, C extends TabbedCon
       }
       for (ModifierEntry entry : modifiers) {
         Modifier mod = entry.getModifier();
-        if (mod.shouldDisplay(true)) {
+        if (mod.shouldDisplay(ModifierTooltip.TINKER_STATION)) {
           modifierNames.add(mod.getDisplayName(tool, entry, access));
           modifierTooltip.add(mod.getDescription(tool, entry));
         }

@@ -1,6 +1,6 @@
 {
   "values": [
-    "modernfoundry:glass",
+    "modernfoundry:gunpowder",
     "modernfoundry:leather",
     "modernfoundry:iron",
     "modernfoundry:copper",
@@ -15,12 +15,6 @@
     "modernfoundry:blaze",
     "modernfoundry:ender_pearl",
     "modernfoundry:dragon_scale",
-    "modernfoundry:venombone",
-    "modernfoundry:blazing_bone",
-    "modernfoundry:knightmetal",
-    {
-      "id": "modernfoundry:necronium",
-      "required": false
-    }
+    "modernfoundry:knightmetal"
   ]
 }

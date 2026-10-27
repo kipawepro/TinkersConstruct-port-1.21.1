@@ -73,7 +73,7 @@ public class MaterialValueIngredient implements ICustomIngredient {
   @Override
   public Stream<ItemStack> getItems() {
     if (items == null) {
-      items = MaterialRecipeCache.getAllRecipes().stream()
+      items = MaterialRecipeCache.getSortedRecipes().stream()
         .filter(this::test)
         .flatMap(material -> Arrays.stream(material.getIngredient().getItems()))
         .toArray(ItemStack[]::new);

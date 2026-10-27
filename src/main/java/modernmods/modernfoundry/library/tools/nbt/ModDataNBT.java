@@ -58,6 +58,7 @@ public class ModDataNBT implements IModDataView {
    */
   public void put(ResourceLocation name, Tag nbt) {
     data.put(name.toString(), nbt);
+    onChanged();
   }
 
   /**
@@ -67,6 +68,7 @@ public class ModDataNBT implements IModDataView {
    */
   public void putInt(ResourceLocation name, int value) {
     data.putInt(name.toString(), value);
+    onChanged();
   }
 
   /**
@@ -76,6 +78,7 @@ public class ModDataNBT implements IModDataView {
    */
   public void putBoolean(ResourceLocation name, boolean value) {
     data.putBoolean(name.toString(), value);
+    onChanged();
   }
 
   /**
@@ -85,6 +88,7 @@ public class ModDataNBT implements IModDataView {
    */
   public void putFloat(ResourceLocation name, float value) {
     data.putFloat(name.toString(), value);
+    onChanged();
   }
 
   /**
@@ -94,6 +98,7 @@ public class ModDataNBT implements IModDataView {
    */
   public void putString(ResourceLocation name, String value) {
     data.putString(name.toString(), value);
+    onChanged();
   }
 
   /**
@@ -102,7 +107,11 @@ public class ModDataNBT implements IModDataView {
    */
   public void remove(ResourceLocation name) {
     data.remove(name.toString());
+    onChanged();
   }
+
+
+  protected void onChanged() {}
 
 
   /* Networking */
@@ -119,6 +128,7 @@ public class ModDataNBT implements IModDataView {
   public void copyFrom(CompoundTag data) {
     this.data.getAllKeys().clear();
     this.data.merge(data);
+    onChanged();
   }
 
   /**

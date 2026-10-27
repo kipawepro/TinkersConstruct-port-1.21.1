@@ -1,5 +1,6 @@
 package modernmods.modernfoundry.library.tools.part.block;
 
+import modernmods.modernfoundry.library.materials.definition.IMaterial;
 import lombok.Getter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -11,7 +12,7 @@ import net.neoforged.neoforge.client.model.data.ModelData;
 import modernmods.hilt.block.entity.HiltBlockEntity;
 import modernmods.hilt.util.RetexturedHelper;
 import modernmods.modernfoundry.library.client.model.ModelProperties;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.tools.TinkerToolParts;
 
@@ -24,7 +25,7 @@ import static modernmods.modernfoundry.library.tools.part.IMaterialItem.MATERIAL
 public class MaterialBlockEntity extends HiltBlockEntity {
   @Nonnull
   @Getter
-  private MaterialVariantId material = IMaterial.UNKNOWN_ID;
+  private MaterialVariantId material = MaterialId.UNKNOWN;
 
   /** Constructor for addons to register a new block entity for their material blocks */
   public MaterialBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -69,7 +70,7 @@ public class MaterialBlockEntity extends HiltBlockEntity {
   protected void loadAdditional(CompoundTag tags, HolderLookup.Provider registries) {
     super.loadAdditional(tags, registries);
     if (tags.contains(MATERIAL_TAG, Tag.TAG_STRING)) {
-      material = Objects.requireNonNullElse(MaterialVariantId.tryParse(tags.getString(MATERIAL_TAG)), IMaterial.UNKNOWN_ID);
+      material = Objects.requireNonNullElse(MaterialVariantId.tryParse(tags.getString(MATERIAL_TAG)), MaterialId.UNKNOWN);
       RetexturedHelper.onTextureUpdated(this);
     }
   }

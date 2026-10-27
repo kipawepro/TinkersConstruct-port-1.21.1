@@ -1,0 +1,10 @@
+{
+  "type": "modernfoundry:material",
+  "id": "modernfoundry:tools/materials/honey_block",
+  "ingredient": {
+    "item": "minecraft:honey_block"
+  },
+  "material": "modernfoundry:honey",
+  "needed": 1,
+  "value": 4
+}

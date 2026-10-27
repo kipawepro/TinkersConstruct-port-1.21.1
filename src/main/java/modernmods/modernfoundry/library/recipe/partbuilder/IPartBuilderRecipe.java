@@ -14,7 +14,6 @@ import modernmods.modernfoundry.library.recipe.material.IMaterialValue;
 import modernmods.modernfoundry.tables.TinkerTables;
 
 import javax.annotation.Nullable;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -88,21 +87,7 @@ public interface IPartBuilderRecipe extends ICommonRecipe<IPartBuilderContainer>
   default ItemStack getLeftover(IPartBuilderContainer inventoryWrapper, Pattern pattern) {
     IMaterialValue recipe = inventoryWrapper.getMaterial();
     if (recipe != null) {
-      int value = recipe.getValue();
-      if (value > 1) {
-        int needed = recipe.getNeeded();
-        int remainder = (value - getCost() * needed) % value;
-        if (remainder < 0) {
-          remainder += value;
-        }
-        if (remainder > 0) {
-          ItemStack leftover = recipe.getLeftover();
-          if (!leftover.isEmpty()) {
-            leftover.setCount(leftover.getCount() * remainder / needed);
-          }
-          return leftover;
-        }
-      }
+      return recipe.getLeftover(getCost());
     }
     return ItemStack.EMPTY;
   }
@@ -115,6 +100,6 @@ public interface IPartBuilderRecipe extends ICommonRecipe<IPartBuilderContainer>
 
   /** Gets the text to display on the part builder screen */
   default List<Component> getText(IPartBuilderContainer inv) {
-    return Collections.emptyList();
+    return List.of();
   }
 }

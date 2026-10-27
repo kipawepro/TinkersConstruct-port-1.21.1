@@ -5,7 +5,7 @@ import modernmods.hilt.data.loadable.field.ContextKey;
 import modernmods.hilt.data.loadable.record.RecordLoadable;
 import modernmods.modernfoundry.library.json.LevelingInt;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
-import modernmods.modernfoundry.library.modifiers.ModifierManager;
+import modernmods.modernfoundry.library.modifiers.ModifierId;
 import modernmods.modernfoundry.library.modifiers.hook.special.CapacityBarHook;
 import modernmods.modernfoundry.library.modifiers.modules.ModifierModule;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
@@ -33,7 +33,7 @@ public class CapacityBarModule extends CapacityBarHook.PersistentDataCapacityBar
 
   /** Constructor for datagen */
   public CapacityBarModule(LevelingInt capacity, @Nullable INumericToolStat<?> multiplier) {
-    this(ModifierManager.EMPTY, capacity, multiplier);
+    this(ModifierId.EMPTY, capacity, multiplier);
   }
 
   @Override

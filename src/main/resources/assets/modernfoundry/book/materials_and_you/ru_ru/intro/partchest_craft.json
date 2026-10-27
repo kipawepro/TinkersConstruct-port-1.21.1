@@ -1,4 +1,7 @@
 {
-  "title": "Создание ящика для частей",
-  "recipe": "modernfoundry:tables/part_chest"
+  "title": "Создание ящика для деталей",
+  "recipe": "modernfoundry:tables/part_chest",
+  "description": [
+    { "text": "Никогда не знаешь, когда тебе может снова понадобиться эта неиспользованная деталь инструмента." }
+  ]
 }

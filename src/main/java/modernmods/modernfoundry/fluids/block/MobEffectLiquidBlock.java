@@ -22,6 +22,7 @@ public class MobEffectLiquidBlock extends LiquidBlock {
     this.effect = effect;
   }
 
+  @Deprecated
   @Override
   public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
     if (entity.getFluidTypeHeight(fluid.getFluidType()) > 0 && entity instanceof LivingEntity living) {

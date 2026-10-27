@@ -4,6 +4,5 @@
     {
       "type": "modernfoundry:kinetic"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

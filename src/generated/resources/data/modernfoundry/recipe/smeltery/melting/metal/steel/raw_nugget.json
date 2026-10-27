@@ -1,6 +1,12 @@
 {
   "type": "modernfoundry:melting",
   "id": "modernfoundry:smeltery/melting/metal/steel/raw_nugget",
+  "conditions": [
+    {
+      "type": "hilt:tag_filled",
+      "tag": "c:raw_nuggets/steel"
+    }
+  ],
   "ingredient": {
     "tag": "c:raw_nuggets/steel"
   },

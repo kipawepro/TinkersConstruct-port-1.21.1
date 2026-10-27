@@ -23,16 +23,6 @@
         "level": 1,
         "name": "modernfoundry:conductive"
       }
-    ],
-    "modernfoundry:skull": [
-      {
-        "level": 1,
-        "name": "modernfoundry:flaming_bones"
-      },
-      {
-        "level": 1,
-        "name": "modernfoundry:wither_skeleton_disguise"
-      }
     ]
   }
 }

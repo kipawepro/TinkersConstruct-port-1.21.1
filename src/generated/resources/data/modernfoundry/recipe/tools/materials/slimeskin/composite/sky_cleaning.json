@@ -5,7 +5,8 @@
     "amount": 50,
     "tag": "modernfoundry:venom"
   },
-  "input": "modernfoundry:skyslime_vine#slimeskin",
+  "hide_in_book": true,
+  "input": "modernfoundry:skyslimeskin",
   "output": "modernfoundry:leather",
   "temperature": 10
 }

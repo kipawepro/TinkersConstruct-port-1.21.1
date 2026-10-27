@@ -7,11 +7,8 @@
   },
   "modifier_maps": [
     "modernfoundry:plate/leggings_broken",
-    "modernfoundry:plate/leggings"
-  ],
-  "first_modifiers": [
-    "modernfoundry:dyed",
-    "modernfoundry:trim"
+    "modernfoundry:plate/leggings",
+    "modernfoundry:armor/leggings"
   ],
   "parts": [
     {

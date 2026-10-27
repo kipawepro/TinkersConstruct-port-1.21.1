@@ -8,7 +8,7 @@
     "modernfoundry:steel",
     "modernfoundry:manyullyn",
     "modernfoundry:cinderslime",
-    "modernfoundry:knightslime",
+    "modernfoundry:knightmetal",
     {
       "id": "modernfoundry:lead",
       "required": false

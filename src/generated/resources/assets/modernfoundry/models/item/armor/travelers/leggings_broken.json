@@ -7,11 +7,8 @@
   },
   "modifier_maps": [
     "modernfoundry:travelers/pants_broken",
-    "modernfoundry:travelers/pants"
-  ],
-  "first_modifiers": [
-    "modernfoundry:dyed",
-    "modernfoundry:trim"
+    "modernfoundry:travelers/pants",
+    "modernfoundry:armor/leggings"
   ],
   "parts": [
     {

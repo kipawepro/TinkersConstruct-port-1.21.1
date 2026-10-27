@@ -1,4 +1,5 @@
 package modernmods.modernfoundry.smeltery.block.entity.component;
+import net.minecraft.core.HolderLookup;
 import modernmods.modernfoundry.smeltery.block.entity.ILegacyCapabilityBlockEntity;
 
 import lombok.Getter;
@@ -224,8 +225,8 @@ public abstract class SmelteryInputOutputBlockEntity<T> extends SmelteryComponen
   }
 
   @Override
-  protected void saveSynced(CompoundTag tags) {
-    super.saveSynced(tags);
+  public void saveSynced(CompoundTag tags, HolderLookup.Provider registries) {
+    super.saveSynced(tags, registries);
     tags.putString(TAG_FLUID_PORT_MODE, fluidPortMode.name());
     if (texture != Blocks.AIR) {
       tags.putString(TAG_TEXTURE, getTextureName());
@@ -233,8 +234,8 @@ public abstract class SmelteryInputOutputBlockEntity<T> extends SmelteryComponen
   }
 
   @Override
-  public void load(CompoundTag tags) {
-    super.load(tags);
+  public void loadAdditional(CompoundTag tags, HolderLookup.Provider registries) {
+    super.loadAdditional(tags, registries);
     fluidPortMode = FluidPortMode.fromTag(tags);
     if (tags.contains(TAG_TEXTURE, Tag.TAG_STRING)) {
       texture = RetexturedHelper.getBlock(tags.getString(TAG_TEXTURE));

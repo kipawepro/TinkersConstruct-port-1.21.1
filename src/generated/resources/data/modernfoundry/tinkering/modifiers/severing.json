@@ -4,6 +4,5 @@
     {
       "type": "modernfoundry:severing"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

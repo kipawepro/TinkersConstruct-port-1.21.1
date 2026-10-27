@@ -34,7 +34,7 @@ import modernmods.modernfoundry.library.client.data.util.ResourceManagerSpriteRe
 import modernmods.modernfoundry.library.client.materials.MaterialGeneratorInfo;
 import modernmods.modernfoundry.library.client.materials.MaterialRenderInfo;
 import modernmods.modernfoundry.library.client.materials.MaterialRenderInfoLoader;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.materials.stats.MaterialStatsId;
 import modernmods.modernfoundry.shared.network.GeneratePartTexturesPacket.Operation;
@@ -263,7 +263,7 @@ public class ClientGeneratePartTexturesCommand {
   }
 
   /** We are using loadables just for JSON parsing. Its not *exactly* made for that so we are basically using this to no-op the getter */
-  private static final MaterialRenderInfo EMPTY = new MaterialRenderInfo(IMaterial.UNKNOWN_ID, null, new String[0], -1, 0);
+  private static final MaterialRenderInfo EMPTY = new MaterialRenderInfo(MaterialId.UNKNOWN, null, new String[0], -1, 0);
 
   /** Loadable for a sprite info */
   private static final RecordLoadable<MaterialSpriteInfo> SPRITE_LOADER = RecordLoadable.create(

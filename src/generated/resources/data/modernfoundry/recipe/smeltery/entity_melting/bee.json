@@ -3,7 +3,7 @@
   "id": "modernfoundry:smeltery/entity_melting/bee",
   "damage": 2,
   "entity": {
-    "type": "minecraft:bee"
+    "tag": "c:bees"
   },
   "result": {
     "amount": 25,

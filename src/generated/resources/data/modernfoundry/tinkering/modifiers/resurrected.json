@@ -20,5 +20,5 @@
       "translation_key": "modifier.modernfoundry.resurrected.requirements"
     }
   ],
-  "tooltip_display": "tinker_station"
+  "show_in_tooltips": "bonus_slot"
 }

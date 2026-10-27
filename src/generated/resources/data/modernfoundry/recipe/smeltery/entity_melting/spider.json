@@ -3,10 +3,7 @@
   "id": "modernfoundry:smeltery/entity_melting/spider",
   "damage": 2,
   "entity": {
-    "types": [
-      "minecraft:spider",
-      "minecraft:cave_spider"
-    ]
+    "tag": "c:spiders"
   },
   "result": {
     "amount": 25,

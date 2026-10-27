@@ -1,5 +1,9 @@
 {
   "stats": {
-    "modernfoundry:repair_kit": {}
+    "modernfoundry:cuirass": {},
+    "modernfoundry:repair_kit": {},
+    "modernfoundry:shell": {
+      "repair_amount": 432
+    }
   }
 }

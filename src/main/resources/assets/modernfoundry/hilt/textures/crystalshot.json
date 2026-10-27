@@ -1,0 +1,10 @@
+{
+  "textures": {
+    "amethyst":   "modernfoundry:item/arrow/amethyst",
+    "earthslime": "modernfoundry:item/arrow/earthslime",
+    "enderslime": "modernfoundry:item/arrow/enderslime",
+    "ichor":      "modernfoundry:item/arrow/ichor",
+    "quartz":     "modernfoundry:item/arrow/quartz",
+    "skyslime":   "modernfoundry:item/arrow/skyslime"
+  }
+}

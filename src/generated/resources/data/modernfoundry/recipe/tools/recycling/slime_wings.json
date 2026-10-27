@@ -1,0 +1,13 @@
+{
+  "type": "modernfoundry:part_builder_tool_recycling",
+  "id": "modernfoundry:tools/recycling/slime_wings",
+  "parts": [
+    "modernfoundry:repair_kit"
+  ],
+  "pattern": {
+    "item": "modernfoundry:venom_bottle"
+  },
+  "tools": {
+    "item": "modernfoundry:slime_wings"
+  }
+}

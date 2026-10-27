@@ -63,16 +63,13 @@ import modernmods.modernfoundry.common.TinkerModule;
 import modernmods.modernfoundry.common.TinkerTags;
 import modernmods.modernfoundry.common.registration.GeodeItemObject;
 import modernmods.modernfoundry.common.registration.GeodeItemObject.BudSize;
-import modernmods.modernfoundry.fluids.TinkerFluids;
 import modernmods.modernfoundry.library.json.loot.equipment.MobEquipmentManager;
-import modernmods.modernfoundry.library.materials.MaterialRegistry;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
 import modernmods.modernfoundry.library.utils.Util;
 import modernmods.modernfoundry.shared.TinkerCommons;
 import modernmods.modernfoundry.shared.TinkerMaterials;
 import modernmods.modernfoundry.shared.block.SlimeType;
+import modernmods.modernfoundry.smeltery.TinkerSmeltery;
 import modernmods.modernfoundry.tools.TinkerModifiers;
-import modernmods.modernfoundry.tools.data.material.MaterialIds;
 import modernmods.modernfoundry.world.block.CongealedSlimeBlock;
 import modernmods.modernfoundry.world.block.CrystalClusterBlock;
 import modernmods.modernfoundry.world.block.DirtType;
@@ -116,10 +113,10 @@ public final class TinkerWorld extends TinkerModule {
   /** Creative tab for anything that is naturally found in the world */
   public static final DeferredHolder<? super CreativeModeTab, CreativeModeTab> tabWorld = CREATIVE_TABS.register(
     "world", () -> CreativeModeTab.builder().title(TConstruct.makeTranslation("itemGroup", "world"))
-                                  .icon(() -> new ItemStack(TinkerWorld.cobaltOre))
-                                  .displayItems(TinkerWorld::addTabItems)
-                                  .withTabsBefore(TinkerFluids.tabFluids.getId())
-                                  .build());
+      .icon(() -> new ItemStack(TinkerWorld.cobaltOre))
+      .displayItems(TinkerWorld::addTabItems)
+      .withTabsBefore(TinkerSmeltery.tabSmeltery.getId())
+      .build());
 
   /*
    * Block base properties
@@ -418,11 +415,7 @@ public final class TinkerWorld extends TinkerModule {
     output.accept(TinkerMaterials.necroticBone);
     output.accept(TinkerModifiers.dragonScale);
     // skip necronium head unless necronium is enabled
-    headItems.forEach((type, head) -> {
-      if (type != TinkerHeadType.NECRONIUM || MaterialRegistry.getMaterial(MaterialIds.necronium) != IMaterial.UNKNOWN) {
-        output.accept(head);
-      }
-    });
+    headItems.forEach((type, head) -> output.accept(head));
 
     // earth is not in the loop as we only add congealed
     output.accept(congealedSlime.get(SlimeType.EARTH));

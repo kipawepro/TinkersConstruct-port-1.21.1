@@ -5,6 +5,5 @@
       "type": "modernfoundry:projectile_gravity",
       "flat": 20
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

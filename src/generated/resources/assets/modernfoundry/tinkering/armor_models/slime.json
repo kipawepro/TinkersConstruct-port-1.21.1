@@ -5,6 +5,30 @@
       "index": 1,
       "prefix": "modernfoundry:slime/"
     },
+    {
+      "type": "modernfoundry:first_present",
+      "options": [
+        {
+          "type": "modernfoundry:material_has_fallback",
+          "apply": {
+            "type": "modernfoundry:dyed",
+            "prefix": "modernfoundry:slime/overlay_",
+            "suffix": "_bone"
+          },
+          "fallback": "bone",
+          "index": 0
+        },
+        {
+          "type": "modernfoundry:dyed",
+          "prefix": "modernfoundry:slime/overlay_"
+        },
+        {
+          "type": "modernfoundry:material",
+          "index": 0,
+          "prefix": "modernfoundry:slime/overlay_"
+        }
+      ]
+    },
     "modernfoundry:trim"
   ]
 }

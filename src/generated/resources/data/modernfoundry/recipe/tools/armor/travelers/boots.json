@@ -2,9 +2,6 @@
   "type": "modernfoundry:crafting_shaped_materials",
   "id": "modernfoundry:tools/armor/travelers/boots",
   "category": "equipment",
-  "extra_materials": [
-    "modernfoundry:leather"
-  ],
   "key": {
     "c": [
       {
@@ -37,11 +34,20 @@
       }
     ],
     "l": {
-      "tag": "c:leather"
+      "type": "modernfoundry:material_value",
+      "material": {
+        "type": "modernfoundry:stat_type",
+        "stat_type": "modernfoundry:cuirass"
+      },
+      "value": 1.0
+    },
+    "s": {
+      "tag": "c:string"
     }
   },
-  "parts": "c",
+  "parts": "cl",
   "pattern": [
+    "s s",
     "c c",
     "l l"
   ],

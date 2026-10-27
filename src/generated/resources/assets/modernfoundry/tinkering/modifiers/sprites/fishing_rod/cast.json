@@ -1,0 +1,17 @@
+{
+  "constant": {
+    "__tipped": []
+  },
+  "modifiers": {
+    "modernfoundry:bounce": [],
+    "modernfoundry:collecting": [],
+    "modernfoundry:fiery": [],
+    "modernfoundry:freezing": [],
+    "modernfoundry:grapple": [],
+    "modernfoundry:lure": [],
+    "modernfoundry:netherite": "modernfoundry:item/tool/fishing_rod/modifiers/modernfoundry_netherite_broken",
+    "modernfoundry:quick_charge": [],
+    "modernfoundry:trueshot": [],
+    "modernfoundry:unbreakable": []
+  }
+}

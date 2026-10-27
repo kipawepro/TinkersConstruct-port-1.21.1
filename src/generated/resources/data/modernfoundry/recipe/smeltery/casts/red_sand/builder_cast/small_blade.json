@@ -5,5 +5,6 @@
   "pattern_item": {
     "tag": "modernfoundry:casts/red_sand"
   },
-  "result": "modernfoundry:small_blade_red_sand_cast"
+  "result": "modernfoundry:small_blade_red_sand_cast",
+  "title_key": "modernfoundry:sand_cast"
 }

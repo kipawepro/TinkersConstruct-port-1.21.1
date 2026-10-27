@@ -20,7 +20,6 @@ import java.util.Set;
 /**
  * Generic container for tool stats, allows addons to select which stats they wish to use
  */
-@SuppressWarnings("ClassCanBeRecord")
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @EqualsAndHashCode
 @ToString

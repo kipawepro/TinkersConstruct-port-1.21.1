@@ -1,3 +1,8 @@
 {
-  "stats": {}
+  "stats": {
+    "modernfoundry:slime": {
+      "durability": 200,
+      "overslime_capacity": 0
+    }
+  }
 }

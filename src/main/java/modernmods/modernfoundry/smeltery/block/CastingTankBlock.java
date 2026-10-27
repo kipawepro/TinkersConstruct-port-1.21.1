@@ -1,5 +1,6 @@
 package modernmods.modernfoundry.smeltery.block;
 
+import modernmods.hilt.util.BlockEntityHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -27,7 +28,6 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import modernmods.hilt.block.InventoryBlock;
-import modernmods.hilt.util.BlockEntityHelper;
 import modernmods.modernfoundry.library.utils.NBTTags;
 import modernmods.modernfoundry.library.utils.TagUtil;
 import modernmods.modernfoundry.smeltery.block.component.SearedTankBlock;
@@ -149,8 +149,6 @@ public class CastingTankBlock extends InventoryBlock implements ITankBlock, Enti
   public int getAnalogOutputSignal(BlockState blockState, Level worldIn, BlockPos pos) {
     return ITankBlockEntity.getComparatorInputOverride(worldIn, pos);
   }
-
-
 
   @Override
   public ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state) {

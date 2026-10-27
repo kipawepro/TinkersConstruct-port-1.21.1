@@ -2,7 +2,7 @@
   "modules": [
     {
       "type": "modernfoundry:material_stats",
-      "primary_part": 0,
+      "primary_part": 1,
       "stat_types": [
         "modernfoundry:shell",
         {
@@ -10,6 +10,14 @@
           "stat": "modernfoundry:slime"
         }
       ]
+    },
+    {
+      "type": "modernfoundry:material_traits",
+      "hooks": [
+        "modernfoundry:trim_trait"
+      ],
+      "material_index": 0,
+      "stat_type": "modernfoundry:shell"
     },
     {
       "type": "modernfoundry:default_materials",
@@ -45,14 +53,6 @@
           "name": "modernfoundry:shell_storage"
         }
       ]
-    },
-    {
-      "type": "modernfoundry:material_traits",
-      "hooks": [
-        "modernfoundry:trim_trait"
-      ],
-      "material_index": 1,
-      "stat_type": "modernfoundry:slime"
     },
     {
       "type": "modernfoundry:unique_material_name",

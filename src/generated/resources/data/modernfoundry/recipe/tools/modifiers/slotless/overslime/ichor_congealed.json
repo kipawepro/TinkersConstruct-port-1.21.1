@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "modernfoundry:ichor_congealed_slime"
   },
-  "restore_amount": 400,
+  "restore_amount": 240,
   "tools": {
     "tag": "modernfoundry:modifiable/durability"
   }

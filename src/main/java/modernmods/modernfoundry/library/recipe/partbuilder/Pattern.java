@@ -2,6 +2,8 @@ package modernmods.modernfoundry.library.recipe.partbuilder;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
+import modernmods.hilt.data.loadable.Loadables;
 import modernmods.modernfoundry.library.utils.IdParser;
 import modernmods.modernfoundry.library.utils.ResourceId;
 import modernmods.modernfoundry.library.utils.Util;
@@ -47,7 +49,12 @@ public class Pattern extends ResourceId {
    * @return  Pattern texture
    */
   public ResourceLocation getTexture() {
-    return ResourceLocation.fromNamespaceAndPath(getNamespace(), "gui/tinker_pattern/" + getPath());
+    return withPrefix("gui/tinker_pattern/");
+  }
+
+  /** Checks if this pattern matches the give item, typically a tool part. */
+  public boolean matches(ItemLike item) {
+    return this.equals(Loadables.ITEM.getKey(item.asItem()));
   }
 
 
@@ -61,5 +68,10 @@ public class Pattern extends ResourceId {
   @Nullable
   public static Pattern tryBuild(String namespace, String path) {
     return tryBuild(namespace, path, Pattern::new);
+  }
+
+  /** Gets the pattern for the given item ID */
+  public static Pattern fromItem(ItemLike item) {
+    return new Pattern(Loadables.ITEM.getKey(item.asItem()));
   }
 }

@@ -1,0 +1,12 @@
+{
+  "modifiers": {
+    "modernfoundry:overforced": {
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_overforced_broken",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_overforced_broken"
+    },
+    "modernfoundry:reinforced": {
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_reinforced_broken",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_reinforced_broken"
+    }
+  }
+}

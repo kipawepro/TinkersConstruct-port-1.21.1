@@ -37,6 +37,5 @@
       "held_tag": "modernfoundry:modifiable/armor/held",
       "key": "modernfoundry:crystalstrike_knockback"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

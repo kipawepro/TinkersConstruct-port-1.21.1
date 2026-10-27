@@ -5,6 +5,7 @@
       "text": "Altın tuğlalı yolunu bulamıyorsan kendi toprak yolak yolunu yap."
     }
   ],
+  "tool_filter": "modernfoundry:modifiable/interactable",
   "effects": [
     "Aracınla yolak yapmanı sağlar",
     "Tek seviye",

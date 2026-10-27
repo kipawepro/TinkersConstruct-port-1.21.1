@@ -10,9 +10,6 @@
     "modernfoundry:travelers/goggles_broken",
     "modernfoundry:travelers/goggles"
   ],
-  "first_modifiers": [
-    "modernfoundry:dyed"
-  ],
   "parts": [
     {
       "name": "base"

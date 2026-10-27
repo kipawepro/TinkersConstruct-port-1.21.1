@@ -99,7 +99,18 @@
   {
     "name": "armor",
     "icon": {
-      "item": "modernfoundry:slime_boots"
+      "item": {
+        "type": "c:nbt",
+        "item": "modernfoundry:slime_boots",
+        "nbt": {
+          "tic_broken": false,
+          "tic_display": true,
+          "tic_materials": [
+            "modernfoundry:string",
+            "modernfoundry:skyslime"
+          ]
+        }
+      }
     },
     "condition": {
       "type": "modernfoundry:tag_not_empty",
@@ -114,7 +125,13 @@
   {
     "name": "materials",
     "data": "no-load",
-    "extraData": { "modernfoundry:material_tier": { "type": "modernfoundry:skull" } },
+    "extraData": { "modernfoundry:material_tier": [
+      { "type": "modernfoundry:slime" },
+      { "type": "modernfoundry:skull",   "suffix": "item.modernfoundry.skull" },
+      { "type": "modernfoundry:ribcage", "suffix": "item.modernfoundry.ribcage" },
+      { "type": "modernfoundry:shell",   "suffix": "item.modernfoundry.shell" },
+      { "type": "modernfoundry:laces",   "suffix": "item.modernfoundry.laces" }
+    ]},
     "icon": {
       "item": "minecraft:skeleton_skull"
     }

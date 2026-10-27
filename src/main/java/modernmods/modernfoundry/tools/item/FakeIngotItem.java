@@ -2,6 +2,7 @@ package modernmods.modernfoundry.tools.item;
 
 import it.unimi.dsi.fastutil.objects.Object2BooleanArrayMap;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.ItemStack;
 import modernmods.modernfoundry.common.recipe.RecipeCacheInvalidator;
 import modernmods.modernfoundry.library.materials.MaterialRegistry;
 import modernmods.modernfoundry.library.materials.definition.IMaterial;

@@ -1,5 +1,8 @@
 {
   "stats": {
-    "modernfoundry:arrow_head": {}
+    "modernfoundry:arrow_head": {},
+    "modernfoundry:shell": {
+      "repair_amount": 175
+    }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "level_display": "modernfoundry:single_level",
+  "modules": [
+    {
+      "type": "modernfoundry:conditional_melee_damage",
+      "attacker": "hilt:sprinting",
+      "each_level": 4.0,
+      "percent": false
+    },
+    {
+      "type": "modernfoundry:melee_instrument",
+      "attacker": "hilt:sprinting",
+      "hooks": [
+        "modernfoundry:melee_hit",
+        "modernfoundry:monster_melee_hit"
+      ],
+      "instrument_material": "modernfoundry:horn",
+      "instrument_tag": "minecraft:regular_goat_horns"
+    }
+  ]
+}

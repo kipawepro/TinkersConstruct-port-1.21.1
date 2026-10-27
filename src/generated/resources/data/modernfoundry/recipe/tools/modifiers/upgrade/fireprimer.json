@@ -4,7 +4,7 @@
   "allow_crystal": true,
   "inputs": [
     {
-      "tag": "c:ingots/steel"
+      "tag": "c:ingots/amethyst_bronze"
     },
     {
       "item": "minecraft:flint"

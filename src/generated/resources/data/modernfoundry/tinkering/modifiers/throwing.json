@@ -4,6 +4,5 @@
     {
       "type": "modernfoundry:throwing"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

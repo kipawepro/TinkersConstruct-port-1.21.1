@@ -3,7 +3,7 @@
   "id": "modernfoundry:smeltery/entity_melting/frog",
   "damage": 2,
   "entity": {
-    "type": "minecraft:frog"
+    "tag": "c:frogs"
   },
   "result": {
     "amount": 50,

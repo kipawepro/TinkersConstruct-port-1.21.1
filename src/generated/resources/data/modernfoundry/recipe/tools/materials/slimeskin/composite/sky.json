@@ -6,6 +6,6 @@
     "tag": "modernfoundry:sky_slime"
   },
   "input": "modernfoundry:leather",
-  "output": "modernfoundry:skyslime_vine#slimeskin",
+  "output": "modernfoundry:skyslimeskin",
   "temperature": 10
 }

@@ -1,0 +1,16 @@
+{
+  "title": "Ichor",
+  "item": [
+    "modernfoundry:ichor_slime_ball",
+    "modernfoundry:ichor_congealed_slime",
+    "modernfoundry:ichor_slime",
+    "modernfoundry:ichor_slime_crystal",
+    "modernfoundry:ichor_slime_crystal_block"
+  ],
+  "text": [
+    {
+      "text": "イコルを溶かすことで燃え盛る血液を入手することもできますが、そもそもそれを溶かすにはより高温の燃料が必要となるため、あまり理想的とは言えません。とはいえ、最終的にはプラスの利益となるため、他の手段で燃え盛る血液を入手した後に、その供給量を増やす手段として有効かもしれません。",
+      "paragraph": true
+    }
+  ]
+}

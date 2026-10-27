@@ -1,0 +1,12 @@
+{
+  "constant": {
+    "__dyed": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:dyed",
+        "texture": "modernfoundry:item/tool/armor/slime/leggings/shell_broken"
+      },
+      "modifier": "modernfoundry:dyed"
+    }
+  }
+}

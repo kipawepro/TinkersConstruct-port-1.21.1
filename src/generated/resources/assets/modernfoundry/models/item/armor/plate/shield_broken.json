@@ -21,9 +21,6 @@
       "modernfoundry:item/tool/armor/plate/shield/large_modifiers/"
     ]
   },
-  "first_modifiers": [
-    "modernfoundry:banner"
-  ],
   "parts": [
     {
       "name": "core",

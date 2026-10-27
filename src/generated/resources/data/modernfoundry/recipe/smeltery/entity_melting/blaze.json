@@ -3,7 +3,7 @@
   "id": "modernfoundry:smeltery/entity_melting/blaze",
   "damage": 2,
   "entity": {
-    "type": "minecraft:blaze"
+    "tag": "c:blazes"
   },
   "result": {
     "amount": 20,

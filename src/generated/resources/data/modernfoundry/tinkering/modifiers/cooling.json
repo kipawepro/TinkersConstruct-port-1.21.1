@@ -7,6 +7,5 @@
       "percent": false,
       "target": "hilt:fire_immune"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

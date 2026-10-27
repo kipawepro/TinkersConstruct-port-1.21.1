@@ -21,7 +21,7 @@ import modernmods.modernfoundry.library.client.armor.texture.ArmorTextureSupplie
 import modernmods.modernfoundry.library.client.armor.texture.TintedArmorTexture;
 import modernmods.modernfoundry.library.client.materials.MaterialRenderInfo;
 import modernmods.modernfoundry.library.client.materials.MaterialRenderInfoLoader;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.utils.SimpleCache;
 import modernmods.modernfoundry.tools.entity.CombatFishingHook;
@@ -48,7 +48,7 @@ public class CombatFishingHookRenderer extends EntityRenderer<CombatFishingHook>
 
   /** Cache of texture and color for each material. */
   private static final SimpleCache<MaterialVariantId,MaterialTexture> TEXTURE_CACHE = new SimpleCache<>(material -> {
-    if (!IMaterial.UNKNOWN_ID.equals(material)) {
+    if (!MaterialId.UNKNOWN.equals(material)) {
       Optional<MaterialRenderInfo> infoOptional = MaterialRenderInfoLoader.INSTANCE.getRenderInfo(material);
       int color = -1;
       int luminosity = 0;

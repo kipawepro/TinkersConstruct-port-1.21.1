@@ -1,0 +1,14 @@
+{
+  "level_display": "modernfoundry:default",
+  "modules": [
+    {
+      "type": "modernfoundry:stat_tooltip",
+      "stat": "modernfoundry:hunger"
+    },
+    {
+      "type": "modernfoundry:stat_tooltip",
+      "stat": "modernfoundry:saturation"
+    }
+  ],
+  "show_in_tooltips": "never"
+}

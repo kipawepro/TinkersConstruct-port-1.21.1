@@ -12,6 +12,9 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import modernmods.modernfoundry.compat.neoforged.neoforge.common.IForgeShearable;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.neoforged.neoforge.common.IShearable;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.ItemAbilities;
 import modernmods.hilt.data.loadable.primitive.FloatLoadable;
@@ -96,7 +99,18 @@ public record ShearsModule(float flatBonus, float perLevelBonus, float expandedB
     if (result != Result.DEFAULT) {
       return result == Result.ALLOW;
     }
-    // fallback to forge shearable
+    if (entity instanceof IShearable target) {
+      BlockPos pos = entity.blockPosition();
+      if (!target.isShearable(player, itemStack, world, pos)) {
+        return false;
+      }
+      if (!world.isClientSide) {
+        List<ItemStack> drops = target.onSheared(player, itemStack, world, pos);
+        drops.forEach(stack -> target.spawnShearedDrop(world, pos, stack));
+        entity.gameEvent(GameEvent.SHEAR, player);
+      }
+      return true;
+    }
     if (entity instanceof IForgeShearable target) {
       if (!world.isClientSide) {
         List<ItemStack> drops = target.onSheared(player, itemStack, world, entity.blockPosition(), fortune);

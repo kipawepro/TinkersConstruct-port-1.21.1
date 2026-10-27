@@ -5,6 +5,5 @@
       "type": "modernfoundry:mob_disguise",
       "entity": "minecraft:creeper"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

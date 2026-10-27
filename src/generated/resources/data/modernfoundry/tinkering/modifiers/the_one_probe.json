@@ -8,6 +8,5 @@
     {
       "type": "modernfoundry:the_one_probe"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

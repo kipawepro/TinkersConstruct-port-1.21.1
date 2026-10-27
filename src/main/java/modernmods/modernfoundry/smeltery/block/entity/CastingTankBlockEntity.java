@@ -1,5 +1,6 @@
 package modernmods.modernfoundry.smeltery.block.entity;
 
+import modernmods.modernfoundry.smeltery.item.TankItem;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.core.BlockPos;
@@ -46,7 +47,6 @@ import modernmods.modernfoundry.smeltery.TinkerSmeltery;
 import modernmods.modernfoundry.smeltery.block.CastingTankBlock;
 import modernmods.modernfoundry.smeltery.block.entity.component.TankBlockEntity;
 import modernmods.modernfoundry.smeltery.block.entity.component.TankBlockEntity.ITankBlock;
-import modernmods.modernfoundry.smeltery.item.TankItem;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -275,14 +275,6 @@ public class CastingTankBlockEntity extends TableBlockEntity implements ITankBlo
    * NBT
    */
   private static final String TAG_REDSTONE = "redstone";
-
-  /**
-   * Sets the tag on the stack based on the contained tank
-   * @param stack  Stack
-   */
-  public void setTankTag(ItemStack stack) {
-    TankItem.setTank(stack, tank);
-  }
 
   /**
    * Updates the tank from an NBT tag, used in the block

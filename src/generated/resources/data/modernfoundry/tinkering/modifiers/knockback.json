@@ -73,6 +73,5 @@
         "tag": "modernfoundry:knockback_slings/target"
       }
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

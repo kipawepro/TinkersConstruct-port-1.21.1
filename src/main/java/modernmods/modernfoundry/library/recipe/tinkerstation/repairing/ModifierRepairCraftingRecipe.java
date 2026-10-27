@@ -1,5 +1,6 @@
 package modernmods.modernfoundry.library.recipe.tinkerstation.repairing;
 
+import net.minecraft.core.RegistryAccess;
 import lombok.Getter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -18,16 +19,25 @@ import modernmods.modernfoundry.common.TinkerTags;
 import modernmods.modernfoundry.library.modifiers.ModifierEntry;
 import modernmods.modernfoundry.library.modifiers.ModifierHooks;
 import modernmods.modernfoundry.library.modifiers.ModifierId;
+import modernmods.modernfoundry.library.recipe.display.VanillaFilteredRecipe;
 import modernmods.modernfoundry.library.recipe.modifiers.adding.OverslimeCraftingTableRecipe;
 import modernmods.modernfoundry.library.recipe.modifiers.adding.OverslimeCraftingTableRecipe.ToolFound;
+import modernmods.modernfoundry.library.recipe.tinkerstation.IDisplayCraftingTinkering;
 import modernmods.modernfoundry.library.tools.helper.ToolDamageUtil;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
 import modernmods.modernfoundry.library.tools.nbt.ToolStack;
 import modernmods.modernfoundry.tools.TinkerModifiers;
 
+import java.util.List;
 import java.util.function.Predicate;
 
-public class ModifierRepairCraftingRecipe extends CustomRecipe implements IModifierRepairRecipe {
+/**
+ * Recipe for repairing a tool in the crafting table provided it has the given modifier.
+ * @see ModifierRepairRecipeBuilder
+ * @see ModifierRepairTinkerStationRecipe
+ * @see modernmods.modernfoundry.library.modifiers.modules.behavior.MaterialRepairModule
+ */
+public class ModifierRepairCraftingRecipe extends CustomRecipe implements IModifierRepairRecipe, VanillaFilteredRecipe<IDisplayCraftingTinkering> {
   public static final RecordLoadable<ModifierRepairCraftingRecipe> LOADER = RecordLoadable.create(ContextKey.ID.requiredField(), MODIFIER_FIELD, INGREDIENT_FIELD, REPAIR_AMOUNT_FIELD, ModifierRepairCraftingRecipe::new);
   private static final Predicate<ItemStack> TOOLS = stack -> stack.is(TinkerTags.Items.DURABILITY);
 
@@ -121,5 +131,17 @@ public class ModifierRepairCraftingRecipe extends CustomRecipe implements IModif
   @Override
   public RecipeSerializer<?> getSerializer() {
     return TinkerModifiers.craftingModifierRepair.get();
+  }
+
+
+  /* JEI */
+  private List<IDisplayCraftingTinkering> displayRecipes;
+
+  @Override
+  public List<IDisplayCraftingTinkering> getFilteredRecipes(RegistryAccess access) {
+    if (displayRecipes == null) {
+      displayRecipes = List.of(new ModifierRepairTinkerStationRecipe.DisplayRecipe(getId(), this, true));
+    }
+    return displayRecipes;
   }
 }

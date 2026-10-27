@@ -5,6 +5,5 @@
       "type": "modernfoundry:volatile_flag",
       "flag": "modernfoundry:no_melee"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

@@ -1,0 +1,26 @@
+{
+  "modifiers": {
+    "modernfoundry:diamond": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_diamond",
+    "modernfoundry:emerald": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_emerald",
+    "modernfoundry:experienced": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_experienced",
+    "modernfoundry:fiery": {
+      "luminosity": 10,
+      "texture": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_fiery"
+    },
+    "modernfoundry:freezing": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_freezing",
+    "modernfoundry:impaling": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_impaling",
+    "modernfoundry:netherite": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_netherite",
+    "modernfoundry:overforced": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_overforced",
+    "modernfoundry:pierce": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_pierce",
+    "modernfoundry:quick_charge": {
+      "luminosity": 7,
+      "texture": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_quick_charge"
+    },
+    "modernfoundry:reinforced": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_reinforced",
+    "modernfoundry:trueshot": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_trueshot",
+    "modernfoundry:unbreakable": {
+      "luminosity": 2,
+      "texture": "modernfoundry:item/tool/crossbow/modifiers/modernfoundry_unbreakable"
+    }
+  }
+}

@@ -8,5 +8,6 @@
   "result": {
     "count": 4,
     "item": "modernfoundry:repair_kit_red_sand_cast"
-  }
+  },
+  "title_key": "modernfoundry:sand_cast"
 }

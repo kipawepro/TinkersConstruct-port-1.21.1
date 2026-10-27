@@ -3,7 +3,7 @@
   "id": "modernfoundry:smeltery/entity_melting/turtle",
   "damage": 3,
   "entity": {
-    "type": "minecraft:turtle"
+    "tag": "c:turtles"
   },
   "result": {
     "amount": 25,

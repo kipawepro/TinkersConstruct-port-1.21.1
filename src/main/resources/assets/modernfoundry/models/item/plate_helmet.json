@@ -5,8 +5,7 @@
     "plating": "modernfoundry:item/tool/armor/plate/helmet/plating",
     "maille":  "modernfoundry:item/tool/armor/plate/helmet/maille"
   },
-  "modifier_maps": ["modernfoundry:plate/helmet"],
-  "first_modifiers": [ "modernfoundry:dyed", "modernfoundry:trim" ],
+  "modifier_maps": ["modernfoundry:plate/helmet", "modernfoundry:armor/helmet"],
   "parts": [
     { "name": "plating", "index": 0 },
     { "name": "maille",  "index": 1 }

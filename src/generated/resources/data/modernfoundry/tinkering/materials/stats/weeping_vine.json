@@ -2,9 +2,10 @@
   "stats": {
     "modernfoundry:binding": {},
     "modernfoundry:bowstring": {},
+    "modernfoundry:cuirass": {},
     "modernfoundry:laces": {
       "repair_amount": 90
     },
-    "modernfoundry:maille": {}
+    "modernfoundry:repair_kit": {}
   }
 }

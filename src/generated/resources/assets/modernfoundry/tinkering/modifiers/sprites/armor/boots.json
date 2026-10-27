@@ -1,0 +1,30 @@
+{
+  "constant": {
+    "_trim": {
+      "type": "modernfoundry:crafted",
+      "model": {
+        "type": "modernfoundry:armor_trim",
+        "slot": "boots"
+      },
+      "modifier": "modernfoundry:trim"
+    }
+  },
+  "modifiers": {
+    "modernfoundry:depth_strider": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_depth_strider",
+    "modernfoundry:double_jump": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_double_jump",
+    "modernfoundry:emerald": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_emerald",
+    "modernfoundry:feather_fall": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_feather_falling",
+    "modernfoundry:feather_falling": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_feather_falling",
+    "modernfoundry:fiery": {
+      "luminosity": 10,
+      "texture": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_fiery"
+    },
+    "modernfoundry:lightspeed": {
+      "luminosity": 15,
+      "texture": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_lightspeed"
+    },
+    "modernfoundry:long_fall": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_long_fall",
+    "modernfoundry:soulspeed": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_soulspeed",
+    "modernfoundry:thorns": "modernfoundry:item/tool/armor/modifiers/boots/modernfoundry_thorns"
+  }
+}

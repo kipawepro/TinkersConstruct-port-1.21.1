@@ -1,0 +1,12 @@
+{
+  "type": "modernfoundry:material",
+  "id": "modernfoundry:tools/materials/horn/seek_goat_horn",
+  "ingredient": {
+    "type": "modernfoundry:instrument",
+    "instrument": "minecraft:seek_goat_horn",
+    "item": "minecraft:goat_horn"
+  },
+  "material": "modernfoundry:horn#minecraft.seek_goat_horn",
+  "needed": 1,
+  "value": 4
+}

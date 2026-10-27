@@ -18,6 +18,7 @@ import modernmods.modernfoundry.library.modifiers.modules.build.StatBoostModule;
 import modernmods.modernfoundry.library.module.ModuleHookMap.Builder;
 import modernmods.modernfoundry.library.tools.capability.fluid.ToolTankHelper;
 import modernmods.modernfoundry.library.tools.context.EquipmentContext;
+import modernmods.modernfoundry.library.tools.helper.ModifierUtil;
 import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
 import modernmods.modernfoundry.shared.TinkerCommons;
 import modernmods.modernfoundry.shared.particle.FluidParticleData;
@@ -62,7 +63,7 @@ public abstract class UseFluidOnHitModifier extends Modifier {
           int consumed = recipe.applyToEntity(fluid, 1, fluidContext, FluidAction.EXECUTE);
           if (consumed > 0) {
             spawnParticles(fluidContext.getTarget(), fluid);
-            if (player == null || !player.isCreative()) {
+            if (ModifierUtil.consumesResources(player)) {
               fluid.shrink(consumed);
               TANK_HELPER.setFluid(tool, fluid);
             }

@@ -1,16 +1,21 @@
 package modernmods.modernfoundry.smeltery.block.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.items.IItemHandler;
 import modernmods.modernfoundry.common.config.Config;
 import modernmods.modernfoundry.library.client.SafeClient;
 import modernmods.modernfoundry.library.fluid.FluidTankAnimated;
 import modernmods.modernfoundry.library.fluid.IFluidTankUpdater;
+import modernmods.modernfoundry.smeltery.item.TankItem;
 import modernmods.modernfoundry.smeltery.network.FluidUpdatePacket;
 
 /**
@@ -22,6 +27,14 @@ public interface ITankBlockEntity extends IFluidTankUpdater, FluidUpdatePacket.I
    * @return  Tank
    */
   FluidTankAnimated getTank();
+
+  /**
+   * Sets the tag on the stack based on the contained tank
+   * @param stack  Stack
+   */
+  default void setTankTag(ItemStack stack) {
+    TankItem.setTank(stack, getTank());
+  }
 
   /*
    * Comparator
@@ -98,6 +111,7 @@ public interface ITankBlockEntity extends IFluidTankUpdater, FluidUpdatePacket.I
     return (BlockEntity) this;
   }
 
+
   /*
    * Helpers
    */
@@ -109,11 +123,18 @@ public interface ITankBlockEntity extends IFluidTankUpdater, FluidUpdatePacket.I
    * @return  Comparator power
    */
   static int getComparatorInputOverride(LevelAccessor world, BlockPos pos) {
-    BlockEntity te = world.getBlockEntity(pos);
-    if (!(te instanceof ITankBlockEntity)) {
-      return 0;
+    if (world.getBlockEntity(pos) instanceof ITankBlockEntity te) {
+      return te.comparatorStrength();
     }
-    return ((ITankBlockEntity) te).comparatorStrength();
+    return 0;
+  }
+
+  /** Helper to implement {@link net.minecraft.world.level.block.Block#getCloneItemStack(BlockState, HitResult, BlockGetter, BlockPos, Player)} */
+  static ItemStack getCloneItemStack(ItemStack stack, BlockGetter world, BlockPos pos) {
+    if (world.getBlockEntity(pos) instanceof ITankBlockEntity tank) {
+      tank.setTankTag(stack);
+    }
+    return stack;
   }
 
   /** Represents a  tank block entity with an inventory */

@@ -1,0 +1,43 @@
+{
+  "level_display": "modernfoundry:single_level",
+  "modules": [
+    {
+      "type": "modernfoundry:trait",
+      "fixed_level": true,
+      "level": 1,
+      "name": "modernfoundry:edible"
+    },
+    {
+      "type": "modernfoundry:edible_representative_item",
+      "representative_item": "modernfoundry:cheese_ingot"
+    },
+    {
+      "type": "modernfoundry:edible_consume_durability",
+      "durability_usage": {
+        "each_level": 4,
+        "flat": 4
+      }
+    },
+    {
+      "type": "modernfoundry:edible_cure_random_effect"
+    },
+    {
+      "type": "modernfoundry:stat_boost",
+      "each_level": 1.0,
+      "operation": "add",
+      "stat": "modernfoundry:hunger"
+    },
+    {
+      "type": "modernfoundry:stat_boost",
+      "flat": 0.4,
+      "operation": "add",
+      "stat": "modernfoundry:saturation"
+    },
+    {
+      "type": "modernfoundry:stat_boost",
+      "each_level": 0.15,
+      "operation": "add",
+      "stat": "modernfoundry:edible_counter_chance"
+    }
+  ]
+}

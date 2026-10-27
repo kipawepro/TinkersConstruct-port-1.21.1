@@ -16,7 +16,8 @@ import modernmods.modernfoundry.library.tools.nbt.IToolStackView;
 import modernmods.modernfoundry.shared.TinkerEffects;
 import modernmods.modernfoundry.tools.TinkerModifiers;
 
-@Deprecated
+/** Use {@link modernmods.modernfoundry.library.modifiers.modules.combat.MobEffectModule} */
+@Deprecated(forRemoval = true)
 public class WitheredModifier extends NoLevelsModifier implements DamageDealtModifierHook {
   @Override
   protected void registerHooks(Builder hookBuilder) {

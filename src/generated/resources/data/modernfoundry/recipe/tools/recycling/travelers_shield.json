@@ -3,7 +3,7 @@
   "id": "modernfoundry:tools/recycling/travelers_shield",
   "parts": [
     "modernfoundry:repair_kit",
-    "modernfoundry:maille"
+    "modernfoundry:repair_kit"
   ],
   "pattern": {
     "item": "modernfoundry:venom_bottle"

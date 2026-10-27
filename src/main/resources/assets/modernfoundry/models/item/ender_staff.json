@@ -11,7 +11,6 @@
     "small": [ "modernfoundry:item/tool/staff/modifiers/ender/", "modernfoundry:item/tool/staff/modifiers/" ],
     "large": [ "modernfoundry:item/tool/staff/large_modifiers/ender/", "modernfoundry:item/tool/staff/large_modifiers/" ]
   },
-  "first_modifiers": [ "modernfoundry:dyed", "modernfoundry:embellishment" ],
   "overrides": [
     {
       "predicate": { "modernfoundry:charging": 1 },

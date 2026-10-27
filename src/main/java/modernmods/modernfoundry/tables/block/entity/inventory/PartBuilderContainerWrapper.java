@@ -3,7 +3,7 @@ package modernmods.modernfoundry.tables.block.entity.inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import modernmods.modernfoundry.common.TinkerTags;
-import modernmods.modernfoundry.library.materials.definition.IMaterial;
+import modernmods.modernfoundry.library.materials.definition.MaterialId;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
 import modernmods.modernfoundry.library.recipe.TinkerRecipeTypes;
 import modernmods.modernfoundry.library.recipe.casting.material.MaterialCastingLookup;
@@ -60,7 +60,7 @@ public class PartBuilderContainerWrapper implements IPartBuilderContainer {
       } else if (stack.is(TinkerTags.Items.TOOL_PARTS)) {
         MaterialVariantId material = IMaterialItem.getMaterialFromStack(stack);
         int cost = MaterialCastingLookup.getItemCost(stack.getItem());
-        if (cost == 0 || IMaterial.UNKNOWN_ID.matchesVariant(material)) {
+        if (cost == 0 || MaterialId.UNKNOWN.matchesVariant(material)) {
           this.material = null;
         } else {
           this.material = new MaterialValue(material, cost);

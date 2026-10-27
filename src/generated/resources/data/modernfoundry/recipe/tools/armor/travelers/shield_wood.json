@@ -1,0 +1,14 @@
+{
+  "type": "modernfoundry:material_value_swapping",
+  "id": "modernfoundry:tools/armor/travelers/shield_wood",
+  "cost": 2,
+  "index": 0,
+  "material": {
+    "type": "modernfoundry:stat_type",
+    "stat_type": "modernfoundry:shield_core"
+  },
+  "max_stack_size": 16,
+  "tools": {
+    "item": "modernfoundry:travelers_shield"
+  }
+}

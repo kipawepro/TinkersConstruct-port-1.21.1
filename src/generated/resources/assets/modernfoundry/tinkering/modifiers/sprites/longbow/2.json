@@ -1,0 +1,38 @@
+{
+  "modifiers": {
+    "modernfoundry:diamond": {
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_diamond_2",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_diamond_2"
+    },
+    "modernfoundry:experienced": {
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_experienced_2",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_experienced_2"
+    },
+    "modernfoundry:fiery": {
+      "luminosity": 10,
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_fiery_2",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_fiery_2"
+    },
+    "modernfoundry:freezing": {
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_freezing_2",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_freezing_2"
+    },
+    "modernfoundry:netherite": {
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_netherite_2",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_netherite_2"
+    },
+    "modernfoundry:overforced": {
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_overforced_2",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_overforced_2"
+    },
+    "modernfoundry:reinforced": {
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_reinforced_2",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_reinforced_2"
+    },
+    "modernfoundry:unbreakable": {
+      "luminosity": 2,
+      "texture": "modernfoundry:item/tool/longbow/modifiers/modernfoundry_unbreakable_2",
+      "texture_large": "modernfoundry:item/tool/longbow/large/modifiers/modernfoundry_unbreakable_2"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "modernfoundry:ore_melting",
+  "id": "modernfoundry:smeltery/melting/metal/copper/crushed",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "create:crushed_raw_copper"
+    }
+  ],
+  "byproducts": [
+    {
+      "amount": 30,
+      "rate": "metal",
+      "tag": "c:molten_gold"
+    }
+  ],
+  "ingredient": {
+    "item": "create:crushed_raw_copper"
+  },
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_copper"
+  },
+  "temperature": 500,
+  "time": 75
+}

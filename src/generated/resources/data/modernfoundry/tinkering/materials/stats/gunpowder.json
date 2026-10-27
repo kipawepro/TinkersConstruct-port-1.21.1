@@ -1,5 +1,8 @@
 {
   "stats": {
-    "modernfoundry:arrow_head": {}
+    "modernfoundry:arrow_head": {},
+    "modernfoundry:skull": {
+      "durability": 90
+    }
   }
 }

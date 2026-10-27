@@ -20,6 +20,7 @@ import modernmods.hilt.util.JsonHelper;
 import modernmods.hilt.util.typed.TypedMap;
 import modernmods.hilt.util.typed.TypedMapBuilder;
 import modernmods.modernfoundry.library.materials.definition.MaterialVariantId;
+import modernmods.modernfoundry.library.utils.JsonUtils;
 import modernmods.modernfoundry.library.utils.Util;
 
 import java.util.Collection;
@@ -137,7 +138,9 @@ public class MaterialRenderInfoLoader implements IEarlySafeManagerReloadListener
 
     // store the list immediately, otherwise it is not in place in time for models to load
     this.renderInfos = Map.copyOf(map);
-    log.debug("Loaded material render infos: {}", Util.toIndentedStringList(map.keySet().stream().sorted(Comparator.comparing(MaterialVariantId::getId).thenComparing(MaterialVariantId::getVariant)).toList()));
+    if (log.isDebugEnabled() && JsonUtils.debugLogResourceValues()) {
+      log.debug("Loaded material render infos: {}", Util.toIndentedStringList(map.keySet().stream().sorted(Comparator.comparing(MaterialVariantId::getId).thenComparing(MaterialVariantId::getVariant)).toList()));
+    }
     log.info("{} material render infos loaded", map.size());
   }
 

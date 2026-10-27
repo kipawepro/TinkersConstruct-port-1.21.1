@@ -25,6 +25,5 @@
       "operation": "add",
       "stat": "modernfoundry:velocity"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

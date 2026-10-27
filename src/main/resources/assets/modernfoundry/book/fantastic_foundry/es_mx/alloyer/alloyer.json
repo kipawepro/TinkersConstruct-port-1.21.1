@@ -1,0 +1,12 @@
+{
+  "title": "Aleador",
+  "image": {
+    "file": "modernfoundry:book/images/alloyer.png"
+  },
+  "text": [
+    {
+      "text": "¡A alear se ha dicho!",
+      "paragraph": true
+    }
+  ]
+}
