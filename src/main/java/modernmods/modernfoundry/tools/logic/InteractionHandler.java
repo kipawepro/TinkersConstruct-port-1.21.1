@@ -15,6 +15,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import net.minecraft.world.phys.BlockHitResult;
@@ -198,17 +200,28 @@ public class InteractionHandler {
         TriState useBlock = event.getUseBlock();
         Level level = player.level();
         if (useBlock == TriState.TRUE || (useBlock != TriState.FALSE
-                                         && (!player.isSecondaryUseActive() || player.getItemInHand(Util.getOpposite(hand)).doesSneakBypassUse(level, pos, player)))) {
-          InteractionResult result = level.getBlockState(pos).useWithoutItem(level, player, trace);
-          if (result.consumesAction()) {
-            if (player instanceof ServerPlayer serverPlayer) {
-              CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, ItemStack.EMPTY);
-            }
-            event.setCanceled(true);
-            event.setCancellationResult(result);
-            return;
+                                 && (!player.isSecondaryUseActive() || player.getItemInHand(Util.getOpposite(hand)).doesSneakBypassUse(level, pos, player)))) {
+        BlockState state = level.getBlockState(pos);
+        // same order vanilla uses: useItemOn first, then useWithoutItem
+        ItemInteractionResult itemResult = state.useItemOn(ItemStack.EMPTY, level, player, hand, trace);
+        InteractionResult result = null;
+        if (itemResult.consumesAction()) {
+          result = itemResult.result();
+        } else if (itemResult == ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION) {
+          InteractionResult withoutItem = state.useWithoutItem(level, player, trace);
+          if (withoutItem.consumesAction()) {
+            result = withoutItem;
           }
         }
+        if (result != null) {
+          if (player instanceof ServerPlayer serverPlayer) {
+            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, ItemStack.EMPTY);
+          }
+        event.setCanceled(true);
+        event.setCancellationResult(result);
+        return;
+      }
+    }
 
         // regular item interaction: must not be deny, and either be allow or not have a cooldown
         TriState useItem = event.getUseItem();
@@ -229,8 +242,11 @@ public class InteractionHandler {
         // did not interact with an entity? try direct interaction
         // needs to be run here as the interact empty hook does not fire when targeting blocks
         InteractionResult result = onChestplateUse(player, chestplate, hand);
-        event.setCanceled(true);
-        event.setCancellationResult(result);
+        if (result.consumesAction()) {
+          event.setCanceled(true);
+          event.setCancellationResult(result);
+        }
+        
       }
     }
   }
